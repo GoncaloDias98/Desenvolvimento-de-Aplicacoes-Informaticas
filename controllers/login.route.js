@@ -22,10 +22,10 @@ router.post('/', function(request, response) {
 		return;
 	}
 
-	usersModel.areValidCredentials(request.body.username, request.body.password, function(areValid) {
+	usersModel.areValidCredentials(request.body.email, request.body.password, function(areValid) {
 		if (areValid) {
 			//Create the login session
-			request.login(request.body.username, function(err) {
+			request.login(request.body.email, function(err) {
 				response.redirect('/');
 			});		
 		}else{
