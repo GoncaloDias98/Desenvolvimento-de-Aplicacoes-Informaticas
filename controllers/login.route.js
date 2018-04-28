@@ -9,7 +9,7 @@ router.get('/', function(request, response) {
 		return;
 	}
 	response.set("Content-Type", "text/html");
-	response.render('index', { errors: [] });
+	response.render('partials/login', { errors: [] });
 });
 
 router.post('/', function(request, response) {
@@ -18,7 +18,7 @@ router.post('/', function(request, response) {
 	var errors = request.validationErrors();
 	
 	if (errors) {
-		response.render('index', { errors: errors });
+		response.render('partials/login', { errors: errors });
 		return;
 	}
 
@@ -26,10 +26,10 @@ router.post('/', function(request, response) {
 		if (areValid) {
 			//Create the login session
 			request.login(request.body.email, function(err) {
-				response.redirect('index');
+				response.redirect('partials/login');
 			});		
 		}else{
-			response.render('index', { errors: [
+			response.render('partials/login', { errors: [
 				{ msg: 'Invalid credentials provided' }
 			]});
 		}
