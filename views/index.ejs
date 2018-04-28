@@ -36,9 +36,45 @@
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-lead-in">Welcome To Our Studio!</div>
-          <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+            <div style="margin:10px; width:auto; height:20%" class="ui-widget justify-content-center">
+
+              <select id="combobox" class="form-control mr-sm-2 justify-content-center" type="text" form="form"> 
+				<option value="">Select one...</option>
+				<option value="Vila Velha de Ródão,Castelo Branco,Portugal">Vila Velha de Ródão,Castelo Branco,Portugal</option>
+				<option value="Mação ,Santarém,Portugal">Mação,Santarém,Portugal</option>
+				<option value="Sines,Setúbal,Portugal">Sines,Setúbal,Portugal</option>
+				<option value="Arcos de Valdevez,Viana do Castelo,Portugal">Arcos de Valdevez,Viana do Castelo,Portugal</option>
+				<option value="Caminha,Viana do Castelo,Portugal">Caminha,Viana do Castelo,Portugal</option>
+				<option value="Melgaço,Viana do Castelo,Portugal">Melgaço,Viana do Castelo,Portugal</option>
+				<option value="Monção,Viana do Castelo,Portugal">Monção,Viana do Castelo,Portugal</option>
+				<option value="Paredes de Coura,Viana do Castelo,Portugal">Paredes de Coura,Viana do Castelo,Portugal</option>
+				<option value="Ponte da Barca,Viana do Castelo,Portugal">Ponte da Barca,Viana do Castelo,Portugal</option>
+				<option value="Ponte de Lima,Viana do Castelo,Portugal">Ponte de Lima,Viana do Castelo,Portugal</option>
+				<option value="Valença,Viana do Castelo,Portugal">Valença,Viana do Castelo,Portugal</option>
+				<option value="Viana do Castelo,Viana do Castelo,Portugal">Viana do Castelo,Viana do Castelo,Portugal</option>
+				<option value="Amares,Braga,Portugal">Amares,Braga,Portugal</option>
+				<option value="Barcelos,Braga,Portugal">Barcelos,Braga,Portugal</option>
+				<option value="Braga,Braga,Portugal">Braga,Braga,Portugal</option>
+				<option value="Guimarães,Braga,Portugal">Guimarães,Braga,Portugal</option>
+				<option value="Póvoa de Lanhoso,Braga,Portugal">Póvoa de Lanhoso,Braga,Portugal</option>
+				<option value="Vizela,Braga,Portugal">Vizela,Braga,Portugal</option>
+				<option value="Maia,Porto,Portugal">Maia,Porto,Portugal</option>
+				<option value="Matosinhos,Porto,Portugal">Matosinhos,Porto,Portugal</option>
+				<option value="Oliveira de Azeméis,Aveiro,Portugal">Oliveira de Azeméis,Aveiro,Portugal</option>
+				<option value="Porto,Porto,Portugal">Porto,Porto,Portugal</option>
+				</select>
+              <div id="searchbtn" style="margin:10px" onclick="search()" class="btn btn-outline-success justify-content-center">Ver condições atuais</div>
+          </div>
+      </form>
+      <p id="ts"></p>
+      <p id="DirecaoVento"></p>
+      <p id="VelocidadeVento"></p>
+      <p id="Temperatura"></p>
+      <p id="Pressao"></p>
+      <p id="Humidade"></p>
+      <p id="Visibilidade"></p>
+      <p id="NascerSol"></p>
+      <p id="PorSol"></p>
         </div>
       </div>
     </header>
