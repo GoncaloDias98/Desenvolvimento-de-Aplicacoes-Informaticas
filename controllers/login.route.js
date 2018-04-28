@@ -9,16 +9,16 @@ router.get('/', function(request, response) {
 		return;
 	}
 	response.set("Content-Type", "text/html");
-	response.render('login', { errors: [] });
+	response.render('index', { errors: [] });
 });
 
 router.post('/', function(request, response) {
-	request.checkBody('username', 'Username should have between 5 and 10 chars').isLength({min: 5, max: 10});
+	request.checkBody('email', 'Username should have between 5 and 10 chars').isLength({min: 5, max: 10});
 	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({min: 8, max: 15});
 	var errors = request.validationErrors();
 	
 	if (errors) {
-		response.render('login', { errors: errors });
+		response.render('index', { errors: errors });
 		return;
 	}
 
@@ -26,10 +26,10 @@ router.post('/', function(request, response) {
 		if (areValid) {
 			//Create the login session
 			request.login(request.body.email, function(err) {
-				response.redirect('/');
+				response.redirect('index');
 			});		
 		}else{
-			response.render('login', { errors: [
+			response.render('index', { errors: [
 				{ msg: 'Invalid credentials provided' }
 			]});
 		}

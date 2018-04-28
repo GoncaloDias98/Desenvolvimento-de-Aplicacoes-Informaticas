@@ -46,7 +46,7 @@ router.post('/create', function(request, response) {
 			'Email': request.body.Email,
 			'NIF': request.body.NIF,
 			'Contacto': request.body.contacto,
-			'Morada': request.body.Morada,
+			'Morada': request.body.Morada
 //			'Nacionalidade': request.body.Nacionalidade,
 		};
 	global.bcrypt.hash(request.body.password, saltRounds).then(function (hash) {
