@@ -1,0 +1,161 @@
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <img class="img-circle" id="img_logo" src="public/img/aperture_science.png">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <!-- Begin # DIV Form -->
+            <div id="div-forms">
+
+                <!-- Begin # Login Form -->
+                <form id="login-form">
+                    <div class="modal-body">
+                        <div id="div-login-msg">
+                            <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <center>
+                                <span id="text-login-msg">Introduza as suas credenciais</span>
+                            </center>
+
+
+
+                        </div>
+
+                        <input id="login_username" name="username" class="form-control" type="text" placeholder="Username" required>
+                        <input id="login_password" name="password" class="form-control" type="password" placeholder="Password" required>
+
+
+                       
+                    </div>
+                    <div class="modal-footer">
+
+                        <div>
+
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                        </div>
+                        <div>
+                            <button id="login_lost_btn" type="button" class="btn btn-link">Perdeu a Password?</button>
+                            <button id="login_register_btn" type="button" class="btn btn-link">Registar</button>
+
+                        </div>
+                    </div>
+                </form>
+                <!-- End # Login Form -->
+
+                <!-- Begin | Lost Password Form -->
+                <form id="lost-form" style="display:none;">
+                    <div class="modal-body">
+                        <div id="div-lost-msg">
+                            <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="text-lost-msg">Indique o seu E-Mail</span>
+                        </div>
+                        <input id="lost_email" class="form-control" name="emailLost" type="text" placeholder="E-Mail" required>
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Submeter</button>
+                        </div>
+                        <div>
+                            <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
+                            <button id="lost_register_btn" type="button" class="btn btn-link">Registar</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Lost Password Form -->
+
+                <!-- Begin | Register Form -->
+                <form id="register-form" style="display:none;">
+                    <div class="modal-body">
+                        <div id="div-register-msg">
+                            <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+
+                            <center>
+
+                                <span id="text-register-msg">Criar nova conta</span>
+                            </center>
+                        </div>
+                        
+                        <input id="register_username" class="form-control" type="text" placeholder="Username" name="username" pattern="[a-zA-Z0-9À-ž\s]{3,20}$" title="Entre 3 a 20 caracteres,apenas letras e números" required>
+                        <input id="register_email" class="form-control" type="email" placeholder="E-Mail" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Insira um email válido" required>
+                        <input id="register_password" class="form-control" type="password" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um numero, uma letra maiuscula e uma minuscula e pelo menos 8 caracteres" required>
+                        <input id="register_name_normal" class="form-control" type="text" placeholder="Nome completo" name="name" pattern="[a-zA-ZÀ-ž\s]+" title="Apenas letras" required>
+                        <input id="register_phonenumber" class="form-control" type="number" placeholder="Numero telemóvel" name="numero" required>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+
+
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Registar</button>
+
+                        </div>
+
+
+
+
+                        <div>
+                              
+                            <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
+							
+                            <button id="register_lost_btn" type="button" class="btn btn-link">Perdeu a Password?</button>
+							<div id="gSignInWrapper" onclick="startApp()">            
+							<span class="label"></span>
+							<div id="customBtn" class="customGPlusSignIn">
+								<span class="icon"></span>
+								<span class="buttonText">Registar</span>
+							</div>
+						</div>
+                            <!--   <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+
+
+
+
+
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Register Form -->
+
+            </div>
+            <!-- End # DIV Form -->
+
+            <script>
+                var googleUser = {};
+
+
+
+
+                var startApp = function () {
+
+                    gapi.load('auth2', function () {
+                        // Retrieve the singleton for the GoogleAuth library and set up the client.
+                        auth2 = gapi.auth2.init({
+                            client_id: '1096112723675-khj02ecp75efe2b7o49g41robaj5fn2q.apps.googleusercontent.com',
+
+                            // Request scopes in addition to 'profile' and 'email'
+                            //scope: 'additional_scope'
+                        });
+
+                        attachSignin(document.getElementById('customBtn'));
+                    });
+                };
+
+                function attachSignin(element) {
+                    auth2.attachClickHandler(element, {},
+                        function (googleUser) {
+                            onSignIn(googleUser);
+
+                        },
+                        function (error) {
+                            alert(JSON.stringify(error, undefined, 2));
+                        });
+                }
+            </script>
+        </div>
+    </div>
+</div>
