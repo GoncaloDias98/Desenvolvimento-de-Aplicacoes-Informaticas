@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" align="center">
-                <img class="img-circle" id="img_logo" src="./public/img/loginbutton.png">
+               <center> <img class="img-circle" id="img_logo" src="./public/img/loginbutton.png" style="height: 50%; width: 50%;"> </center>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
@@ -102,18 +102,7 @@
                             <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
 							
                             <button id="register_lost_btn" type="button" class="btn btn-link">Perdeu a Password?</button>
-							<div id="gSignInWrapper" onclick="startApp()">            
-							<span class="label"></span>
-							<div id="customBtn" class="customGPlusSignIn">
-								<span class="icon"></span>
-								<span class="buttonText">Registar</span>
-							</div>
-						</div>
-                            <!--   <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-
-
-
-
+		
 
                         </div>
                     </div>
@@ -122,39 +111,6 @@
 
             </div>
             <!-- End # DIV Form -->
-
-            <script>
-                var googleUser = {};
-
-
-
-
-                var startApp = function () {
-
-                    gapi.load('auth2', function () {
-                        // Retrieve the singleton for the GoogleAuth library and set up the client.
-                        auth2 = gapi.auth2.init({
-                            client_id: '1096112723675-khj02ecp75efe2b7o49g41robaj5fn2q.apps.googleusercontent.com',
-
-                            // Request scopes in addition to 'profile' and 'email'
-                            //scope: 'additional_scope'
-                        });
-
-                        attachSignin(document.getElementById('customBtn'));
-                    });
-                };
-
-                function attachSignin(element) {
-                    auth2.attachClickHandler(element, {},
-                        function (googleUser) {
-                            onSignIn(googleUser);
-
-                        },
-                        function (error) {
-                            alert(JSON.stringify(error, undefined, 2));
-                        });
-                }
-            </script>
         </div>
     </div>
 </div>
