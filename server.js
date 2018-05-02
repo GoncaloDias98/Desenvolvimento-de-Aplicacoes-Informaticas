@@ -56,7 +56,7 @@ passport.deserializeUser(function(username, callback) {
 //end of new
 
 global.connection = mysql.createConnection({
-	host     : '34.246.160.88',
+	host     : '34.243.203.139',
 	user     : 'wfdai',
 	password : 'ieY4eemaJeifoh4z',
 	database : 'mydb',
