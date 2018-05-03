@@ -216,6 +216,20 @@ function clear() { $('input:text').focus(
 
 
 
+
+
+
+
+    //--------------------------------------------------------------------------------------------------------------
     function showDiv() {
         document.getElementById('weathercard').style.display = "block";
       }
+
+      function management() {
+
+        window.location = '/admin';
+    };
+    
+    function logout() {
+        window.location = '/logout';
+    };
