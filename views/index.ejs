@@ -326,7 +326,31 @@
           </div>
           </form>
 
-          <div id="weathercard" class="card" style="width: 18rem; display:none; font-size:26px;" align=center >
+              <div class="card" id="weathercard" style="display:none" >
+                <span class="city">Meteorologia</span>
+                  <br>
+                <div class="sun"></div>
+                <span class="temp" id="Temperatura"> &#176;</span>
+                
+                <div class="forecast clear">
+                  <div class="day tue"> 
+                    <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa <br>
+                    <i class="fas fa-tint" id="Humidade"></i> % <br>
+                  </div>
+                  <div class="day wed">
+                      <i class="far fa-compass" id="DirecaoVento"></i> <br>
+                    <i class="fas fa-eye" id="Visibilidade"></i> Km <br>
+                  </div>
+                  <div class="day thu">
+                    <i class="far fa-sun" id="NascerSol"></i> <br>
+                    <i class="fas fa-sun" id="PorSol"></i>
+                  </div>
+                  <div class="day fri">
+                    <i class="far fa-clock" id="ts"> </i>
+                  </div>
+                </div>
+              </div>
+          <div class="card" style="width: 18rem; display:none; font-size:26px;" align=center >
               <div class="card-body">
                 <h5 class="card-title" style="color:black;">Meteorologia</h5>
                 <div class="card-text" style="color:black;">
