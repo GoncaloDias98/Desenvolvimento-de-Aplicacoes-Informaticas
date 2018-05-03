@@ -214,3 +214,8 @@ function clear() { $('input:text').focus(
         $(this).val('');
     });}
 
+
+
+    function showDiv() {
+        document.getElementById('weathercard').style.display = "block";
+      }

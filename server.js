@@ -87,6 +87,5 @@ app.use('/public', express.static('public'));
 app.use('/login', require('./controllers/login.route'));
 app.use('/logout', require('./controllers/logout.route'));
 app.use('/register', require('./controllers/register.route'));
-app.use('/loginempresa', require('./controllers/loginempresa.route'));
 // new NXF
 app.use('/users', require('./controllers/user.route'));

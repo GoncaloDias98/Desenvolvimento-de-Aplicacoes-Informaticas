@@ -8,8 +8,8 @@
     <!-- Header -->
     <header class="masthead">
       <div class="container">
-        <div class="intro-text">
-          <div style="margin:10px; width:auto; height:20%" class="ui-widget justify-content-center">
+        <div class="intro-text" align="center">
+          <div style="margin:10px; width:50%; height:20%;" class="ui-widget justify-content-center">
 
             <select id="combobox" class="form-control mr-sm-2 justify-content-center" type="text" form="form">
               <option value="">Select one...</option>
@@ -322,24 +322,25 @@
               <option value="Santana,Madeira,Portugal">Santana,Madeira,Portugal</option>
               <option value="São Vicente,Madeira,Portugal">São Vicente,Madeira,Portugal</option>
             </select>
-            <div id="searchbtn" style="margin:10px" onclick="search()" class="btn btn-outline-success justify-content-center">Ver condições atuais</div>
+            <div id="searchbtn" style="margin:10px;" onclick="search(); showDiv()" class="btn btn-outline-success justify-content-center">Ver condições atuais</div>
           </div>
           </form>
 
-          <div class="card" style="width: 18rem;" align=center >
+          <div id="weathercard" class="card" style="width: 18rem; display:none; font-size:26px;" align=center >
               <div class="card-body">
                 <h5 class="card-title" style="color:black;">Meteorologia</h5>
                 <div class="card-text" style="color:black;">
-                    <p id="DirecaoVento"></p>
-                    <p id="VelocidadeVento"></p>
-                    <p id="Temperatura"></p>
-                    <p id="Pressao"></p>
-                    <p id="Humidade"></p>
-                    <p id="Visibilidade"></p>
-                    <p id="NascerSol"></p>
-                    <p id="PorSol"></p>
+                    <i class="far fa-compass" id="DirecaoVento"></i> <br>
+                    <i class="fas fa-angle-double-right" id="VelocidadeVento"></i> <br>
+                    <i class="fas fa-thermometer-half" id="Temperatura"></i> <br>
+                    <i class="fas fa-tachometer-alt" id="Pressao"></i> <br>
+                    <i class="fas fa-tint" id="Humidade"></i> <br>
+                    <i class="fas fa-eye" id="Visibilidade"></i> <br>
+                    <i class="far fa-sun" id="NascerSol"></i> <br>
+                    <i class="fas fa-sun" id="PorSol"></i>
+                    <i class="far fa-clock" id="ts"> </i>
                 </div>
-                <span><p id="ts"></p></span>
+            
               </div>
             </div>
         </div>

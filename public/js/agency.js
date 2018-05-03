@@ -48,3 +48,8 @@
   })
 
 })(jQuery); // End of use strict
+
+
+function showDiv() {
+  document.getElementById('weathercard').style.display = "none";
+}
