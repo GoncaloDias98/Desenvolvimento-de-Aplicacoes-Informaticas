@@ -10,6 +10,9 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const usersModel = require('./models/user.model');
+//nexmo SMS
+const Nexmo = require('nexmo');
+const socketio = require('socket.io');
 
 
 //This function will allow us to retrict the access to the routes
@@ -76,6 +79,19 @@ app.use(function(request, response, next){
 	response.locals.isAuthenticated = request.isAuthenticated();
 	next();
 });
+
+app.post('/', (req, res) => {
+	req.send(req.body);
+	console.log(req.body);
+});
+
+
+// Public folder setup
+app.use(express.static(__dirname + '/public'));
+
+// Body parser middleware;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs');
 app.set('views','views');
