@@ -1,4 +1,5 @@
 const port = 8080;
+const ejs = require('ejs');
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
@@ -87,7 +88,7 @@ app.use(function(request, response, next){
 	next();
 });
 
-app.post('/', (req, res) => {
+app.post('/', (request, response) => {
 	//req.send(req.body);
 	//console.log(req.body);
 	const numero = request.body.numero;
@@ -95,11 +96,16 @@ app.post('/', (req, res) => {
 
 	nexmo.message.sendSMS(
 		'351912493365', numero, texto, {type: 'unicode'},
-		(err, response) => {
+		(err, responseData) => {
 			if(err){
 				console.log(err);
 			} else{
 				console.dir(responseData);
+				const data = {
+					id: responseData.messages[0]['message-id'],
+					number: responseData.messages[0]['to']
+				}
+				io.emit('smsStatus',data);
 			}
 		}
 	);
@@ -123,8 +129,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs');
 app.set('views','views');
+app.engine('views', ejs.renderFile);
 
-app.use('/', require('./controllers/index.route'));
+app.get('/', (req, res) =>{
+	res.render('index');
+});
+
+//app.use('/', require('./controllers/index.route'));
 app.use('/public', express.static('public'));
 
 //new

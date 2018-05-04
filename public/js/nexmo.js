@@ -1,5 +1,5 @@
 const numeroCliente = document.getElementById('numero'),
-      mensagem = document.getElementById('mensagem'),
+      mensagemEnviar = document.getElementById('mensagem'),
       button = document.getElementById('button'),
       response = document.querySelector('.response');
 
@@ -10,10 +10,10 @@ socket.on('smsStatus', function(data){
   response.innerHTML = '<h5>Text message sent to ' + data.numero + '</h5>';
 })
 
-function envioNotificacao() {
-  console.log('send');
+function send() {
+  console.log('enviado');
   const numero = numeroCliente.value.replace(/\D/g, '');
-  const texto = mensagem.value;
+  const texto = mensagemEnviar.value;
 
   fetch('/', {
     method: 'post',
