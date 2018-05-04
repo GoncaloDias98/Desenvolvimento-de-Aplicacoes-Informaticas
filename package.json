@@ -26,6 +26,7 @@
         "url": "https://github.com/BlackrockDigital/startbootstrap-agency.git"
     },
     "dependencies": {
+        "ajax": "0.0.4",
         "bcrypt-nodejs": "0.0.3",
         "bootstrap": "4.0.0",
         "consolidate": "^0.15.1",

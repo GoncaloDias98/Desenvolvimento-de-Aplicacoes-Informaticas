@@ -18,11 +18,10 @@ module.exports = {
 		});
 	},
 
-create(data, callback) {
-	var sql = "INSERT INTO `mydb`.`User` ( `Nome`, `Password`, `Email`, `NIF`, `Contacto`, `Morada`, `TipoUser`, `Empresa`, `UI`) VALUES (?,?,?,?,?,?,?,?,?)";
-	var hash = bcrypt.hashSync(data.password);
+create(hash, data, callback) {
+	var sql = "INSERT INTO User (Nome, Password, Email, NIF, Contacto, Morada, TipoUser, Empresa, UI) VALUES (?,?,?,?,?,?,?,?,?)";
 	global.connection.query(
-		sql, [data.name, hash, data.email, data.nif, data.telemovel, data.morada, data.tipo, data.empresa, data.ui], function(error, rows, fields) {
+		sql, [data.Nome, hash, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.ui], function(error, rows, fields) {
 		if (error) throw error;
 		callback(rows[0]);
 	});

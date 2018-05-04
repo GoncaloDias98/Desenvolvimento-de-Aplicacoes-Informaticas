@@ -22,15 +22,15 @@ router.get('/create', function(request, response) {
 });
 
 router.post('/create', function(request, response) {
-	request.checkBody('username', 'username should have between 5 and 10 chars').isLength({min: 5, max: 10});
-	request.checkBody('nome', 'Nome should have between 0 and 150 chars').isLength({min: 5, max: 150});
+	request.checkBody('Nome', 'Nome should have between 5 and 150 chars').isLength({min: 5, max: 150});
 	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({min: 8, max: 15});
-	request.checkBody('email', 'Email should have between 0 and 150 chars').isLength({min: 6, max: 150});
+	request.checkBody('Email', 'Email should have between 6 and 150 chars').isLength({min: 6, max: 150});
 	request.checkBody('NIF', 'NIF should have 9 chars').isLength({min: 9, max: 9});
-	request.checkBody('contacto', 'Telefone should have between 0 and 20 chars').isLength({min: 0, max: 20});
-	request.checkBody('morada', 'Morada should have between 0 and 20 chars').isLength({min: 0, max: 20});
+	request.checkBody('Contacto', 'Telefone should have between 0 and 20 chars').isLength({min: 0, max: 20});
+	request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({min: 0, max: 20});
 //	request.checkBody('Nacionalidade', 'Nacionalidade should have between 0 and 150 chars').isLength({min: 0, max: 150});
-	
+
+	console.log(nabo);
 	var errors = request.validationErrors();	
 	if (errors) {
 		response.render('./partials/header', {
@@ -41,11 +41,10 @@ router.post('/create', function(request, response) {
 	}else{
 		const saltRounds = 10;
 		var data = {
-			'Username': request.body.username,
 			'Nome': request.body.Nome,
 			'Email': request.body.Email,
 			'NIF': request.body.NIF,
-			'Contacto': request.body.contacto,
+			'Contacto': request.body.Contacto,
 			'Morada': request.body.Morada
 //			'Nacionalidade': request.body.Nacionalidade,
 		};
