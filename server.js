@@ -14,6 +14,13 @@ const usersModel = require('./models/user.model');
 const Nexmo = require('nexmo');
 const socketio = require('socket.io');
 
+const server = app.listen(port, () => console.log(`Server started on port ${port}`));
+
+const nexmo = new Nexmo({
+	apiKey:'57bc054e',
+	apiSecret:'dmluGy8VJAra7hie'
+}, {debug: true});
+
 
 //This function will allow us to retrict the access to the routes
 global.secure = function(type) {
@@ -69,9 +76,9 @@ global.connection = mysql.createConnection({
 	}
 });
 
-app.listen(port, function(){
-	console.log('Server started at: ' + port);
-});
+//app.listen(port, function(){
+	//console.log('Server started at: ' + port);
+//});
 
 //Midleware that sets the isAuthenticated variable in all views
 app.use(function(request, response, next){
@@ -81,9 +88,30 @@ app.use(function(request, response, next){
 });
 
 app.post('/', (req, res) => {
-	req.send(req.body);
-	console.log(req.body);
+	//req.send(req.body);
+	//console.log(req.body);
+	const numero = request.body.numero;
+	const texto = request.body.texto;
+
+	nexmo.message.sendSMS(
+		'351912493365', numero, texto, {type: 'unicode'},
+		(err, response) => {
+			if(err){
+				console.log(err);
+			} else{
+				console.dir(responseData);
+			}
+		}
+	);
 });
+
+const io = socketio(server);
+io.on('connection', (socket) => {
+  console.log('Connected');
+  io.on('disconnect', () => {
+    console.log('Disconnected');
+  })
+})
 
 
 // Public folder setup
