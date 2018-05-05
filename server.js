@@ -1,4 +1,5 @@
 const port = 8080;
+const ejs = require('ejs');
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
@@ -10,6 +11,16 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const usersModel = require('./models/user.model');
+//nexmo SMS
+const Nexmo = require('nexmo');
+const socketio = require('socket.io');
+
+const server = app.listen(port, () => console.log(`Server started on port ${port}`));
+
+const nexmo = new Nexmo({
+	apiKey:'57bc054e',
+	apiSecret:'dmluGy8VJAra7hie'
+}, {debug: true});
 
 
 //This function will allow us to retrict the access to the routes
@@ -66,9 +77,9 @@ global.connection = mysql.createConnection({
 	}
 });
 
-app.listen(port, function(){
-	console.log('Server started at: ' + port);
-});
+//app.listen(port, function(){
+	//console.log('Server started at: ' + port);
+//});
 
 //Midleware that sets the isAuthenticated variable in all views
 app.use(function(request, response, next){
@@ -77,10 +88,54 @@ app.use(function(request, response, next){
 	next();
 });
 
+app.post('/', (request, response) => {
+	//req.send(req.body);
+	//console.log(req.body);
+	const numero = request.body.numero;
+	const texto = request.body.texto;
+
+	nexmo.message.sendSMS(
+		'351912493365', numero, texto, {type: 'unicode'},
+		(err, responseData) => {
+			if(err){
+				console.log(err);
+			} else{
+				console.dir(responseData);
+				const data = {
+					id: responseData.messages[0]['message-id'],
+					number: responseData.messages[0]['to']
+				}
+				io.emit('smsStatus',data);
+			}
+		}
+	);
+});
+
+const io = socketio(server);
+io.on('connection', (socket) => {
+  console.log('Connected');
+  io.on('disconnect', () => {
+    console.log('Disconnected');
+  })
+})
+
+
+// Public folder setup
+app.use(express.static(__dirname + '/public'));
+
+// Body parser middleware;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+
 app.set('view engine', 'ejs');
 app.set('views','views');
+app.engine('views', ejs.renderFile);
 
-app.use('/', require('./controllers/index.route'));
+app.get('/', (req, res) =>{
+	res.render('index');
+});
+
+//app.use('/', require('./controllers/index.route'));
 app.use('/public', express.static('public'));
 
 //new
