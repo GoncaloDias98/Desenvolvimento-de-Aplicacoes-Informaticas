@@ -89,10 +89,12 @@ app.use('/public', express.static('public'));
 app.use('/login', require('./controllers/login.route'));
 app.use('/logout', require('./controllers/logout.route'));
 app.use('/registar', require('./controllers/registar.route'));
-
-// new NXF
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
+app.use('/adminreg', require('./controllers/adminreg.route'));
+
+
+
 
 // Init Nexmo
 const nexmo = new Nexmo({
