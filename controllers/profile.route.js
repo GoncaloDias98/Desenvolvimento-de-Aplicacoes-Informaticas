@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const usersModel = require('../models/user.model');
+const model = require('../models/user.model');
 
 router.get('/', global.secure(), function(request, response) {
 	response.set("Content-Type", "text/html");
@@ -23,7 +23,7 @@ router.post('/', global.secure(), function(request, response) {
 			user: data, errors: errors
 		})	
 	}else{
-		usersModel.update(request.user.username, data, function(){
+		model.update(request.user.username, data, function(){
 			response.redirect('/profile');
 		});
 	}
