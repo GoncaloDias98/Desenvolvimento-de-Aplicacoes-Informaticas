@@ -72,26 +72,20 @@
                 <li class="nav-item">
                     <a href="#" onclick="management()" class="nav-link js-scroll-trigger" role="button">Gestão</a>
                 </li>
-                <!-- <% if (isAuthenticated) { %>  
-
-                  <% if (user.type === 'admin') {%> 
-                      <li class="nav-item">
-                          <a href="#" onclick="management()" class="nav-link js-scroll-trigger" role="button">Gestão</a>
-                      </li>
-                      <% } %> 
-
-                                  <% } %> //-->
-                                      <% if (isAuthenticated) { %>
-                                          <li class="nav-item">
-                                              <a href="#" onclick="logout()" class="nav-link js-scroll-trigger" role="button">
-                                                  <span class="fa fa-sign-out" aria-hidden="true"> </span>
-                                              </a>
-                                          </li>
-                                          <% } else { %>
-                                              <li class="nav-item">
-                                                  <a href="#" class="nav-link js-scroll-trigger" role="button" data-toggle="modal" data-target="#login-modal">Login</a>
-                                              </li>
-                                              <% } %>
+ 					<% if (isAuthenticated) { %>
+						<li role="presentation"><a href="/profile">Profile</a></li>
+						<% if (user.type === 'admin') {%>
+						<li role="presentation"><a href="/admin">Administrador</a></li>
+						<% } %>
+					<% } %>
+						<li role="presentation">
+							<% if (isAuthenticated) { %>
+								<a href="/logout">Logout</a>
+							<% } else { %>
+								 <a href="/login">Login</a>
+							<% } %>
+						</li>                    
+                </ul>
 
               </ul>
             </div>

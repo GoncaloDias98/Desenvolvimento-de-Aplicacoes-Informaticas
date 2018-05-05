@@ -1,0 +1,27 @@
+<% include partials/header %>
+
+	<h2>Login</h2>
+	
+<% if (errors.length) { %>  
+	<div class="alert alert-danger">
+		<ul>
+		<% for (var e of errors) { %>
+			<li><%= e.msg %></li>
+		<% }%>
+		</ul>
+	</div>	
+<% } %>
+
+	<form action="/login" method="post">
+		<div class="form-group">
+			<label for="username">Username:</label>
+			<input type="text" class="form-control" id="username" placeholder="Insira o seu username" name="username" >
+		</div>
+		<div class="form-group">
+			<label for="password">Password:</label>
+			<input type="password" class="form-control" id="password" placeholder="Insira a Password" name="password" >
+		</div>    
+		<button type="submit" class="btn btn-default">Login</button>
+	</form>      
+
+<% include partials/footer %>

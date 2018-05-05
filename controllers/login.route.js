@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const usersModel = require('../models/user.model');
+const model = require('../models/user.model');
+
 
 router.get('/', function(request, response) {
 	//If is already authenticated don't show again the login form
@@ -9,28 +10,37 @@ router.get('/', function(request, response) {
 		return;
 	}
 	response.set("Content-Type", "text/html");
-	response.render('partials/login', { errors: [] });
+	response.render('login', { errors: [] });
 });
 
 router.post('/', function(request, response) {
-	request.checkBody('email', 'Username should have between 5 and 10 chars').isLength({min: 5, max: 10});
+	request.checkBody('username', 'Username should have between 5 and 10 chars').isLength({min: 5, max: 10});
 	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({min: 8, max: 15});
 	var errors = request.validationErrors();
 	
 	if (errors) {
-		response.render('partials/login', { errors: errors });
+		response.render('login', { errors: errors });
 		return;
 	}
+	
 
-	usersModel.areValidCredentials(request.body.email, request.body.password, function(areValid) {
+model.areValidCredentials(request.body.username, request.body.password, function(areValid) {
 		if (areValid) {
+			if (request === 'admin') 
+				
 			//Create the login session
-			request.login(request.body.email, function(err) {
-				response.redirect('partials/login');
-			});		
+			request.login(request.body.username, function(err) {
+				response.redirect('/admin');
+			});
+			else {
+				request.login(request.body.username, function(err) {
+				response.redirect('/users');
+				});
+			}
 		}else{
-			response.render('partials/login', { errors: [
+				response.render('login', { errors: [
 				{ msg: 'Invalid credentials provided' }
+
 			]});
 		}
 	});
