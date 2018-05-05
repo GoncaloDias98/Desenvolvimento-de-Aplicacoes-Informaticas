@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const validator = require('express-validator');
 const bcrypt = require('bcrypt-nodejs');
-const paho = require('paho')
+
 
 const socketio = require('socket.io');
 const Nexmo = require('nexmo');
@@ -93,7 +93,7 @@ app.use('/registar', require('./controllers/registar.route'));
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
 app.use('/adminreg', require('./controllers/adminreg.route'));
-app.use()
+
 
 
 
