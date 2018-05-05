@@ -1,10 +1,14 @@
-const port = 8080;
+const port = 3000;
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
 const validator = require('express-validator');
 const bcrypt = require('bcrypt-nodejs');
+
+const socketio = require('socket.io');
+const Nexmo = require('nexmo');
+const ejs = require('ejs');
 //new
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -66,9 +70,7 @@ global.connection = mysql.createConnection({
 	}
 });
 
-app.listen(port, function(){
-	console.log('Server started at: ' + port);
-});
+
 
 //Midleware that sets the isAuthenticated variable in all views
 app.use(function(request, response, next){
@@ -80,7 +82,7 @@ app.use(function(request, response, next){
 app.set('view engine', 'ejs');
 app.set('views','views');
 
-app.use('/', require('./controllers/index.route'));
+//app.use('/', require('./controllers/index.route'));
 app.use('/public', express.static('public'));
 
 //new
@@ -91,3 +93,58 @@ app.use('/registar', require('./controllers/registar.route'));
 // new NXF
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
+
+// Init Nexmo
+const nexmo = new Nexmo({
+  apiKey: '57bc054e',
+  apiSecret: 'dmluGy8VJAra7hie'
+}, {debug: true});
+
+app.set('view engine', 'ejs');
+app.engine('ejs', ejs.renderFile);
+
+app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
+app.post('/', (req, res) => {
+  // res.send(req.body);
+  // console.log(req.body);
+  const number = req.body.number;
+  const text = req.body.text;
+
+  nexmo.message.sendSms(
+    'WFDAI', number, text, { type: 'unicode' },
+    (err, responseData) => {
+      if(err) {
+        console.log(err);
+      } else {
+        console.dir(responseData);
+        // Get data from response
+        const data = {
+          id: responseData.messages[0]['message-id'],
+          number: responseData.messages[0]['to']
+        }
+
+        // Emit to the client
+        io.emit('smsStatus', data);
+      }
+    }
+  );
+});
+
+const server = app.listen(port, () => console.log(`Server started on port ${port}`));
+
+// Connect to socket.io
+const io = socketio(server);
+io.on('connection', (socket) => {
+  console.log('Connected');
+  io.on('disconnect', () => {
+    console.log('Disconnected');
+  })
+})
