@@ -60,20 +60,23 @@
                     <!-- End | Lost Password Form -->
                     
                     <!-- Begin | Register Form -->
-                    <form id="register-form" style="display:none;" action="/users/create" method="post" >
+                    <form id="register-form" style="display:none;" >
             		    <div class="modal-body">
 		    				<div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Register an account.</span>
                             </div>
+							
 							<input id="register_nome" type="text" placeholder="Nome Completo" name="Nome" required>
-                            <input id="register_password" class="form-control" type="password" placeholder="Password" name="password" required>
+                            <input id="register_password" class="form-control" type="pwd" placeholder="Password" name="password" required>
                             <input id="register_email" class="form-control" type="text" placeholder="E-Mail" name="Email" required>
 							<input id="register_NIF" type="text" placeholder="NIF" name="NIF" required>
 							<input id="register_contacto" type="text" placeholder="Número telemóvel" name="Contacto" required>
 							<input id="register_morada" type="text" placeholder="Morada" name="Morada" required>
 							
             			</div>
+						
+						
 		    		    <div class="modal-footer">
                             <div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>

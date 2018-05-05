@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const userModel = require('../models/register.model');
-
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 
@@ -19,7 +18,7 @@ router.get('/', function(request, response) {
 
 router.post('/', function (request, response) {
 
-
+console.log("nabo");
 
     userModel.usernameExists(request.body.username, function (areValid) {
         if (areValid) {
@@ -42,13 +41,15 @@ router.post('/', function (request, response) {
                     });
 
                 } else {
-                   
-                    var data = {
-                        'username': request.body.username,
-                        'nome': request.body.nome,
-                        'contacto': request.body.contacto,
-                        'numero': request.body.numero,
-                        'morada': request.body.morada
+					
+					
+					var data = {
+						'Nome': request.body.Nome,
+						'Email': request.body.Email,
+						'NIF': request.body.NIF,
+						'Contacto': request.body.Contacto,
+						'Morada': request.body.Morada
+//						'Nacionalidade': request.body.Nacionalidade,
                         
 				
                     };
