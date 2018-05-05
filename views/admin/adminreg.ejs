@@ -1,25 +1,25 @@
 <% include partials/header %>
 
 
+
     <div id="page-wrapper">
 
         <section id="header-main" class="row">
             <div class="col-md-12">
 
-
                 <!-- DONUT CHART -->
                 <div class="box box-sucess" style="height: auto; padding-bottom:10px">
                     <div class="box-header">
-                        <h1 class="page-header" style="padding-bottom: 0px; margin: auto">Colaboradores
-                            <small>Clique num colaborador para alterar a sua informação</small>
-
+                        <h1 class="page-header" style="padding-bottom: 0px; margin: auto">Utilizadores
+                            <small>Clique num utilizador para alterar a sua informação</small>
                         </h1>
+
                     </div>
                 </div>
 
                 <select id="choose" class="chooseStyle" style="float:right;">
-                    <option value="colabCardView" selected>Cartão</option>
-                    <option value="colabListView">Lista</option>
+                    <option value="sponsorCardView" selected>Cartão</option>
+                    <option value="sponsorListView">Lista</option>
 
                 </select>
 
@@ -28,313 +28,127 @@
 
         </section>
 
-
-
-        <script>
-            function switchDiv() {
-
-                $('#choose').change(function () {
-                    var chosen = $('#choose').val();
-                    if (chosen === 'colabListView') {
-                        $('#colabCardView').slideUp();
-                        $('#colabListView').slideDown();
-                    } else {
-
-                        $('#colabListView').slideUp();
-                        $('#colabCardView').slideDown();
-                    }
-                })
-
-            }
-
-
-
-            window.onload = switchDiv;
-
-
-            function alterColab(col) {
-                window.location = col;
-            }
-
-
-            function deleteColab(col) {
-                if (confirm('Quer mesmo apagar este patrocinador?')) {
-                    window.location = col;
-                }
-            }
-        </script>
-
-        <div id="floating-button" data-toggle="modal" data-target="#login-modal" data-original-title="Create">
+        <div id="floating-button" data-toggle="modal" data-target="#utilizador-modal">
             <p class="plus">+</p>
             <img class="edit" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
         </div>
 
-
-
-        <div id="colabCardView">
-
-
-
-            <tbody>
-
-
-
-                <% for (var i = 0;   i<arrayColaboradores.length ;  i++ ) {   %>
-
-                    <% if (arrayColaboradores[i].deleted === 0) { %>
-
-
-
-                        <% if ( arrayColaboradores[i].pago  === 0) {        %>
-
-
-                                <aside class="profile-card">
-                                    <header>
-                                        <div id="colabCardVol">
-                                            <!-- here’s the avatar -->
-                                            <a>
-                                                <img src="public/img/colab/<%= arrayColaboradores[i].email_colaborador %>.png" onerror="if (this.src != 'public/img/colab/generic.png') this.src = 'public/img/colab/generic.png';"
-                                                    style="width:120px; height: 120px;" class="imagempago">
-
-                                            </a>
-                                        </div>
-                                        <!-- the username -->
-                                        <div class="main-info">
-                                            <h1 class="profile-letters">
-
-                                                <%= arrayColaboradores[i].nome_colaborador %>
-                                            </h1>
-
-                                            <!-- and role or location -->
-                                            <h2>
-
-                                            </h2>
-                                        </div>
-
-                                    </header>
-
-                                    <div class="profile-bio">
-                                        <p>
-                                            <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
-                                            <%= arrayColaboradores[i].email_colaborador %>
-                                        </p>
-                                        <p>
-                                            <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
-                                            <%= arrayColaboradores[i].numero_colaborador %>
-                                        </p>
-                                        <p>
-                                            <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
-                                            <%= arrayColaboradores[i].horas_trabalho_diario %> horas/dia
-                                        </p>
-                                        <p>
-                                            <i class="fa fa-home fa-lg" aria-hidden="true"></i>
-                                            <%= arrayColaboradores[i].morada_colaborador %>
-                                        </p>
-                                        <p id="funcao_colaborador">
-                                            <i class="fa fa-briefcase fa-lg" aria-hidden="true"></i>
-                                            <%= arrayColaboradores[i].funcao %>
-                                        </p>
-                                    </div>
-                                    <center>
-                                        <div class="buttonsStyle" style="margin-bottom: 5px;">
-
-                                            <a class="btn btn-box-tool" onclick="alterColab('/alterColab/<%= arrayColaboradores[i].username_col %>')">
-                                                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
-                                            </a>
-                                            <a class="btn btn-box-tool" onclick="deleteColab('/alterColab/<%= arrayColaboradores[i].id_colaborador %>/delete')">
-                                                <i class="fa fa-times fa-lg" aria-hidden="true">
-
-                                                </i>
-                                            </a>
-                                        </div>
-                                    </center>
-                                </aside>
-                         
-            </tbody>
-
-            <!-- /.box-body -->
+        <div id="sponsorCardView" class="row">
 
             <!-- /.box -->
+            <tbody>
+
+             
+
+                
+                            <aside class="profile-card">
+                                <header>
+
+
+                                    <div id="patrocinadorCard">
+                            
+                                    
+                                    </div>
+                                    <!-- the username -->
+                                    <div class="main-info">
+                                        <h1 class="profile-letters">
+                                            lixeira
+                                        </h1>
+
+                                        <!-- and role or location -->
+                                        <h2 class="profile-letters">
+                                        lixeirao
+                                        </h2>
+                                    </div>
+
+                                </header>
+
+                                <!-- bit of a bio; who are you? -->
+
+
+                                <!-- some social links to show off -->
+                                <center>
+                                    <div class="buttonsStyle" style="margin-bottom: 5px;">
 
 
 
 
+                                    </div>
 
+                                </center>
+                            </aside>
 
-
-            <% } else { %>
-
-
-                <aside class="profile-card">
-
-                    <tbody>
-                        <header>
-                            <!-- here’s the avatar -->
-                            <div id="colabCardPago">
-                                <a>
-                                    <img src="public/img/colab/<%= arrayColaboradores[i].email_colaborador %>.png" onerror="if (this.src != 'public/img/colab/generic.png') this.src = 'public/img/colab/generic.png';"
-                                        style="width:120px; height: 120px;" class="hoverZoomLink">
-
-                                </a>
-                            </div>
-                            <!-- the username -->
-
-                            <div class="main-info">
-                                <h1 class="profile-letters">
-
-                                    <%= arrayColaboradores[i].nome_colaborador %>
-                                </h1>
-
-                                <!-- and role or location -->
-                                <h2>
-
-                                </h2>
-                            </div>
-
-                        </header>
-
-
-                        <div class="profile-bio">
-                            <p>
-                                <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
-                                <%= arrayColaboradores[i].email_colaborador %>
-                            </p>
-                            <p>
-                                <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
-                                <%= arrayColaboradores[i].numero_colaborador %>
-                            </p>
-                            <p>
-                                <i class="fa fa-id-card fa-lg" aria-hidden="true"></i>
-                                <%= arrayColaboradores[i].nif_colaborador %>
-                            </p>
-                            <p>
-                                <i class="fa fa-home fa-lg" aria-hidden="true"></i>
-                                <%= arrayColaboradores[i].morada_colaborador %>
-                            </p>
-                            <p id="funcao_colaborador-vol">
-                                <i class="fa fa-briefcase fa-lg" aria-hidden="true"></i>
-                                <%= arrayColaboradores[i].funcao %>
-                            </p>
-                            <p>
-                                <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
-                                <%= arrayColaboradores[i].horas_trabalho_diario %> horas/dia
-                            </p>
-                            <p>
-                                <i class="fa fa-money fa-lg" aria-hidden="true"></i>
-                                <%= arrayColaboradores[i].salario_colab%>€</p>
-                        </div>
-                        <center>
-                            <div class="buttonsStyle">
-
-                                <a class="btn btn-box-tool" onclick="alterColab('/alterColab/<%= arrayColaboradores[i].username_col %>')">
-                                    <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
-                                </a>
-                                <a class="btn btn-box-tool" onclick="deleteColab('/alterColab/<%= arrayColaboradores[i].id_colaborador %>/delete')">
-                                    <i class="fa fa-times fa-lg" aria-hidden="true">
-
-                                    </i>
-                                </a>
-                            </div>
-                        </center>
-
-                </aside>
-
-
-                <!-- /.box -->
-
-                <% } %>
-                    <% } %>
-                        <% } %>
+                  
 
 
 
 
-                            </tbody>
+            </tbody>
         </div>
-        <div id="colabListView" class="row" style="display:none">
-            <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="listanome">Nome</th>
-                            <th class="listanome">Morada</th>
-                            <th class="listanumero">Numero</th>
 
-                            <th>Email</th>
-                            <th>Horas Trabalho</th>
-                            <th>Função</th>
 
-                            <th>Salário</th>
-                            <th>NIF</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for (var u of arrayColaboradores) { %>
-                            <%  if (u.deleted === 0) { %>
-                                <tr>
-                                    <td class="listanome">
-                                        <%= u.nome_colaborador %>
-                                    </td>
-                                    <td class="listanome">
-                                        <%= u.morada_colaborador%>
-                                    </td>
-                                    <td class="listanumero">
-                                        <%= u.numero_colaborador %>
-                                    </td>
-                                    <td class="listemail">
-                                        <%= u.email_colaborador %>
-                                    </td>
-                                    <td>
-                                        <%= u.horas_trabalho_diario %>
-                                    </td>
 
-                                    <td>
-                                        <%= u.funcao %>
-                                    </td>
-                                    <td>
-                                        <%= u.salario_colab %>
-                                    </td>
-                                    <td>
-                                        <%= u.nif_colaborador %>
-                                    </td>
-
-                                </tr>
-                                <%} %>
-                                    <%} %>
-                    </tbody>
-                </table>
+        <%- include('./partials/adminUserReg'); %>
 
 
 
 
 
+            <div id="sponsorListView" class="row" style="display: none">
+                <div class="col-md-12">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th class="listausername">Nome</th>
+                                <th>Valor Doado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
             </div>
 
-        </div>
+            <!-- /#page-wrapper -->
+
+
+
+            <script>
+         
+
+
+                function switchDiv() {
+
+                    $('#choose').change(function () {
+                        var chosen = $('#choose').val();
+                        if (chosen === 'sponsorListView') {
+                            $('#sponsorCardView').slideUp();
+                            $('#sponsorListView').slideDown();
+                        } else {
+
+                            $('#sponsorListView').slideUp();
+                            $('#sponsorCardView').slideDown();
+                        }
+                    })
+
+                }
+
+
+
+                window.onload = switchDiv;
+
+            </script>
 
 
 
 
 
-
-    </div>
-    <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-
-
-
-
-
-
-    </div>
-    </div>
-    </div>
-    <% include partials/loginColab %>
-
-
-
-        <% include partials/footer %>
+            <% include partials/footer %>
