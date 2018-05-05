@@ -1,12 +1,18 @@
 <% include partials/headerforms %>
 <!-- Pagina a apresentar -->
-   <div id="page-wrapper">
+	<h2>Registar</h2>
+	
+<% if (errors.length) { %>  
+	<div class="alert alert-danger">
+		<ul>
+		<% for (var e of errors) { %>
+			<li><%= e.msg %></li>
+		<% }%>
+		</ul>
+	</div>	
+<% } %>
 
-     <div class="row"></div>
-	  <div class="panel-body">
-	   <div class="row">
-
-	<form action="/users/registar" method="post">
+	<form action="/registar" method="post">
 		<div class="form-group">
       <label for="Nome">Nome:</label>
       <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>" >
@@ -40,8 +46,5 @@
     <button type="submit" class="btn btn-success">Gravar</button>
 		
   </form> 
-  </div>
-  </div>
-  </div>
 
 <% include partials/footerforms %>

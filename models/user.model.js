@@ -18,8 +18,9 @@ read(email, callback) {
 		});
 	},
 
-create(hash, data, callback) {
+create(data, callback) {
 	var sql = "INSERT INTO User (Nome, Password, Email, NIF, Contacto, Morada, TipoUser, Empresa, UI) VALUES (?,?,?,?,?,?,?,?,?)";
+	var hash = bcrypt.hashSync(data.password);	
 	global.connection.query(
 		sql, [data.Nome, hash, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.ui], function(error, rows, fields) {
 		if (error) throw error;
@@ -49,14 +50,30 @@ remove(email, callback) {
 	},
 
 	//New
-areValidCredentials(email, password, hash, callback) {
+areValidCredentials(email, password, callback) {
 		var sql = "SELECT Password FROM User WHERE Email=?";
 		global.connection.query(sql, [email], function(error, rows){
 			if (error) throw error;
-			if (rows.length == 0 ) callback(false);
-			global.bcrypt.compare(rows[0].password, hash, function(err, res) {
-				callback(true); // res === true
-});
+			if (rows.length == 1 && bcrypt.compareSync( password, rows[0].Password)) {
+				callback(true);
+			}else{
+				callback(false); // res === true
+}
+		
+	})
+}
+
+}
+/*
+	areValidCredentials(username, password, callback) {
+		var sql = "SELECT password, hashedpassword FROM users WHERE username=?";
+		global.connection.query(sql, [username], function(error, rows, fields){
+			if (error) throw error;
+			if (rows.length == 1 && bcrypt.compareSync( password, rows[0].hashedpassword)) {
+				callback(true);
+			}else{
+				callback(false);
+			}
 		});
 	}
-};
+*/
