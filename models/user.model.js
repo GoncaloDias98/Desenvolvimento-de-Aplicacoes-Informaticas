@@ -49,15 +49,14 @@ create(hash, data, callback) {
 	},
 
 	//New
-	areValidCredentials(email, password, callback) {
-		var sql = "SELECT Password FROM `mydb`.`User` WHERE Email=?";
-		global.connection.query(sql, [email], function(error, rows, fields){
+areValidCredentials(email, password, hash, callback) {
+		var sql = "SELECT Password FROM User WHERE Email=?";
+		global.connection.query(sql, [email], function(error, rows){
 			if (error) throw error;
-			if (rows.length == 1 && bcrypt.compareSync( password, rows[0].hashedpassword)) {
-				callback(true);
-			}else{
-				callback(false);
-			}
+			if (rows.length == 0 ) callback(false);
+			global.bcrypt.compare(rows[0].password, hash, function(err, res) {
+				callback(true); // res === true
+});
 		});
 	}
 };

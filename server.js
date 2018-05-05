@@ -6,6 +6,7 @@ const app = express();
 const validator = require('express-validator');
 const bcrypt = require('bcrypt-nodejs');
 
+
 const socketio = require('socket.io');
 const Nexmo = require('nexmo');
 const ejs = require('ejs');
@@ -91,7 +92,8 @@ app.use('/logout', require('./controllers/logout.route'));
 app.use('/registar', require('./controllers/registar.route'));
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
-app.use('/adminreg', require('./controllers/adminreg.route'));
+app.use('/admin/adminreg', require('./controllers/adminreg.route'));
+
 
 
 
