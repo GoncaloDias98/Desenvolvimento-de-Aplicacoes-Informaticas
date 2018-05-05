@@ -55,16 +55,13 @@
                   <a class="nav-link js-scroll-trigger" href="#services">Informações</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#portfolio">Sessões</a>
-                </li>
-                <!-- <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="#about">Sobre</a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="#team">Equipa</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#contact">Registar</a>
+                  <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
                 </li>
 
                 <li class="nav-item">
@@ -78,9 +75,9 @@
 					<% } %>
 						<li role="presentation">
 							<% if (isAuthenticated) { %>
-								<a href="/logout">Logout</a>
+								<a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
 							<% } else { %>
-								 <a href="/login">Login</a>
+								 <a class="nav-link js-scroll-trigger" href="/login">Login</a>
 							<% } %>
 						</li>                    
                 </ul>
