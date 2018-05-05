@@ -14,7 +14,7 @@ router.get('/', function(request, response) {
 });
 
 router.post('/', function(request, response) {
-	request.checkBody('username', 'Username should have between 5 and 10 chars').isLength({min: 5, max: 10});
+	request.checkBody('email', 'Email should have between 5 and 10 chars').isLength({min: 5, max: 10});
 	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({min: 8, max: 15});
 	var errors = request.validationErrors();
 	
@@ -22,25 +22,16 @@ router.post('/', function(request, response) {
 		response.render('login', { errors: errors });
 		return;
 	}
-	
 
-model.areValidCredentials(request.body.username, request.body.password, function(areValid) {
+	model.areValidCredentials(request.body.email, request.body.password, function(areValid) {
 		if (areValid) {
-			if (request === 'admin') 
-				
 			//Create the login session
-			request.login(request.body.username, function(err) {
-				response.redirect('/admin');
-			});
-			else {
-				request.login(request.body.username, function(err) {
-				response.redirect('/users');
-				});
-			}
+			request.login(request.body.email, function(err) {
+				response.redirect('/');
+			});		
 		}else{
-				response.render('login', { errors: [
+			response.render('login', { errors: [
 				{ msg: 'Invalid credentials provided' }
-
 			]});
 		}
 	});

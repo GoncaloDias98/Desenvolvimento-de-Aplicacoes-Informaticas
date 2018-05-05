@@ -13,7 +13,7 @@ const ejs = require('ejs');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
-const usersModel = require('./models/user.model');
+const model = require('./models/user.model');
 
 
 //This function will allow us to retrict the access to the routes
@@ -53,7 +53,7 @@ passport.serializeUser(function(username, callback) {
 });
 
 passport.deserializeUser(function(username, callback) {
-	usersModel.read(username, function(data) {
+	model.read(username, function(data) {
 		callback(null, data);
 	})
 });
