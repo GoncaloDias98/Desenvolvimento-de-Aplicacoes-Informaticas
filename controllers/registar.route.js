@@ -1,81 +1,51 @@
+const model = require('../models/user.model');
 const express = require('express');
 const router = express.Router();
-const model = require('../models/register.model');
-const bcrypt = require('bcrypt-nodejs');
-const saltRounds = 10;
+
 
 router.get('/', function(request, response) {
-	//If is already authenticated don't show again the login form
-	if (request.isAuthenticated()) {
-		response.redirect('index');
-		return;
-	}
 	response.set("Content-Type", "text/html");
-	response.render('registar', { errors: [] });
+	response.render('user_registar', {
+		isNew: true,
+		user: {},
+		errors: []
+	});
+});
+router.post('/', function(request, response) {
+	console.log("nabo");
+	request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({min: 5, max: 10});
+	request.checkBody('Password', 'Password should have between 8 and 15 chars').isLength({min: 8, max: 15});
+	request.checkBody('Email', 'Email should have between 6 and 150 chars').isLength({min: 6, max: 150});
+	request.checkBody('NIF', 'NIF should have 9 chars').isLength({min: 9, max: 150});
+	request.checkBody('Contacto', 'Contacto should have between 0 and 150 chars').isLength({min: 0, max: 150});
+	request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({min: 0, max: 20});
+	var errors = request.validationErrors();	
+	if (errors) {
+		response.render('user_registar', {
+			isNew: true,
+			user: {},
+			errors: errors
+		});
+	}else{
+		const saltRounds = 10;
+		var data = {
+			'Nome': request.body.Nome,
+			'Email': request.body.Email,
+			'NIF': request.body.NIF,
+			'Contacto': request.body.Contacto,
+			'Morada': request.body.Morada,
+			'tipo': request.body.tipo,
+			};
+	global.bcrypt.hash(request.body.password, saltRounds).then(function (hash) {
+	console.log("with hash:" + hash);
+	model.create(hash, data, function(){
+			response.redirect('/');
+		});
+	
+});
+	}
 });
 
 
 
-router.post('/', function (request, response) {
-
-console.log("nabo");
-
-    model.usernameExists(request.body.username, function (areValid) {
-        if (areValid) {
-
-
-            response.json({
-                error: "Updated Successfully",
-                status: 400
-            });
-        } else {
-
-
-            model.emailExists(request.body.email, function (areValid) {
-                if (areValid) {
-
-
-                    response.json({
-                        error: "erro na base de dados",
-                        status: 450
-                    });
-
-                } else {
-					
-					
-					var data = {
-						'Nome': request.body.Nome,
-						'Email': request.body.Email,
-						'NIF': request.body.NIF,
-						'Contacto': request.body.Contacto,
-						'Morada': request.body.Morada
-//						'Nacionalidade': request.body.Nacionalidade,
-                        
-				
-                    };
-					
-					global.bcrypt.hash(request.body.password, saltRounds).then(function (hash) {
-					console.log("with hash:" + hash);
-					userModel.create(hash, data, function(){
-					response.redirect('/');
-		});
-					
-						request.login(request.body.username, function (err) {
-							
-							response.json({
-								success: "Updated Successfully",
-								status: 200
-                            });
-                            
-
-						});
-
-
-					
-
-                });
-            }
-        })
-    };
-})});
 module.exports = router;

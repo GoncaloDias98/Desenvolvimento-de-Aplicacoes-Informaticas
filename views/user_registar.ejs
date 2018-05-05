@@ -1,0 +1,47 @@
+<% include partials/headerforms %>
+<!-- Pagina a apresentar -->
+   <div id="page-wrapper">
+
+     <div class="row"></div>
+	  <div class="panel-body">
+	   <div class="row">
+
+	<form action="/users/registar" method="post">
+		<div class="form-group">
+      <label for="Nome">Nome:</label>
+      <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>" >
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="pwd" class="form-control" id="password" placeholder="Enter password" name="Password" value="<%= user.Password %>">
+    </div>
+		<div class="form-group">
+      <label for="Email">Email:</label>
+      <input type="email" class="form-control" id="type" placeholder="Email" name="Email"  value="<%= user.Email %>" >
+    </div>
+    <div class="form-group">
+			<label for="NIF">NIF</label>
+			<input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
+		</div>	
+		<div class="form-group">
+			 <label for="Contacto">Contacto:</label>
+			 <input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
+		</div>	
+		<div class="form-group">
+				<label for="Morada">Morada:</label>
+				<input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
+		</div>
+		<div class="form-group">
+				<label for="tipo">Tipo de Utilizador:</label>
+				<input type="text" placeholder="Tipo de Utilizador" class="form-control" id="tipo" name="tipo" value="<%= user.tipo %>">
+		</div>
+
+		
+    <button type="submit" class="btn btn-success">Gravar</button>
+		
+  </form> 
+  </div>
+  </div>
+  </div>
+
+<% include partials/footerforms %>
