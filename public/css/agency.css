@@ -2,7 +2,6 @@ body, html {
   height: 100%;
 }
 
-
 body {
   overflow-x: hidden;
   font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -933,4 +932,19 @@ body {
 
 .form-control {
   border-radius: 0px;
+}
+
+
+#combobox {
+  font-size: 2em;
+  margin:10px;
+  width:60%; 
+  height:20%;
+  
+}
+#searchbtn {
+  width:30%; 
+  height:50%;
+  line-height:30px;
+  font-size: 2em;
 }
