@@ -29,7 +29,7 @@ create(hash, data, callback) {
 
 
 
-	update(email, data, callback) {
+update(email, data, callback) {
 		var sql = "UPDATE `mydb`.`User` SET `Nome`=?, `Password`=?, `NIF`=?, `Contacto`=?, `Morada`=?, `TipoUser`=?, `Empresa`=?, `UI`=? WHERE `Email`=?";
 
 		var hash = bcrypt.hashSync(data.password);
@@ -40,7 +40,7 @@ create(hash, data, callback) {
 		});
 	},
 
-	remove(email, callback) {
+remove(email, callback) {
 		var sql = "DELETE from `mydb`.`User` WHERE Email=?";
 		global.connection.query(sql, [email], function(error, rows, fields){
 			if (error) throw error;
