@@ -1,48 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<% include partials/header %>
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
-    
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<title></title>
-	</head>
-	<body>
-		<div class="container">
-				<div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-						<li role="presentation"><a href="/">Home</a></li>
-
-						<% if (isAuthenticated) { %>
-						<li role="presentation"><a href="/users">Profile</a></li>
-						<% if (user.type === 'admin') {%>
-						<li role="presentation"><a href="/users">Users</a></li>
-						<% } %>
-					<% } %>	
-            <li role="presentation">
-							<% if (isAuthenticated) { %>
-								<a href="/logout">Logout</a>
-							<% } else { %>
-								<a href="/login">Login</a>
-							<% } %>						
-						</li>
-          </ul>
-        </nav>
-        <h3 class="text-muted" role="presentation" href="/">WFDAI</h3>
-      </div>
 <!-- Pagina a apresentar -->
-	<h2>Profile</h2>
 	
 <% if (errors.length) { %>  
 	<div class="alert alert-danger">
@@ -416,23 +374,27 @@
         </div>
       </div>
     </header>
-    
-	<div class="container">
-    	<h2>Enviar mensagem SMS</h2>
-<<<<<<< HEAD
-    	<input type="tel" name="number" id="number" placeholder="Digite o numero de telefone ...">
-=======
-    	<input type="tel" name="number" id="number" placeholder="Digite o n�mero de telefone ...">
->>>>>>> a9717caf63012b8dfc6cefb085500cb2d4b00dc5
-    	<input type="text" name="msg" id="msg" placeholder="Digite a mensagem de texto ...">
-    	<input type="button" id="button" value="Envie mensagem" class="button button-primary">
-    	<p class="response"></p>
-  	</div>
-	
-	<div class="panel-body">
-	   <div class="row">
 
-<form action="/users" method="post">
+  <section class="bg-light">
+      <div class="container">
+            <h2>Enviar mensagem SMS</h2>
+            <input type="tel" name="number" id="number" placeholder="Digite o numero de telefone ...">
+            <input type="text" name="msg" id="msg" placeholder="Digite a mensagem de texto ...">
+            <input type="button" id="button" value="Envie mensagem" class="button button-primary">
+            <p class="response"></p>
+      </div>
+  </section>
+
+  <section>
+  
+  
+  
+    <div class="container">
+  
+  
+  <div class="panel-body">
+	  
+<form align="center" style="width: 50%; margin: 0 auto; " action="/users" method="post">
 		<div class="form-group">
       <label for="Nome">Nome:</label>
       <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>" >
@@ -446,7 +408,7 @@
       <input type="email" class="form-control" id="type" placeholder="Email" name="Email"  value="<%= user.Email %>" >
     </div>
     <div class="form-group">
-			<label for="NIF">NIF</label>
+			<label for="NIF">NIF:</label>
 			<input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
 		</div>	
 		<div class="form-group">
@@ -471,18 +433,8 @@
   </div>
 </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="public/vendor/jquery/jquery.min.js"></script>
-    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</section>
+</div>
 
-    <!-- Plugin JavaScript -->
-    <script src="public/vendor/jquery-easing/jquery.easing.min.js"></script>
+<% include partials/footer %>
 
-    <!-- Contact form JavaScript -->
-    <script src="public/js/jqBootstrapValidation.js"></script>
-
-    <!-- Custom scripts for this template -->
-
-  </body>
-
-</html>
