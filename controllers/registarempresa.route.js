@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', function(request, response) {
 	response.set("Content-Type", "text/html");
-	response.render('user_registar', {
+	response.render('empresa_registar', {
 		isNew: true,
 		user: {},
 		errors: []
@@ -21,7 +21,7 @@ router.post('/', function(request, response) {
 	request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({min: 0, max: 20});
 	var errors = request.validationErrors();	
 	if (errors) {
-		response.render('user_registar', {
+		response.render('empresa_registar', {
 			isNew: true,
 			user: {},
 			errors: errors
@@ -33,9 +33,10 @@ router.post('/', function(request, response) {
 			'NIF': request.body.NIF,
 			'Contacto': request.body.Contacto,
 			'Morada': request.body.Morada,
-			'tipo': "subscritor individual",
+			'tipo': 'subscritor empresa',
 			'password': request.body.password,
 			};
+
 		model.create(data, function(){
 			response.redirect('/');
 		});

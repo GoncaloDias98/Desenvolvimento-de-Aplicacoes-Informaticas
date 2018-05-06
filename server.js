@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
 const validator = require('express-validator');
-global.bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 const helmet = require('helmet');
 
@@ -113,9 +113,11 @@ app.use('/public', express.static('public'));
 app.use('/login', require('./controllers/login.route'));
 app.use('/logout', require('./controllers/logout.route'));
 app.use('/registar', require('./controllers/registar.route'));
+app.use('/registarempresa', require('./controllers/registarempresa.route'));
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
 app.use('/admin/adminreg', require('./controllers/adminreg.route'));
+app.use('/subscritor', require('./controllers/subscritor.route'));
 
 
 

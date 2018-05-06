@@ -62,23 +62,26 @@
                   <a class="nav-link js-scroll-trigger" href="#team">Equipa</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
+                  <a class="nav-link js-scroll-trigger" href="/registar">Subscritor Individual</a>
+                </li>
+				<li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="/registarempresa">Subscritor Empresa</a>
                 </li>
 
                 <li class="nav-item">
                     <a href="#" onclick="management()" class="nav-link js-scroll-trigger" role="button">Gestão</a>
                 </li>
  					<% if (isAuthenticated) { %>
-						<li role="presentation"><a href="/profile">Profile</a></li>
+						<li class="nav-link js-scroll-trigger" role="presentation" href="/profile">Profile</li>
 						<% if (user.type === 'admin') {%>
-						<li role="presentation"><a href="/admin">Administrador</a></li>
+						<li class="nav-link js-scroll-trigger" role="presentation" href="/admin">Administrador</li>
 						<% } %>
 					<% } %>
-						<li role="presentation">
+						<li class="nav-link js-scroll-trigger">
 							<% if (isAuthenticated) { %>
-								<a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
+								<li  class="nav-link js-scroll-trigger" href="/logout">Logout</li>
 							<% } else { %>
-								 <a class="nav-link js-scroll-trigger" href="/login">Login</a>
+								 <li class="nav-link js-scroll-trigger" href="/login">Login</li>
 							<% } %>
 						</li>                    
                 </ul>

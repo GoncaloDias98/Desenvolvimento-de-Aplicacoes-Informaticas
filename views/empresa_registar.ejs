@@ -1,6 +1,6 @@
 <% include partials/headerforms %>
 <!-- Pagina a apresentar -->
-	<h2>Registar Subscritor</h2>
+	<h2>Registar Empresa</h2>
 	
 <% if (errors.length) { %>  
 	<div class="alert alert-danger">
@@ -12,7 +12,7 @@
 	</div>	
 <% } %>
 
-	<form action="/registar" method="post">
+	<form action="/registarempresa" method="post">
 		<div class="form-group">
       <label for="Nome">Nome:</label>
       <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>" >
@@ -37,9 +37,10 @@
 				<label for="Morada">Morada:</label>
 				<input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
 		</div>
+		
 		<div class="form-group">
 				<label for="preco">Preço por mês:</label>
-				<input type="text" placeholder="10€" class="form-control" id="preco" name="preco" disabled>
+				<input type="text" placeholder="100€" class="form-control" id="preco" name="preco" disabled>
 		</div>
 
 		
