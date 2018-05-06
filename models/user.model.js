@@ -51,14 +51,12 @@ remove(email, callback) {
 	},
 	
 	
-	
-	
 areValidCredentials(email, password, callback) {
 		var sql = "SELECT Password FROM User WHERE Email=?";
 		global.connection.query(sql, [email], function(error, rows){
 			if (error) throw error;
 			if (rows.length == 0 ) callback(false);
-			global.bcrypt.compare(rows[0].password, password, function(err, res) {
+			bcrypt.compare(rows[0].password, password, function(err, res) {
 				callback(true); // res === true
 });
 		});

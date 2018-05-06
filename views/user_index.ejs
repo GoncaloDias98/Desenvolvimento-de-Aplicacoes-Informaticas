@@ -27,7 +27,7 @@
 						<li role="presentation"><a href="/registarempresa">Registar Empresa</a></li>
 
 						<% if (isAuthenticated) { %>
-						<li role="presentation"><a href="/profile">Profile</a></li>
+						<li role="presentation"><a href="/users">Profile</a></li>
 						<% if (user.type === 'admin') {%>
 						<li role="presentation"><a href="/users">Users</a></li>
 						<% } %>
@@ -430,3 +430,61 @@
     	<input type="button" id="button" value="Envie mensagem" class="button button-primary">
     	<p class="response"></p>
   	</div>
+	
+	<div class="panel-body">
+	   <div class="row">
+
+<form action="/users" method="post">
+		<div class="form-group">
+      <label for="Nome">Nome:</label>
+      <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>" >
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
+    </div>
+		<div class="form-group">
+      <label for="Email">Email:</label>
+      <input type="email" class="form-control" id="type" placeholder="Email" name="Email"  value="<%= user.Email %>" >
+    </div>
+    <div class="form-group">
+			<label for="NIF">NIF</label>
+			<input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
+		</div>	
+		<div class="form-group">
+			 <label for="Contacto">Contacto:</label>
+			 <input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
+		</div>	
+		<div class="form-group">
+				<label for="Morada">Morada:</label>
+				<input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
+		</div>
+		<div class="form-group">
+				<label for="preco">Preço por mês:</label>
+				<input type="text" placeholder="10€" class="form-control" id="preco" name="preco" disabled>
+		</div>
+
+		
+    <button type="submit" class="btn btn-success">Atualizar</button>
+		
+ </form> 
+	
+	 </div>               
+  </div>
+</div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="public/vendor/jquery/jquery.min.js"></script>
+    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="public/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="public/js/jqBootstrapValidation.js"></script>
+
+    <!-- Custom scripts for this template -->
+
+  </body>
+
+</html>
