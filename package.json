@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "ajax": "0.0.4",
+    "bcrypt": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
     "bootstrap": "4.0.0",
     "consolidate": "^0.15.1",

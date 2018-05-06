@@ -1,4 +1,4 @@
-var bcrypt =  require('bcrypt-nodejs')
+var bcrypt =  require('bcrypt')
 
 module.exports = {
 	list(callback) {
@@ -48,23 +48,49 @@ remove(email, callback) {
 			callback(rows);
 		});
 	},
-
+	
+	
+	
+	
+	areValidCredentials(username, password, callback) {
+		var sql = "SELECT Password FROM User WHERE Email=?";
+		global.connection.query(sql, [username], function(error, rows){
+			if(bcrypt.compareSync(password,  rows[0].Password)) {
+			 callback(true);
+			} else {
+			 callback(true);
+			}
+			 
+		
+})
+		}
+	
+}
+	
+/* return bcrypt.compareSync(password, this.password)
 	//New
 areValidCredentials(email, password, callback) {
 		var sql = "SELECT Password FROM User WHERE Email=?";
 		global.connection.query(sql, [email], function(error, rows){
 			if (error) throw error;
-			if (rows.length == 1 && bcrypt.compareSync( password, rows[0].Password)) {
-				callback(true);
+			console.log(password + rows[0].Password);
+			if (bcrypt.compareSync( password, rows[0].Password, function(err, res) {
+				return true;
+			console.log("true");})){callback(true);
+			
 			}else{
 				callback(false); // res === true
+				console.log("false");
+				
+			
+
 }
 		
 	})
 }
 
 }
-/*
+
 	areValidCredentials(username, password, callback) {
 		var sql = "SELECT password, hashedpassword FROM users WHERE username=?";
 		global.connection.query(sql, [username], function(error, rows, fields){

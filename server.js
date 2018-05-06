@@ -6,6 +6,8 @@ const app = express();
 const validator = require('express-validator');
 const bcrypt = require('bcrypt-nodejs');
 
+var helmet = require('helmet');
+
 
 const socketio = require('socket.io');
 const Nexmo = require('nexmo');
@@ -45,7 +47,21 @@ app.use(session({
 	secret: 'someRandomSecretKey',
 	resave: false,
 	saveUninitialized: false
+	cookie: {
+		maxAge: 3600000,
+		secure: true,
+
+}
+
 }));
+// NEW 06/05/2018 - HTTPS
+app.use(helmet.hsts({
+maxAge: 7776000000,
+includeSubdomains: true
+}));
+// END NEW
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
