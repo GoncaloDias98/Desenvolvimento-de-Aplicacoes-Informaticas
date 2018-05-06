@@ -1,4 +1,3 @@
-var bcrypt =  require('bcrypt')
 
 module.exports = {
 	list(callback) {
@@ -58,7 +57,7 @@ remove(email, callback) {
 			if(bcrypt.compareSync(password,  rows[0].Password)) {
 			 callback(true);
 			} else {
-			 callback(true);
+			 callback(false);
 			}
 			 
 		
