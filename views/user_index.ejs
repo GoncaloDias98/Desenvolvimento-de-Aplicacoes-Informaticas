@@ -1,4 +1,48 @@
-<% include partials/headerforms %>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+    
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title></title>
+	</head>
+	<body>
+		<div class="container">
+				<div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+						<li role="presentation"><a href="/">Home</a></li>
+						<li role="presentation"><a href="/registar">Registar Subscritor</a></li>
+						<li role="presentation"><a href="/registarempresa">Registar Empresa</a></li>
+
+						<% if (isAuthenticated) { %>
+						<li role="presentation"><a href="/profile">Profile</a></li>
+						<% if (user.type === 'admin') {%>
+						<li role="presentation"><a href="/users">Users</a></li>
+						<% } %>
+					<% } %>	
+            <li role="presentation">
+							<% if (isAuthenticated) { %>
+								<a href="/logout">Logout</a>
+							<% } else { %>
+								<a href="/login">Login</a>
+							<% } %>						
+						</li>
+          </ul>
+        </nav>
+        <h3 class="text-muted" role="presentation" href="/">WFDAI</h3>
+      </div>
 <!-- Pagina a apresentar -->
 	<h2>Registar Subscritor</h2>
 	
@@ -330,3 +374,59 @@
             <div id="searchbtn" onclick="search(); showDiv()" class="btn btn-outline-success justify-content-center">Ver condições atuais</div>
           </div>
           </form>
+              <div class="card" id="weathercard" style="display:none" >
+                <span class="city">Meteorologia</span>
+                  <br>
+                <div class="sun"></div>
+                <span class="temp" id="Temperatura"> &#176;</span>
+                
+                <div class="forecast clear">
+                  <div class="day tue"> 
+                    <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa <br>
+                    <i class="fas fa-tint" id="Humidade"></i> % <br>
+                  </div>
+                  <div class="day wed">
+                      <i class="far fa-compass" id="DirecaoVento"></i> <br>
+                    <i class="fas fa-eye" id="Visibilidade"></i> Km <br>
+                  </div>
+                  <div class="day thu">
+                    <i class="far fa-sun" id="NascerSol"></i> <br>
+                    <i class="fas fa-sun" id="PorSol"></i>
+                  </div>
+                  <div class="day fri">
+                    <i class="far fa-clock" id="ts"> </i>
+                  </div>
+                </div>
+              </div>
+          <div class="card" style="width: 18rem; display:none; font-size:26px;" align=center >
+              <div class="card-body">
+                <h5 class="card-title" style="color:black;">Meteorologia</h5>
+                <div class="card-text" style="color:black;">
+                    <i class="far fa-compass" id="DirecaoVento"></i> <br>
+                    <i class="fas fa-angle-double-right" id="VelocidadeVento"></i> Kmh <br>
+                    <i class="fas fa-thermometer-half" id="Temperatura"></i> ºC <br>
+                    <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa <br>
+                    <i class="fas fa-tint" id="Humidade"></i> % <br>
+                    <i class="fas fa-eye" id="Visibilidade"></i> Km <br>
+                    <i class="far fa-sun" id="NascerSol"></i> <br>
+                    <i class="fas fa-sun" id="PorSol"></i>
+                    <i class="far fa-clock" id="ts"> </i>
+                </div>
+            
+              </div>
+            </div>
+        </div>
+      </div>
+    </header>
+    
+	<div class="container">
+    	<h2>Enviar mensagem SMS</h2>
+<<<<<<< HEAD
+    	<input type="tel" name="number" id="number" placeholder="Digite o numero de telefone ...">
+=======
+    	<input type="tel" name="number" id="number" placeholder="Digite o n�mero de telefone ...">
+>>>>>>> a9717caf63012b8dfc6cefb085500cb2d4b00dc5
+    	<input type="text" name="msg" id="msg" placeholder="Digite a mensagem de texto ...">
+    	<input type="button" id="button" value="Envie mensagem" class="button button-primary">
+    	<p class="response"></p>
+  	</div>

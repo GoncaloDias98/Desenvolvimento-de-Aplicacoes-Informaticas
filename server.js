@@ -117,7 +117,6 @@ app.use('/registarempresa', require('./controllers/registarempresa.route'));
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
 app.use('/admin/adminreg', require('./controllers/adminreg.route'));
-app.use('/subscritor', require('./controllers/subscritor.route'));
 
 
 
