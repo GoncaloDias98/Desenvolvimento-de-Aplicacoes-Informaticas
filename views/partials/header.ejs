@@ -64,24 +64,22 @@
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="/registar">Subscritor Individual</a>
                 </li>
-				<li class="nav-item">
+				        <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="/registarempresa">Subscritor Empresa</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" onclick="management()" class="nav-link js-scroll-trigger" role="button">Gestão</a>
                 </li>
  					<% if (isAuthenticated) { %>
 						<li class="nav-link js-scroll-trigger" role="presentation" href="/profile">Profile</li>
 						<% if (user.type === 'admin') {%>
-						<li class="nav-link js-scroll-trigger" role="presentation" href="/admin">Administrador</li>
+              <li class="nav-item">
+                <a href="#" onclick="management()" class="nav-link js-scroll-trigger" role="button">Gestão</a>
+            </li>
 						<% } %>
 					<% } %>
 						<li class="nav-link js-scroll-trigger">
 							<% if (isAuthenticated) { %>
 								<li  class="nav-link js-scroll-trigger" href="/logout">Logout</li>
 							<% } else { %>
-								 <li class="nav-link js-scroll-trigger" href="/login">Login</li>
+                <a class="nav-link js-scroll-trigger" href="/login">Login</a>
 							<% } %>
 						</li>                    
                 </ul>
