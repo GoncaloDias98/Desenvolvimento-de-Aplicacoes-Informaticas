@@ -1,38 +1,40 @@
 <% include partials/header %>
-<header class="masthead">
+	<header class="masthead">
 		<div class="container">
-		  <div class="intro-text" align="center">
-			<div class="ui-widget justify-content-center">
-												<% if (errors.length) { %>  
-													<div class="alert alert-danger">
-														<ul>
-														<% for (var e of errors) { %>
-															<li><%= e.msg %></li>
-														<% }%>
-														</ul>
-													</div>	
-												<% } %>
-					
-						<form style="width: 50%; margin: 0 auto;" action="/login" method="post">
-							<div class="form-group">
-								<label for="email">Email:</label>
-								<input type="email" class="form-control" id="email-modal" placeholder="Insira o seu Email" name="email" >
-							</div>
-							<div class="form-group">
-								<label for="password">Password:</label>
-								<input type="password" class="form-control" id="password" placeholder="Insira a Password" name="password" >
-							</div>    
-							<button style="width: 30%;" type="submit" class="btn btn-outline-success justify-content-center">Login</button>
-						</form>      
-					
-		
-			 	
-			  </div>
-		  </div>
+			<div class="intro-text" align="center">
+				<div class="ui-widget justify-content-center">
+					<% if (errors.length) { %>
+						<div class="alert alert-danger">
+							<ul>
+								<% for (var e of errors) { %>
+									<li>
+										<%= e.msg %>
+									</li>
+									<% }%>
+							</ul>
+						</div>
+						<% } %>
+
+							<form style="width: 50%; margin: 0 auto;" action="/login" method="post">
+								<div class="form-group">
+									<label for="email">Email:</label>
+									<input type="email" class="form-control" id="email-modal" placeholder="Insira o seu Email" name="email">
+								</div>
+								<div class="form-group">
+									<label for="password">Password:</label>
+									<input type="password" class="form-control" id="password" placeholder="Insira a Password" name="password">
+								</div>
+								<button style="width: 30%;" type="submit" class="btn btn-outline-success justify-content-center">Login</button>
+							</form>
+
+
+
+				</div>
+			</div>
 		</div>
-	  </header>
-	
-	
+	</header>
 
 
-<% include partials/footerforms %>
+
+
+	<% include partials/footerforms %>
