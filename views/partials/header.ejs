@@ -64,8 +64,10 @@
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="/registar">Registar</a>
                 </li>
- 					<% if (isAuthenticated) { %>
-						<li class="nav-link js-scroll-trigger" role="presentation" href="/profile">Profile</li>
+           <% if (isAuthenticated) { %>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" role="presentation" href="/users">Profile</a>
+            </li>
 						<% if (user.type === 'admin') {%>
              
 						<% } %>
