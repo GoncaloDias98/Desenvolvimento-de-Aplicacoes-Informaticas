@@ -2,14 +2,14 @@
 	<!-- Pagina a apresentar -->
 	<header class="masthead">
 		<div class="container">
-			<div class="intro-text" align="center">
+			<div class="intro-text" align="center" >
 				<div class="ui-widget justify-content-center">
 
 					<div class="forecast-header" style="font-size:22px; height: 70%">
 						<h2>Registar </h2>
-						<a style="color: grey;"> Subscritor</a>
-						<a style="color: black;">/</a>
 						<a href="/registarempresa">Empresa</a>
+						<a style="color: black;">/</a>
+						<a style="color: black"> Subscritor</a>
 					</div>
 
 					<% if (errors.length) { %>
@@ -24,34 +24,34 @@
 						</div>
 						<% } %>
 
-							<form action="/registar" method="post">
+							<form style="width:50%; margin: 0 auto;" action="/registar" method="post">
 								<div class="form-group">
 									<label for="Nome">Nome:</label>
-									<input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
+									<input style="height:20px" type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
 								</div>
 								<div class="form-group">
 									<label for="password">Password:</label>
-									<input type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
+									<input style="height:20px" type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
 								</div>
 								<div class="form-group">
 									<label for="Email">Email:</label>
-									<input type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>">
+									<input style="height:20px" type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>">
 								</div>
 								<div class="form-group">
 									<label for="NIF">NIF</label>
-									<input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
+									<input style="height:20px" type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
 								</div>
 								<div class="form-group">
 									<label for="Contacto">Contacto:</label>
-									<input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
+									<input style="height:20px" type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
 								</div>
 								<div class="form-group">
 									<label for="Morada">Morada:</label>
-									<input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
+									<input style="height:20px" type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
 								</div>
 								<div class="form-group">
 									<label for="preco">Preço por mês:</label>
-									<input type="text" placeholder="10€" class="form-control" id="preco" name="preco" disabled>
+									<input style="height:20px" type="text" placeholder="10€" class="form-control" id="preco" name="preco" disabled>
 								</div>
 
 
@@ -64,4 +64,4 @@
 		</div>
 	</header>
 
-	<% include partials/footerforms %>
+	<% include partials/footer %>

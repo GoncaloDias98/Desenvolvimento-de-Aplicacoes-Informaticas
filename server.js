@@ -20,18 +20,18 @@ const model = require('./models/user.model');
 
 
 //This function will allow us to retrict the access to the routes
-global.secure = function(type) {
+global.secure = function (type) {
 	return function (request, response, next) {
 		if (request.isAuthenticated()) {
 			if (type) {
 				if (type === request.user.type) {
 					return next();
-				}else{
+				} else {
 					response.redirect('/');
 				}
-			}else{
+			} else {
 				return next();
-			}			
+			}
 		}
 		response.redirect('/');
 	}
@@ -39,7 +39,9 @@ global.secure = function(type) {
 //end of new
 
 app.use(validator());
-app.use(bodyParser.json(), bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json(), bodyParser.urlencoded({
+	extended: true
+}));
 
 //new
 app.use(cookieParser());
@@ -53,17 +55,17 @@ app.use(session({
 // NEW 06/05/2018 - HTTPS
 
 app.use(helmet.hsts({
-maxAge: 7776000000,
-includeSubdomains: true
+	maxAge: 7776000000,
+	includeSubdomains: true
 }));
 
 app.set('trust proxy', 1);
 
 app.use(function (req, res, next) {
-for (var item in req.body) {
-req.sanitize(item).escape();
-}
-next();
+	for (var item in req.body) {
+		req.sanitize(item).escape();
+	}
+	next();
 });
 
 // END NEW
@@ -72,22 +74,22 @@ next();
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(function(username, callback) {
+passport.serializeUser(function (username, callback) {
 	callback(null, username);
 });
 
-passport.deserializeUser(function(username, callback) {
-	model.read(username, function(data) {
+passport.deserializeUser(function (username, callback) {
+	model.read(username, function (data) {
 		callback(null, data);
 	})
 });
 //end of new
 
 global.connection = mysql.createConnection({
-	host     : '34.243.203.139',
-	user     : 'wfdai',
-	password : 'ieY4eemaJeifoh4z',
-	database : 'mydb',
+	host: '34.243.203.139',
+	user: 'wfdai',
+	password: 'ieY4eemaJeifoh4z',
+	database: 'mydb',
 }).on('enqueue', function (sequence) {
 	if ('Query' === sequence.constructor.name) {
 		console.log(sequence.sql);
@@ -97,14 +99,14 @@ global.connection = mysql.createConnection({
 
 
 //Midleware that sets the isAuthenticated variable in all views
-app.use(function(request, response, next){
+app.use(function (request, response, next) {
 	response.locals.user = request.user;
 	response.locals.isAuthenticated = request.isAuthenticated();
 	next();
 });
 
 app.set('view engine', 'ejs');
-app.set('views','views');
+app.set('views', 'views');
 
 //app.use('/', require('./controllers/index.route'));
 app.use('/public', express.static('public'));
@@ -116,7 +118,7 @@ app.use('/registar', require('./controllers/registar.route'));
 app.use('/registarempresa', require('./controllers/registarempresa.route'));
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
-app.use('/admin/adminreg', require('./controllers/adminreg.route'));
+app.use('/adminreg', require('./controllers/adminreg.route'));
 
 
 
@@ -124,9 +126,11 @@ app.use('/admin/adminreg', require('./controllers/adminreg.route'));
 
 // Init Nexmo
 const nexmo = new Nexmo({
-  apiKey: '57bc054e',
-  apiSecret: 'dmluGy8VJAra7hie'
-}, {debug: true});
+	apiKey: '57bc054e',
+	apiSecret: 'dmluGy8VJAra7hie'
+}, {
+	debug: true
+});
 
 app.set('view engine', 'ejs');
 app.engine('ejs', ejs.renderFile);
@@ -134,36 +138,40 @@ app.engine('ejs', ejs.renderFile);
 app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 
 app.get('/', (req, res) => {
-  res.render('index');
+	res.render('index');
 });
 
 app.post('/', (req, res) => {
-  // res.send(req.body);
-  // console.log(req.body);
-  const number = req.body.number;
-  const text = req.body.text;
+	// res.send(req.body);
+	// console.log(req.body);
+	const number = req.body.number;
+	const text = req.body.text;
 
-  nexmo.message.sendSms(
-    'WFDAI', number, text, { type: 'unicode' },
-    (err, responseData) => {
-      if(err) {
-        console.log(err);
-      } else {
-        console.dir(responseData);
-        // Get data from response
-        const data = {
-          id: responseData.messages[0]['message-id'],
-          number: responseData.messages[0]['to']
-        }
+	nexmo.message.sendSms(
+		'WFDAI', number, text, {
+			type: 'unicode'
+		},
+		(err, responseData) => {
+			if (err) {
+				console.log(err);
+			} else {
+				console.dir(responseData);
+				// Get data from response
+				const data = {
+					id: responseData.messages[0]['message-id'],
+					number: responseData.messages[0]['to']
+				}
 
-        // Emit to the client
-        io.emit('smsStatus', data);
-      }
-    }
-  );
+				// Emit to the client
+				io.emit('smsStatus', data);
+			}
+		}
+	);
 });
 
 const server = app.listen(port, () => console.log(`Server started on port ${port}`));
@@ -171,8 +179,8 @@ const server = app.listen(port, () => console.log(`Server started on port ${port
 // Connect to socket.io
 const io = socketio(server);
 io.on('connection', (socket) => {
-  console.log('Connected');
-  io.on('disconnect', () => {
-    console.log('Disconnected');
-  })
+	console.log('Connected');
+	io.on('disconnect', () => {
+		console.log('Disconnected');
+	})
 })

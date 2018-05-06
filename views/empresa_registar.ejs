@@ -1,56 +1,68 @@
-<% include partials/headerforms %>
-<!-- Pagina a apresentar -->
-<div class="forecast-header" style="font-size:22px; height: 70%">
-		<h2>Registar </h2>
-		<a style="color: grey;" >Empresa</a>
-					<a style="color: black;">/</a>
-			<a href="/registar"> Subscritor</a>
-		</div> 
-			
-<% if (errors.length) { %>  
-	<div class="alert alert-danger">
-		<ul>
-		<% for (var e of errors) { %>
-			<li><%= e.msg %></li>
-		<% }%>
-		</ul>
-	</div>	
-<% } %>
+<% include partials/header %>
+	<!-- Pagina a apresentar -->
 
-	<form action="/registarempresa" method="post">
-		<div class="form-group">
-      <label for="Nome">Nome:</label>
-      <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>" >
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
-    </div>
-		<div class="form-group">
-      <label for="Email">Email:</label>
-      <input type="email" class="form-control" id="type" placeholder="Email" name="Email"  value="<%= user.Email %>" >
-    </div>
-    <div class="form-group">
-			<label for="NIF">NIF</label>
-			<input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
-		</div>	
-		<div class="form-group">
-			 <label for="Contacto">Contacto:</label>
-			 <input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
-		</div>	
-		<div class="form-group">
-				<label for="Morada">Morada:</label>
-				<input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
+	<header class="masthead">
+		<div class="container">
+			<div class="intro-text" align="center">
+				<div class="ui-widget justify-content-center">
+
+					<div class="forecast-header" style="font-size:22px; height: 70%">
+						<h2>Registar </h2>
+						<a style="color: black;">Empresa</a>
+						<a style="color: black;">/</a>
+						<a href="/registar"> Subscritor</a>
+					</div>
+
+					<% if (errors.length) { %>
+						<div class="alert alert-danger">
+							<ul>
+								<% for (var e of errors) { %>
+									<li>
+										<%= e.msg %>
+									</li>
+									<% }%>
+							</ul>
+						</div>
+						<% } %>
+
+							<form <form style="width:50%; margin: 0 auto;" action="/registarempresa" method="post">
+								<div class="form-group">
+									<label for="Nome">Nome:</label>
+									<input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
+								</div>
+								<div class="form-group">
+									<label for="password">Password:</label>
+									<input type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
+								</div>
+								<div class="form-group">
+									<label for="Email">Email:</label>
+									<input type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>">
+								</div>
+								<div class="form-group">
+									<label for="NIF">NIF</label>
+									<input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
+								</div>
+								<div class="form-group">
+									<label for="Contacto">Contacto:</label>
+									<input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
+								</div>
+								<div class="form-group">
+									<label for="Morada">Morada:</label>
+									<input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
+								</div>
+
+								<div class="form-group">
+									<label for="preco">Preço por mês:</label>
+									<input type="text" placeholder="100€" class="form-control" id="preco" name="preco" disabled>
+								</div>
+
+
+								<button type="submit" class="btn btn-success">Subscrever</button>
+
+							</form>
+				</div>
+			</div>
 		</div>
-		
-		<div class="form-group">
-				<label for="preco">Preço por mês:</label>
-				<input type="text" placeholder="100€" class="form-control" id="preco" name="preco" disabled>
-		</div>
+	</header>
 
-		
-    <button type="submit" class="btn btn-success">Subscrever</button>
-		
-  </form> 
-
-<% include partials/footerforms %>
+	<% include partials/footer %>
