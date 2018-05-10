@@ -29,8 +29,8 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
     console.log("onMessageArrived:" + message.payloadString);
     var obj = JSON.parse(message.payloadString);
-    document.getElementById("DirecaoVento").innerHTML = obj.measurements[0].series.DirecaoVento[0];
-    document.getElementById("VelocidadeVento").innerHTML = obj.measurements[0].series.VelocidadeVento[0];
+    document.getElementById("Mensagens").innerHTML = obj.measurements[0].series.Mensagens[0];
+    document.getElementById("Uptime").innerHTML = obj.measurements[0].series.Uptime[0];
     document.getElementById("Temperatura").innerHTML = obj.measurements[0].series.Temperatura[0];
     document.getElementById("Pressao").innerHTML = obj.measurements[0].series.Pressao[0];
     document.getElementById("Humidade").innerHTML = obj.measurements[0].series.Humidade[0];

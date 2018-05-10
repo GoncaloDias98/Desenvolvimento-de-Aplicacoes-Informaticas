@@ -10,8 +10,8 @@ client.onMessageArrived = onMessageArrived;
 
 var cheese;
 var mutated = false;
-//function search() {
-$("#searchbtn").click(function () {
+function searchchart() {
+//$("#searchbtn").click(function () {
     document.getElementById("searchbtn").style.pointerEvents = 'none';
     setTimeout(function () {
         document.getElementById("searchbtn").style.pointerEvents = 'auto';
@@ -84,7 +84,7 @@ function onMessageArrived(message) {
 
         var options = {};
 
-        var chart = new google.visualization.LineChart(document.getElementById('chart_id'));
+        var chart = new google.visualization.LineChart(document.getElementById('chartid'));
         chart.draw(data, options);
     }
 
