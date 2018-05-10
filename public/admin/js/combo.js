@@ -9,28 +9,29 @@ client.onMessageArrived = onMessageArrived;
 //client.connect({onSuccess:onConnect});
 
 var cheese;
-var mutated = false;   
+var mutated = false;
 //function search() {
-$( "#searchbtn" ).click(function() {
-document.getElementById("searchbtn").style.pointerEvents = 'none';
-setTimeout(function() {
+$("#searchbtn").click(function () {
+    document.getElementById("searchbtn").style.pointerEvents = 'none';
+    setTimeout(function () {
         document.getElementById("searchbtn").style.pointerEvents = 'auto';
     }, 1500);
-console.log("sea");
-       if (mutated == true) {
-              
-		client.disconnect();
-		 
-                    mutated = false;
-                }
-mutated = true;
-                cheese = $('#combobox').find(":selected").text();
-                client.connect({
-                    onSuccess: onConnect});
+    console.log("sea");
+    if (mutated == true) {
 
-                mutated = true;
-                
-  
+        client.disconnect();
+
+        mutated = false;
+    }
+    mutated = true;
+    cheese = $('#combobox').find(":selected").text();
+    client.connect({
+        onSuccess: onConnect
+    });
+
+    mutated = true;
+
+
 };
 
 // called when the client connects
@@ -55,33 +56,40 @@ function onMessageArrived(message) {
     google.charts.load('44', {
         callback: drawChart,
         packages: ['corechart']
-      });
-      
-      // init array data
-      var time = obj.measurements[0].series.$_time[0];
-      var suseptible = obj.measurements[0].series.Uptime[0];
-      
-      function drawChart(){
+    });
+
+    // init array data
+    var obj = JSON.parse(message.payloadString);
+    document.getElementById("time").innerHTML = obj.measurements[0].series.$_time[0];
+    document.getElementById("uptime").innerHTML = obj.measurements[0].series.Uptime[0];
+    document.getElementById("Temperatura").innerHTML = obj.measurements[0].series.Temperatura[0];
+    document.getElementById("Pressao").innerHTML = obj.measurements[0].series.Pressao[0];
+    document.getElementById("Humidade").innerHTML = obj.measurements[0].series.Humidade[0];
+    document.getElementById("Visibilidade").innerHTML = obj.measurements[0].series.Visibilidade[0];
+    document.getElementById("NascerSol").innerHTML = obj.measurements[0].series.NascerSol[0];
+    document.getElementById("PorSol").innerHTML = obj.measurements[0].series.PorSol[0];
+    document.getElementById("ts").innerHTML = obj.measurements[0].ts;
+
+    function drawChart() {
         // create DataTable
         var data = new google.visualization.DataTable();
-        data.addColumn('number', 'Id');
-        data.addColumn('number', 'Time');
-        data.addColumn('number', 'Suseptible');
-      
+        data.addColumn('number', 'time');
+        data.addColumn('number', 'uptime');
+
         // load data
         for (var i = 0; i < time.length; i++) {
-          var row = [i, time[i], suseptible[i]];
-          data.addRow(row);
+            var row = [i, time[i], suseptible[i]];
+            data.addRow(row);
         }
-      
+
         var options = {};
-      
-        var chart = new  google.visualization.LineChart(document.getElementById('chart_id'));
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_id'));
         chart.draw(data, options);
-      }
+    }
 
 
-    
+
 
 }
 
@@ -90,9 +98,9 @@ function onMessageArrived(message) {
 
 
 
-$(function() {
+$(function () {
     $.widget("custom.combobox", {
-        _create: function() {
+        _create: function () {
             this.wrapper = $("<span>")
                 .addClass("custom-combobox")
                 .insertAfter(this.element);
@@ -102,7 +110,7 @@ $(function() {
             this._createShowAllButton();
         },
 
-        _createAutocomplete: function() {
+        _createAutocomplete: function () {
             var selected = this.element.children(":selected"),
                 value = selected.val() ? selected.text() : "";
 
@@ -123,7 +131,7 @@ $(function() {
                 });
 
             this._on(this.input, {
-                autocompleteselect: function(event, ui) {
+                autocompleteselect: function (event, ui) {
                     ui.item.option.selected = true;
                     this._trigger("select", event, {
                         item: ui.item.option
@@ -134,7 +142,7 @@ $(function() {
             });
         },
 
-        _createShowAllButton: function() {
+        _createShowAllButton: function () {
             var input = this.input,
                 wasOpen = false;
 
@@ -151,10 +159,10 @@ $(function() {
                 })
                 .removeClass("ui-corner-all")
                 .addClass("custom-combobox-toggle ui-corner-right")
-                .on("mousedown", function() {
+                .on("mousedown", function () {
                     wasOpen = input.autocomplete("widget").is(":visible");
                 })
-                .on("click", function() {
+                .on("click", function () {
                     input.trigger("focus");
 
                     // Close if already visible
@@ -167,9 +175,9 @@ $(function() {
                 });
         },
 
-        _source: function(request, response) {
+        _source: function (request, response) {
             var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
-            response(this.element.children("option").map(function() {
+            response(this.element.children("option").map(function () {
                 var text = $(this).text();
                 if (this.value && (!request.term || matcher.test(text)))
                     return {
@@ -180,7 +188,7 @@ $(function() {
             }));
         },
 
-        _removeIfInvalid: function(event, ui) {
+        _removeIfInvalid: function (event, ui) {
 
             // Selected an item, nothing to do// por aqui o subscribe/////////////////////////////////
             if (ui.item) {
@@ -191,7 +199,7 @@ $(function() {
             var value = this.input.val(),
                 valueLowerCase = value.toLowerCase(),
                 valid = false;
-            this.element.children("option").each(function() {
+            this.element.children("option").each(function () {
                 if ($(this).text().toLowerCase() === valueLowerCase) {
                     this.selected = valid = true;
                     return false;
@@ -210,30 +218,32 @@ $(function() {
 
                 .tooltip("open");
             this.element.val("");
-            this._delay(function() {
+            this._delay(function () {
                 this.input.tooltip("close").attr("title", "");
             }, 2500);
             this.input.autocomplete("instance").term = "";
         },
 
-        _destroy: function() {
+        _destroy: function () {
             this.wrapper.remove();
             this.element.show();
         }
     });
 
     $("#combobox").combobox();
-    $("#toggle").on("click", function() {
+    $("#toggle").on("click", function () {
         $("#combobox").toggle();
     });
 });
 
 
 
-function clear() { $('input:text').focus(
-    function(){
-        $(this).val('');
-    });}
+function clear() {
+    $('input:text').focus(
+        function () {
+            $(this).val('');
+        });
+}
 
 
 
@@ -242,5 +252,5 @@ function clear() { $('input:text').focus(
 
 
 
-	
-	
+
+
