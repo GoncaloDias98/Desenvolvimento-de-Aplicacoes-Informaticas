@@ -8,9 +8,34 @@
     <div class="card-header">
       <i class="fa fa-area-chart"></i> Area Chart Example</div>
     <div class="card-body">
-      <canvas id="myArea" width="100%" height="30"></canvas>
+      <div class='col-md-12'>
+        <div class='table-responsive'>
+          <table class='table' id='Table'>
+            <thread>
+              <tr>
+                <th>Primeiro Nome</th>
+                <th>Morada</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Função</th>
+              </tr>
+            </thread>
+            <tbody>
+              <% for (var u of kpiDados) { %>
+                <tr>
+                    <td><a href='/admin/<%= u.idKPI %>'><%= u.time %></a></td>
+                    <td><%= u.uptime %></td>
+                    <td><%= u.totalClients %></td>
+                    <td><%= u.activeCliens %></td>
+                    <td><%= u.messages %></td>
+                </tr>
+                <% } %> 
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    
   </div>
   <div class="row">
     <div class="col-lg-8">
@@ -78,6 +103,7 @@
       <div class="table-responsive">
 
 
+        
    
         <script type="text/javascript">
           var dataSet = [
