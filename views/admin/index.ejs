@@ -13,21 +13,25 @@
           <table class='table' id='Table'>
             <thread>
               <tr>
-                <th>Primeiro Nome</th>
-                <th>Morada</th>
-                <th>Telefone</th>
-                <th>Email</th>
-                <th>Função</th>
+                <th>Data</th>
+                <th>Tempo em execução</th>
+                <th>Clientes Totais</th>
+                <th>Cliente Ativos</th>
+                <th>Bytes recebidos em 5 minutos</th>
+                <th>Bytes recebidos em 15 minutos</th>
               </tr>
             </thread>
             <tbody>
               <% for (var u of kpiDados) { %>
+
+                <% var options = { year: "numeric", month: "numeric", day: "numeric", hour:"numeric", minute:"numeric"} %>
                 <tr>
-                    <td><a href='/admin/<%= u.idKPI %>'><%= u.time %></a></td>
+                    <td><%= u.time.toLocaleDateString('pt-BR', options) %></td>
                     <td><%= u.uptime %></td>
                     <td><%= u.totalClients %></td>
                     <td><%= u.activeCliens %></td>
-                    <td><%= u.messages %></td>
+                    <td><%= u.receivedLoad5 %></td>
+                    <td><%= u.receivedLoad15 %></td>
                 </tr>
                 <% } %> 
             </tbody>
