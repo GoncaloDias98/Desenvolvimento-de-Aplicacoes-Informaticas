@@ -59,7 +59,6 @@ client = new Paho.MQTT.Client(location.hostname, Number(location.port), "clientI
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 client.connect({onSuccess:onConnect});
-
 function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
   console.log("onConnect");

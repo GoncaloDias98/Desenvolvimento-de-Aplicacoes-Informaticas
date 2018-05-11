@@ -1,4 +1,4 @@
-const port = 80;
+const port = 3000;
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
@@ -7,6 +7,19 @@ const validator = require('express-validator');
 const bcrypt = require('bcrypt');
 
 const helmet = require('helmet');
+const options = {
+    checkExpirationInterval: 1000 * 60 * 15,// 15 min // How frequently expired sessions will be cleared; milliseconds.
+    expiration: 1000 * 60 * 60 * 24 * 7,// 1 week // The maximum age of a valid session; milliseconds.
+    createDatabaseTable: true,// Whether or not to create the sessions database table, if one does not already exist.
+    schema: {
+        tableName: 'sessions',
+        columnNames: {
+            session_id: 'session_id',
+            expires: 'expires',
+            data: 'data'
+        }
+    }
+};
 
 
 const socketio = require('socket.io');
