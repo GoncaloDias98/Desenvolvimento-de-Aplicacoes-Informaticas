@@ -89,12 +89,12 @@
           $('#example').DataTable( {
               data: dataSet,
               columns: [
-                  { title: "Name" },
-                  { title: "Position" },
-                  { title: "Office" },
-                  { title: "Extn." },
-                  { title: "Start date" },
-                  { title: "Salary" }
+                  { title: "Time" },
+                  { title: "Uptime" },
+                  { title: "Total Clientes" },
+                  { title: "Mensagens" },
+                  { title: "Load 5min" },
+                  { title: "Load 15min" }
               ]
           } )
           client.connect({
@@ -162,6 +162,8 @@ function onMessageArrived(message) {
     var obj = JSON.parse(message.payloadString);
     console.log("onMessageArrived:" + message.payloadString);
     var dataSet = obj.measurements[0].series.Uptime;
+    var tempo = document.getElementById("time").innerHTML = obj.measurements[0].series.$_time;
+   
 
     /*document.getElementById("time").innerHTML = obj.measurements[0].series.$_time;
     document.getElementById("uptime").innerHTML = obj.measurements[0].series.Uptime[0];
