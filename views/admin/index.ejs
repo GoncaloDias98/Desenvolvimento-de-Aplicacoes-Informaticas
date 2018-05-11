@@ -13,21 +13,25 @@
           <table class='table' id='Table'>
             <thread>
               <tr>
-                <th>Primeiro Nome</th>
-                <th>Morada</th>
-                <th>Telefone</th>
-                <th>Email</th>
-                <th>Função</th>
+                <th>Data</th>
+                <th>Tempo em execução</th>
+                <th>Clientes Totais</th>
+                <th>Cliente Ativos</th>
+                <th>Bytes recebidos em 5 minutos</th>
+                <th>Bytes recebidos em 15 minutos</th>
               </tr>
             </thread>
             <tbody>
               <% for (var u of kpiDados) { %>
+
+                <% var options = { year: "numeric", month: "numeric", day: "numeric", hour:"numeric", minute:"numeric"} %>
                 <tr>
-                    <td><a href='/admin/<%= u.idKPI %>'><%= u.time %></a></td>
+                    <td><%= u.time.toLocaleDateString('pt-BR', options) %></td>
                     <td><%= u.uptime %></td>
                     <td><%= u.totalClients %></td>
                     <td><%= u.activeCliens %></td>
-                    <td><%= u.messages %></td>
+                    <td><%= u.receivedLoad5 %></td>
+                    <td><%= u.receivedLoad15 %></td>
                 </tr>
                 <% } %> 
             </tbody>
@@ -39,7 +43,7 @@
   </div>
   <div class="row">
     <div class="col-lg-8">
-      <!-- Example Bar Chart Card-->
+      <!-- Example Bar Chart Card
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
@@ -49,8 +53,8 @@
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
     </div>
-    <div class="col-lg-4">
-      <!-- Example Pie Chart Card-->
+    <div class="col-lg-4">-->
+      <!-- Example Pie Chart Card
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
@@ -62,7 +66,7 @@
     </div>
   </div>
   </div>
-  </div>
+  </div> -->
   <!-- /.container-fluid-->
   <!-- /.content-wrapper-->
   <footer class="sticky-footer">
