@@ -12,91 +12,95 @@
 
           <form class="form-inline justify-content-center " id="form">
             <script>
-                $(document).ready(function() {
-                  $('select').selectpicker();
-                    $('input').addClass(' form-control input-lg text-center text-xs-center');
-                    $('li').addClass(' list-group');
-                    $('.selectpicker').selectpicker();
-                })
-                $( ".selectpicker" ).change(function() {
-                  alert( "Handler for .change() called. .selectpicker" );
-                });
+              $(document).ready(function () {
+                $('select').selectpicker();
+                $('input').addClass(' form-control input-lg text-center text-xs-center');
+                $('li').addClass(' list-group');
+                $('.selectpicker').selectpicker();
+              })
+              $(".selectpicker").change(function () {
+                alert("Handler for .change() called. .selectpicker");
+              });
             </script>
-            <div style="margin:10px; width:auto; height:20%" class="ui-widget justify-content-center">
-<br>
-                <select id="combobox" class="selectpicker form-control mr-sm-2 justify-content-center selectpicker" data-live-search="true" type="text" form="form">
-<option value="">Select um...</option>
-<% include partials/listalocalidades %>
 
-</select>
-        <br>
-        <br>
-        <i class="far fa-clock"><span id="ts"></span>  <br>
-        <i class="far fa-compass"></i><span id="DirecaoVento"></span>  <br>
-        <i class="far fa-compass"><span id="VelocidadeVento"></span> km/h <br>
-        <i class="fas fa-tachometer-alt"><span id="Temperatura"></span> &#176;  <br>
-        <i class="fas fa-tachometer-alt"></i><span id="Pressao"></span> mBar <br>
-        <i class="fas fa-tint"></i><span id="Humidade"></span> %  <br>
-        <i class="fas fa-eye"></i><span id="Visibilidade"></span> Km  <br>
-        <i class="far fa-sun"></i><span id="NascerSol"></span>  <br>
-        <i class="far fa-sun"></i><span id="PorSol"></span>  <br>
-</form><br>
+            <script>
+              var elem = document.getElementById("combobox");
+              elem.onchange = function () {
+                var hiddenDiv = document.getElementById("weathercard");
+                hiddenDiv.style.display = (this.value == "") ? "none" : "block";
+              };
+            </script>
 
-        <div class="card" id="weathercard" style="display:none">
-          <span class="city">Meteorologia</span>
+            <div style="margin:10px; width:30%; height:20%" class="ui-widget justify-content-center">
+              <br>
+              <select id="combobox" class="selectpicker form-control mr-sm-2 justify-content-center selectpicker" data-live-search="true" type="text" form="form">
+                <option value="">Selecione um...</option>
+                <% include partials/listalocalidades %>
+
+              </select>
+          </form>
           <br>
-          <div class="sun"></div>
-          <span class="temp" id="Temperatura"> &#176;</span>
-
-          <div class="forecast clear">
-            <div class="day tue">
-              <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa
-              <br>
-              <i class="fas fa-tint" id="Humidade"></i> %
-              <br>
-            </div>
-            <div class="day wed">
-              <i class="far fa-compass" id="DirecaoVento"></i>
-              <br>
-              <i class="fas fa-eye" id="Visibilidade"></i> Km
-              <br>
-            </div>
-            <div class="day thu">
-              <i class="far fa-sun" id="NascerSol"></i>
-              <br>
-              <i class="fas fa-sun" id="PorSol"></i>
-            </div>
-            <div class="day fri">
-              <i class="far fa-clock" id="ts"> </i>
-            </div>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; display:none; font-size:26px;" align=center>
-          <div class="card-body">
-            <h5 class="card-title" style="color:black;">Meteorologia</h5>
-            <div class="card-text" style="color:black;">
-              <i class="far fa-compass" id="DirecaoVento"></i>
-              <br>
-              <i class="fas fa-angle-double-right" id="VelocidadeVento"></i> Kmh
-              <br>
-              <i class="fas fa-thermometer-half" id="Temperatura"></i> ºC
-              <br>
-              <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa
-              <br>
-              <i class="fas fa-tint" id="Humidade"></i> %
-              <br>
-              <i class="fas fa-eye" id="Visibilidade"></i> Km
-              <br>
-              <i class="far fa-sun" id="NascerSol"></i>
-              <br>
-              <i class="fas fa-sun" id="PorSol"></i>
-              <i class="far fa-clock" id="ts"> </i>
-            </div>
 
           </div>
+
+          
+          <div class="card" id="weathercard" style="width: 40%;">
+              <span class="city">Meteorologia</span>
+              <br>
+              <br>
+              <br>
+              <br>
+              <!--<div class="sun"></div> -->
+              <span class="temp" id="Temperatura"> </span>
+  
+              <div class="forecast clear">
+                <div class="day tue">
+                  <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa
+                  <br>
+                  <i class="fas fa-tint" id="Humidade"></i> %
+                  <br>
+                </div>
+                <div class="day wed">
+                  <i class="far fa-compass" id="DirecaoVento"></i>
+                  <br>
+                  <i class="fas fa-eye" id="Visibilidade"></i> Km
+                  <br>
+                </div>
+                <div class="day thu">
+                  <i class="far fa-sun" id="NascerSol"></i>
+                  <br>
+                  <i class="fas fa-sun" id="PorSol"></i>
+                </div>
+                <div class="day fri">
+                  <i class="far fa-clock" id="ts"> </i>
+                </div>
+              </div>
+          <div class="card" style="width: 18rem; display:none; font-size:26px;" align=center>
+            <div class="card-body">
+              <h5 class="card-title" style="color:black;">Meteorologia</h5>
+              <div class="card-text" style="color:black;">
+                <i class="far fa-compass" id="DirecaoVento"></i>
+                <br>
+                <i class="fas fa-angle-double-right" id="VelocidadeVento"></i> Kmh
+                <br>
+                <i class="fas fa-thermometer-half" id="Temperatura"></i> ºC
+                <br>
+                <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa
+                <br>
+                <i class="fas fa-tint" id="Humidade"></i> %
+                <br>
+                <i class="fas fa-eye" id="Visibilidade"></i> Km
+                <br>
+                <i class="far fa-sun" id="NascerSol"></i>
+                <br>
+                <i class="fas fa-sun" id="PorSol"></i>
+                <i class="far fa-clock" id="ts"> </i>
+              </div>
+
+            </div>
+          </div>
+          </div>
         </div>
-      </div>
-    </div>
   </header>
 
   <section class="bg-light">

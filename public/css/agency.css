@@ -702,8 +702,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
 /*--------------------------------------------------------------------------------------NOVO ------------------------------------------------------------------------------------- */
 
-
-
 body {
   background:#dbdbdb;
 }
@@ -711,8 +709,8 @@ body {
   clear:both;
 }
 .card {
-  width:27em;
-  min-height:25.5em;
+  width:25em;
+  min-height:22.5em;
   background: #fff;
   margin:2em auto;
   border-radius: .2em;
@@ -740,7 +738,7 @@ body {
   height:4em;
   border-radius: 2.5em;
   background: #FBD80A;
-  margin-top: 1em;
+  margin-top: 2em;
 }
 .temp {
   float:right;
@@ -752,10 +750,10 @@ body {
 }
 .variations {
   font-family:Roboto;
-  font-weight:300;
+  font-wight:300;
   color:#8c8c8c;
   list-style:none;
-  margin-left:-1em;
+  margin-left:-2em;
 }
 .mph {
    font-size:.8em;
@@ -794,7 +792,6 @@ body {
 .sunny {
   content: url('https://i.imgur.com/RdBr2SD.png');
 }
-
 
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
@@ -947,4 +944,76 @@ body {
   height:50%;
   line-height:30px;
   font-size: 2em;
+}
+
+.bootstrap-select.show > .dropdown-menu > .dropdown-menu {
+display: block;
+}
+.bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden {
+display: none;
+}
+.bootstrap-select > .dropdown-menu > .dropdown-menu li a {
+display: block;
+width: 100%;
+padding: 3px1.5rem;
+clear: both;
+font-weight: 400;
+color: #292b2c;
+text-align: inherit;
+white-space: nowrap;
+background: 00;
+border: 0;
+}
+.bootstrap-select > .btn {
+width: 100%!important;
+padding-right: 25px;
+padding-bottom: 0;
+}
+.dropdown-toggle.btn-default {
+color: #292b2c;
+background-color: #ffffff;
+border-color: #cccccc;
+}
+.dropdown-toggle::after {
+display: inline;
+width: 2px;
+height: 2px;
+margin-top: -5%!important;
+margin-left: 94%;
+vertical-align: -0.05em;
+content: “”;
+border-top: .7emsolid;
+border-right: .4emsolidtransparent;
+border-left: .4emsolidtransparent;
+}
+.bootstrap-select.btn-group .btn .filter-option {
+display: inline-block;
+overflow: hidden;
+width: 100%;
+padding-top: 2%;
+line-height: 1;
+box-sizing: border-box;
+text-align: left;
+}
+.light-blue-skin .btn-default.dropdown-toggle {
+background-color: #ffffff!important;
+color: #292b2c!important;
+box-shadow: none;
+border-bottom: 1pxsolid#bdbdbd;
+padding: 0;
+}
+.light-blue-skin .btn-default.dropdown-toggle:focus {
+color: #292b2c!important;
+width: 100%!important;
+background-color: #ffffff!important;
+outline: none!important;
+}
+.light-blue-skin .btn-default.dropdown-toggle:hover {
+color: #292b2c!important;
+width: 100%!important;
+background-color: #ffffff!important;
+outline: none!important;
+}
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+width: 100%!important;
 }
