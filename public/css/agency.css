@@ -738,7 +738,7 @@ body {
   height:4em;
   border-radius: 2.5em;
   background: #FBD80A;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 .temp {
   float:right;
@@ -750,7 +750,7 @@ body {
 }
 .variations {
   font-family:Roboto;
-  font-wight:300;
+  font-weight:300;
   color:#8c8c8c;
   list-style:none;
   margin-left:-2em;
