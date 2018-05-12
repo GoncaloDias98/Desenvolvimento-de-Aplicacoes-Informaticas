@@ -1,6 +1,6 @@
 module.exports = {
 	listKPI(callback) {
-		var sql = 'SELECT * from KPI';
+		var sql = 'SELECT * from kpiView';
 		global.connection.query(sql, function(error, rows, fields){
 			if (error) throw error;
 			callback(rows);
