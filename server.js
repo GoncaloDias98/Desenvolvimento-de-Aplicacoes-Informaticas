@@ -132,18 +132,9 @@ app.use('/registarempresa', require('./controllers/registarempresa.route'));
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
 app.use('/adminreg', require('./controllers/adminreg.route'));
+app.use('/', require('./controllers/sms.route'));
 
 
-
-
-
-// Init Nexmo
-const nexmo = new Nexmo({
-	apiKey: '57bc054e',
-	apiSecret: 'dmluGy8VJAra7hie'
-}, {
-	debug: true
-});
 
 app.set('view engine', 'ejs');
 app.engine('ejs', ejs.renderFile);
@@ -154,38 +145,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-
-app.get('/', (req, res) => {
-	res.render('index');
-});
-
-app.post('/', (req, res) => {
-	// res.send(req.body);
-	// console.log(req.body);
-	const number = req.body.number;
-	const text = req.body.text;
-
-	nexmo.message.sendSms(
-		'WFDAI', number, text, {
-			type: 'unicode'
-		},
-		(err, responseData) => {
-			if (err) {
-				console.log(err);
-			} else {
-				console.dir(responseData);
-				// Get data from response
-				const data = {
-					id: responseData.messages[0]['message-id'],
-					number: responseData.messages[0]['to']
-				}
-
-				// Emit to the client
-				io.emit('smsStatus', data);
-			}
-		}
-	);
-});
 
 const server = app.listen(port, () => console.log(`Server started on port ${port}`));
 

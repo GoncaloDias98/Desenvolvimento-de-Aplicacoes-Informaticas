@@ -11,6 +11,7 @@ router.get('/', function(request, response) {
 		errors: []
 	});
 });
+
 router.post('/', function(request, response) {
 
 	request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({min: 5, max: 10});
