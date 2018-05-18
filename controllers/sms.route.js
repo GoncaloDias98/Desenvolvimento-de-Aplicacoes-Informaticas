@@ -23,13 +23,7 @@ router.get('/', function(request, response){
 
 const from = 'WFDAI';
 const to = '351912493365';
-
-
-
-  
-
-
-
+const text = 'Dess';
 
 router.post('/sendSMS', function(request, response) {
   nexmo.message.sendSms(from, to, text, (error, response) => {

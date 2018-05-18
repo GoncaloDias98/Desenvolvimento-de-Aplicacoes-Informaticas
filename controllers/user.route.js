@@ -13,6 +13,8 @@ router.get('/', function(request, response) {
 	})	
 });
 
+
+
 router.get('/:username', function(request, response) {
 	model.read(request.params.username, function(user) {
 		if (user != undefined) {
