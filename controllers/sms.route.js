@@ -19,9 +19,6 @@ router.get('/', function(request, response){
   })
 });
 
-for (var u of dados){
-  const text = 'Temperatura superior ' + u.Temperatura + ' em ' + u.localidade ;
-}
 
 
 const from = 'WFDAI';
