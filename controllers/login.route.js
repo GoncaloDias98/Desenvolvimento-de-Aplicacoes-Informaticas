@@ -25,7 +25,6 @@ router.post('/', function(request, response) {
 model.areValidCredentials(request.body.email, request.body.password, function(areValid) {
 		if (areValid) {
 			if (request === 'admin') 
-				
 			//Create the login session
 			request.login(request.body.email, function(err) {
 				response.redirect('/admin');
@@ -38,7 +37,6 @@ model.areValidCredentials(request.body.email, request.body.password, function(ar
 		}else{
 				response.render('login', { errors: [
 				{ msg: 'Invalid credentials provided' }
-
 			]});
 		}
 	});

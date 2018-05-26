@@ -13,6 +13,7 @@ const mysql = require('mysql');
 
 
 router.get('/', function(request, response){
+    if(request.isAuthenticated())
     response.set('Content-Type', 'text/html');
     response.render('index', {
     })
@@ -20,13 +21,56 @@ router.get('/', function(request, response){
 
 
 
-router.post('/sendSMS', function(request, response) {
-  var sql = 'SELECT * from Regras_User WHERE UserID=2';
-		global.connection.query(sql, function(error, dados, fields){
+router.post('/sendSMS', function(request, response){
+  envioNotificacao();
+  response.redirect('/');
+});
+
+function envioNotificacao(request, response){
+  global.connection.query('SELECT * from User Where UserID = 22', function(error, users, fields){
+    for(var u of users){
+      const to = '351' + u.Contacto 
+  global.connection.query('SELECT * from Regras_User where UserID = 2', function(error, dados, fields){
+    for (var i of dados){
+      const from = 'WFDAI';
+      const text = 'Temperatura superior a ' + i.Temperatura_user + 'graus em ' + i.localidade;
+      if(i.Temperatura_user > i.Temperatura){
+        nexmo.message.sendSms(from, to, text, (error, response) => {
+          if(error) {
+            throw error;
+          } else if(response.messages[0].status != '0') {
+            console.error(response);
+            throw 'Nexmo returned back a non-zero status';
+          } else {   
+            console.log(response);
+          }
+        });
+      }else{
+        const text = 'Caralho';
+        nexmo.message.sendSms(from, to, text, (error, response) => {
+          if(error) {
+            throw error;
+          } else if(response.messages[0].status != '0') {
+            console.error(response);
+            throw 'Nexmo returned back a non-zero status';
+          } else {   
+            console.log(response);
+          }
+        });
+      }
+    }
+  });
+}   
+});
+}
+    
+
+/*router.post('/sendSMS', function(request, response) {
+       
+		global.connection.query('SELECT * from Regras_User WHERE UserID = 2' ,function(error, dados, fields){
 			if (error) throw error;
       for (var i of dados){
         const from = 'WFDAI';
-        const to = '351912493365';
         const text = 'Temperatura superior a ' + i.Temperatura_user + 'graus em ' + i.localidade;
         if(i.Temperatura_user > i.Temperatura){   
         nexmo.message.sendSms(from, to, text, (error, response) => {
@@ -38,10 +82,10 @@ router.post('/sendSMS', function(request, response) {
           } else {
             console.log(response);
           }
-          response.re('/', {
+          response.redirect('/', {
           })
         });
-        
+      
       }else{
         const from = 'WFDAI';
         const to = '351912493365';
@@ -59,13 +103,16 @@ router.post('/sendSMS', function(request, response) {
           response.redirect('/', {
           })
         });
-        
-      }
-      }
       
+      }
+      }
+    }
+    
+  
+  });
+  
     });
-   
 });
-
+*/
 
 module.exports = router;

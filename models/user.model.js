@@ -11,7 +11,7 @@ module.exports = {
 
 read(email, callback) {
 		var sql = "SELECT * from User where Email=?";
-		global.connection.query(sql, [email], function(error, rows, fields) {
+		global.connection.query(sql, [Email], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);
 		});

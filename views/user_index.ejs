@@ -48,6 +48,17 @@
 
               </div>
 
+              <div style="margin:10px; width:30%; height:20%" class="ui-widget justify-contenter">
+                <br>
+                <select id="combobox" class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+                  type="text" form="form">
+                  <option value="">Selecione um...</option>
+                  <% include partials/listalocalidades %>
+
+                </select>
+
+                </div>
+
 
               <div class="card" id="weathercard" style="width: 40%;">
                 <span class="city">Meteorologia</span>
@@ -108,20 +119,7 @@
             </div>
       </header>
 
-      <section class="bg-light">
-        <div class="container">
-          <h2>Enviar mensagem SMS</h2>
-          <input type="tel" name="number" id="number" placeholder="Digite o numero de telefone ...">
-          <input type="text" name="msg" id="msg" placeholder="Digite a mensagem de texto ...">
-          <input type="button" id="button" value="Envie mensagem" class="button button-primary">
-          <p class="response"></p>
-        </div>
-      </section>
-
       <section>
-
-
-
         <div class="container">
 
 
@@ -152,23 +150,6 @@
                 <label for="Morada">Morada:</label>
                 <input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
               </div>
-              <div class="form-group">
-                <label for="preco">Preço por mês:</label>
-                <input type="text" placeholder="10€" class="form-control" id="preco" name="preco" disabled>
-              </div>
-              <div class="form-group">
-                <label for="Morada">Cidade a ser notificado:</label>
-                <input type="text" placeholder="Cidade Notificação" class="form-control" id="CidadeNot" name="CidadeNot" value="">
-              </div>
-              <div class="form-group">
-                <label for="Morada">Temperatura:</label>
-                <input type="text" placeholder="Temperatura" class="form-control" id="Temperatura" name="Temperatura" value="">
-              </div>
-              <div class="form-group">
-                <label for="Morada">Morada:</label>
-                <input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
-              </div>
-
 
               <button type="submit" class="btn btn-success">Atualizar</button>
 

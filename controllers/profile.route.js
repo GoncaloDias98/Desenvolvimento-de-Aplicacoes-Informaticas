@@ -3,10 +3,13 @@ const router = express.Router();
 const model = require('../models/user.model');
 
 router.get('/', global.secure(), function(request, response) {
-	response.set("Content-Type", "text/html");
-	response.render('profile', {
-		user: request.user, errors: []
-	})		
+	if(request.isAuthenticated()){
+		response.set("Content-Type", "text/html");
+		response.render('profile', {
+	})
+	}else{
+		response.redirect('/');
+	}	
 });
 
 router.post('/', global.secure(), function(request, response) {
