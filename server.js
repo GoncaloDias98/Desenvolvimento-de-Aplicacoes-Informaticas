@@ -87,12 +87,12 @@ app.use(function (req, res, next) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(function (username, callback) {
-	callback(null, username);
+passport.serializeUser(function (email, callback) {
+	callback(null, email);
 });
 
-passport.deserializeUser(function (username, callback) {
-	model.read(username, function (data) {
+passport.deserializeUser(function (email, callback) {
+	model.read(email, function (data) {
 		callback(null, data);
 	})
 });
