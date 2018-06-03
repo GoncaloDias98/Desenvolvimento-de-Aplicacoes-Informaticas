@@ -48,7 +48,18 @@
 
               </div>
 
-             
+              <div style="margin:10px; width:30%; height:20%" class="ui-widget justify-contenter">
+                <br>
+                <select id="combobox" class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+                  type="text" form="form">
+                  <option value="">Selecione um...</option>
+                  <% include partials/listalocalidades %>
+
+                </select>
+
+                </div>
+
+
               <div class="card" id="weathercard" style="width: 40%;">
                 <span class="city">Meteorologia</span>
                 <br>
@@ -114,7 +125,7 @@
 
           <div class="panel-body">
 
-            <form align="center" style="width: 50%; margin: 0 auto;  action="/users/update" method="post">
+            <form align="center" style="width: 50%; margin: 0 auto; " action="/users/update" method="post">
               <div class="form-group">
                 <label for="Nome">Nome:</label>
                 <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
@@ -139,8 +150,6 @@
                 <label for="Morada">Morada:</label>
                 <input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
               </div>
-			 
-			  
 
               <button type="submit" class="btn btn-success">Atualizar</button>
 
