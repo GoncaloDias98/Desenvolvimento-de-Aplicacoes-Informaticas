@@ -15,11 +15,11 @@ router.get('/', function(request, response) {
 
 
 
-router.get('/update', function(request, response) {
+router.get('/', function(request, response) {
 	model.read(request.params.Email, function(user) {
 		if (user != undefined) {
 			response.set("Content-Type", "text/html");
-			response.render('/', {
+			response.render('user_index', {
 				isNew: false,
 				user: user,
 				errors: []
@@ -30,7 +30,7 @@ router.get('/update', function(request, response) {
 	})	
 });
 
-router.post('/update', function(request, response) {	
+router.post('/', function(request, response) {	
 	request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({min: 5, max: 10});
 	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({min: 8, max: 15});
 	request.checkBody('NIF', 'NIF should have 9 chars').isLength({min: 9, max: 9});
@@ -38,7 +38,7 @@ router.post('/update', function(request, response) {
 	request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({min: 0, max: 20});
 	var errors = request.validationErrors();	
 	if (errors) {
-		response.render('users', {
+		response.render('user_index', {
 			isNew: true,
 			user: {},
 			errors: errors
@@ -46,11 +46,11 @@ router.post('/update', function(request, response) {
 	}else{
 		var data = {
 			'Nome': request.body.Nome,
+			'password': request.body.password,				
 			'NIF': request.body.NIF,
 			'Contacto': request.body.Contacto,
 			'Morada': request.body.Morada,
 			'tipo': "subscritor individual",
-			'password': request.body.password,
 			};
 		model.update(request.body.Email, data, function(){
 			response.redirect('/');
@@ -62,7 +62,7 @@ router.post('/update', function(request, response) {
 
 router.get('/email/delete', function(request, response){
 	model.remove(request.params.email, function() {
-		response.redirect('/users');
+		response.redirect('/');
 	})	
 });
 
