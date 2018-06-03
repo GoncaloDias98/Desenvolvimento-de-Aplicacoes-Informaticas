@@ -35,7 +35,7 @@ update(email, data, callback) {
 		var sql = "UPDATE `mydb`.`User` SET `Nome`=?, `Password`=?, `NIF`=?, `Contacto`=?, `Morada`=?, `TipoUser`=?, `Empresa`=?, `UI`=? WHERE `Email`=?";
 		var hash = bcrypt.hashSync(data.password);
 		global.connection.query(
-			sql, [data.name, hash,  data.nif, data.telemovel, data.morada, data.tipo, data.empresa, data.ui, email], function(error, rows, fields) {
+			sql, [data.Nome, hash,  data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.ui, email], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);
 		});
