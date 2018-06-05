@@ -56,7 +56,7 @@ areValidCredentials(email, password, callback) {
 		global.connection.query(sql, [email], function(error, rows){
 			if (error) throw error;
 			if (rows.length == 0 ) callback(false);
-			bcrypt.compare(rows[0].password, password, function(err, res) {
+			bcrypt.compare(rows[0].Password, password, function(err, res) {
 				callback(true); // res === true
 });
 		});

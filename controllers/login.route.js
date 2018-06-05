@@ -26,11 +26,11 @@ model.areValidCredentials(request.body.email, request.body.password, function(ar
 		if (areValid) {
 			if (request === 'admin') 
 			//Create the login session
-			request.login(request.body.email, function(err) {
+			request.login(request.body.email,request.body.password, function(err) {
 				response.redirect('/admin');
 			});
 			else {
-				request.login(request.body.email, function(err) {
+				request.login(request.body.email, request.body.password, function(err) {
 				response.redirect('/');
 				});
 			}

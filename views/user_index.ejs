@@ -106,9 +106,13 @@
                 </div>
               </div>
             </div>
+		</div>
+	  </div>
       </header>
 
       <section>
+			<h1>Dados Pessoais</h1>
+			<p></p>
         <div class="container">
 
 
@@ -149,6 +153,34 @@
           </div>
         </div>
         </div>
+
+			</section>
+	        <section>
+				<h1>Notificações</h1>
+				<p></p>
+				<form>
+					<div style="margin:20px; width:30%; height:30%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
+						<br>
+						<select id="combobox" class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+							type="text" form="form">
+							<option value="">Selecione um...</option>
+							<% include partials/listalocalidades %>
+
+						</select>
+				
+						<br>
+
+						<form method='post' action='/sendSMS'>
+							<input type="submit">
+						</form>
+
+					</div>
+				</form>
+			
+        
+			
+ 
+
 
       </section>
       </div>
