@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 module.exports = {
-	list(callback) {
+
+list(callback) {
 		var sql = 'SELECT * from User';
 		global.connection.query(sql, function(error, rows, fields){
 			if (error) throw error;
@@ -50,6 +51,28 @@ remove(email, callback) {
 		});
 	},
 	
+/*--------------------PREFERENCIAS----------------------*/
+
+readpreferencias(email, callback) {
+		var sql = "SELECT Localidade from Associacao where Email_User=?";
+		global.connection.query(sql, [email], function(error, rows, fields) {
+			if (error) throw error;
+			callback(rows[0]);
+		});
+	},
+	
+createpreferencias(email, data, callback) {
+	var sql = "INSERT INTO Associacao (Localidade, Email_User, tipoAssociacao) VALUES (?,?,?)";
+
+	global.connection.query(
+		sql, [data.Localidade, email, data.tipoAssociacao], function(error, rows, fields) {
+		if (error) throw error;
+		callback(rows[0]);
+		console.log(sql);
+	});
+},
+
+/*--------------------FIM PREFERENCIAS-------------------*/
 	
 areValidCredentials(email, password, callback) {
 		var sql = "SELECT Password FROM User WHERE Email=?";
