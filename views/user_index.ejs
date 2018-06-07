@@ -48,7 +48,7 @@
 
               </div>
 
-             
+
               <div class="card" id="weathercard" style="width: 40%;">
                 <span class="city">Meteorologia</span>
                 <br>
@@ -106,19 +106,19 @@
                 </div>
               </div>
             </div>
-		</div>
-	  </div>
+          </div>
+        </div>
       </header>
 
       <section>
-			<h1>Dados Pessoais</h1>
-			<p></p>
+        <h1>Dados Pessoais</h1>
+        <p></p>
         <div class="container">
 
 
           <div class="panel-body">
 
-            <form align="center" style="width: 50%; margin: 0 auto;"  action="/users/update_user" method="post">
+            <form align="center" style="width: 50%; margin: 0 auto;" action="/users/update_user" method="post">
               <div class="form-group">
                 <label for="Nome">Nome:</label>
                 <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
@@ -143,8 +143,8 @@
                 <label for="Morada">Morada:</label>
                 <input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
               </div>
-			 
-			  
+
+
 
               <button type="submit" class="btn btn-success">Atualizar</button>
 
@@ -154,30 +154,35 @@
         </div>
         </div>
 
-			</section>
-	        <section>
-				<h1>Notificações</h1>
-				<p></p>
-				<form>
-					<div action="/users/create_preferencia" style="margin:20px; width:30%; height:30%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
-						<br>
-						<select id="combobox" class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
-							type="text" form="form">
-							<option value="">Selecione um...</option>
-							<% include partials/listalocalidades %>
+      </section>
+      <section>
+        <h1>Notificações</h1>
+        <p></p>
+        <form>
+          <div action="/users/create_preferencia" style="margin:20px; width:30%; height:30%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
+            <br>
+            <select id="combobox" class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+              type="text" form="form">
+              <option value="">Selecione um...</option>
+              <% include partials/listalocalidades %>
 
-						</select>
-				
-						<br>
+            </select>
 
+            <br>
+
+            <center>
               <button type="submit" style="margin: 0 auto;" class="btn btn-success">Adicionar Localização</button>
+            </center>
 
-					</div>
-				</form>
-			
-        
-			
- 
+            Temperatura Maxima:
+            <input type="number" max="50" min="-40" placeholder="Temp. Max" class="form-control" value=""> Temperatura Minima:
+            <input type="number" max="50" min="-40" placeholder="Temp. Min" class="form-control" value="">
+          </div>
+        </form>
+
+
+
+
 
 
       </section>
