@@ -53,6 +53,64 @@
     </div>
 
   </div>
+
+
+  
+
+  <script>
+
+  function KpiDados(){
+    dados15 = 0;
+
+    <% for (var i of kpiDados) { %>
+
+      dados15 = dados15 + <%= i.receivedLoad15 %>;
+      
+      <% } %>
+
+      return dados15;
+  }
+
+  function dados5(){
+
+    dados5m = 0;
+    <% for (var o of kpiDados) { %>
+
+      dados5m = dados5m + <%= o.receivedLoad5 %>;
+
+      <% } %>
+
+      return dados5m;
+
+  }
+
+  function start(){
+    
+    dados5();
+    KpiDados();
+  }
+
+  window.onload = start;
+
+  </script>
+
+<div class='row'>
+  <div class="col-md-12">
+    <div class="card-header">
+      <i class="dashed-line-chart"></i> Dados em 15 minutos</div>
+    <div class="card-body">
+      <div id="data15" style="height: 250px; max-width: 500px; margin: 0px auto;"></div>
+    </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card-header">
+        <i class="fa fa-pie-chart"></i> Dados em 5 minutos</div>
+      <div class="card-body">
+        <div id="dados5" style="height: 250px; max-width: 500px; margin: 0px auto;"></div>
+      </div>
+      </div>
+
   <div class="row">
     <div class="col-lg-8">
       <!-- Example Bar Chart Card
@@ -110,6 +168,8 @@
           </div>
         </div>
       </div>
+
+      
 
       <!-- Example DataTables Card-->
       <div class="card mb-3">
@@ -263,11 +323,16 @@
     <script src="../public/admin/vendor/chart.js/Chart.min.js"></script>
     <script src="../public/admin/vendor/datatables/jquery.dataTables.js"></script>
     <script src="../public/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Custom scripts for all pages-->
+    <!-- Custom scripts for all pages
     <script src="../public/admin/js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
+     Custom scripts for this page
     <script src="../public/admin/js/sb-admin-datatables.min.js"></script>
     <script src="../public/admin/js/sb-admin-charts.min.js"></script>
+  -->
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="public/js/jquery.canvasjs.min.js"></script>
+    <script src="public/js/canvasjs.min.js"></script>
+    <script src="public/js/admin.js"></script>
   </div>
   </body>
 

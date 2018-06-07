@@ -77,6 +77,7 @@ router.get('/create_preferencia', function(request, response) {
 		errors: []
 	});
 });
+
 router.post('/', function(request, response) {
 
 	var errors = request.validationErrors();	

@@ -3,8 +3,8 @@ const model = require('../models/sms.model');
 const router = express.Router();
 const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
-	apiKey: '57bc054e',
-	apiSecret: 'dmluGy8VJAra7hie'
+	apiKey: '04f7c2df',
+	apiSecret: 'dYMDLLInSB6jt3Lm'
 }, {
 	debug: true
 });
@@ -29,12 +29,12 @@ router.post('/sendSMS', function(request, response){
 function envioNotificacao(request, response){
   global.connection.query('SELECT * from User Where UserID = 22', function(error, users, fields){
     for(var u of users){
-      const to = '351' + u.Contacto 
-  global.connection.query('SELECT * from Regras_User where UserID = 2', function(error, dados, fields){
+      const to = '351' + u.Contacto;
+  global.connection.query('SELECT * from Regras_User where UserID = 22', function(error, dados, fields){
     for (var i of dados){
       const from = 'WFDAI';
-      const text = 'Temperatura superior a ' + i.Temperatura_user + 'graus em ' + i.localidade;
-      if(i.Temperatura_user > i.Temperatura){
+      const text = 'Temperatura superior a ' + i.temperatura_user + ' graus em ' + i.localidade;
+      if(i.temperatura > i.temperatura_user){
         nexmo.message.sendSms(from, to, text, (error, response) => {
           if(error) {
             throw error;
