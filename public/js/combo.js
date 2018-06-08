@@ -85,26 +85,26 @@ elem.onchange = function () {
 //------------------------------------ MAPA METEOROLOGIA----------------------------------
 
 var data = [
-  ['pt-fa', 0],
-  ['pt-li', 1],
-  ['pt-av', 2],
-  ['pt-vc', 3],
-  ['pt-be', 4],
-  ['pt-ev', 5],
-  ['pt-se', 6],
-  ['pt-pa', 7],
-  ['pt-sa', 8],
-  ['pt-br', 9],
-  ['pt-le', 10],
-  ['pt-ba', 11],
-  ['pt-cb', 12],
-  ['pt-gu', 13],
-  ['pt-co', 14],
-  ['pt-po', 15],
-  ['pt-vi', 16],
-  ['pt-vr', 17],
-  ['pt-ma', 18],
-  ['pt-ac', 19],
+  ['pt-fa', 20],
+  ['pt-li', 22],
+  ['pt-av', 21],
+  ['pt-vc', 23],
+  ['pt-be', 24],
+  ['pt-ev', 25],
+  ['pt-se', 26],
+  ['pt-pa', 27],
+  ['pt-sa', 28],
+  ['pt-br', 29],
+  ['pt-le', 20],
+  ['pt-ba', 21],
+  ['pt-cb', 22],
+  ['pt-gu', 23],
+  ['pt-co', 24],
+  ['pt-po', 25],
+  ['pt-vi', 26],
+  ['pt-vr', 27],
+  ['pt-ma', 28],
+  ['pt-ac', 29],
   ['undefined', 20]
 ];
 
@@ -115,11 +115,7 @@ Highcharts.mapChart('container', {
   },
 
   title: {
-      text: 'Highmaps basic demo'
-  },
-
-  subtitle: {
-      text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/pt/pt-all.js">Portugal</a>'
+      text: 'Temperatura Distrito'
   },
 
   mapNavigation: {
@@ -135,7 +131,7 @@ Highcharts.mapChart('container', {
 
   series: [{
       data: data,
-      name: 'Random data',
+      name: 'Distrito',
       states: {
           hover: {
               color: '#BADA55'
