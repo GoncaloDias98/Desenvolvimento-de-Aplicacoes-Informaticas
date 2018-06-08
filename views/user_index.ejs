@@ -110,13 +110,14 @@
         </div>
       </header>
 
-      <section>
+      <section class="bg-light">
         <h1>Dados Pessoais</h1>
         <p></p>
-        <div class="container">
+       <center> <button id="editarbtn" onclick="editarDados()">Editar</button> </center>
+        <div class="container" id>
 
 
-          <div class="panel-body">
+          <div class="panel-body" id="editardados" style="display:none">
 
             <form align="center" style="width: 50%; margin: 0 auto;" action="/users/update_user" method="post">
               <div class="form-group">
@@ -169,6 +170,7 @@
             </select>
 
             <br>
+            <br>  
 
             <center>
               <button type="submit" style="margin: 0 auto;" class="btn btn-success">Adicionar Localização</button>

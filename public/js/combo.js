@@ -156,3 +156,12 @@ Highcharts.mapChart('container', {
 });
 
 //------------------------------------ FIM MAPA METEOROLOGIA----------------------------------
+
+function editarDados() {
+  var x = document.getElementById("editardados");
+  if (x.style.display === "none") {
+      x.style.display = "block";
+  } else {
+      x.style.display = "none";
+  }
+}
