@@ -11,25 +11,86 @@ const nexmo = new Nexmo({
 const mysql = require('mysql');
 
 
-
 router.get('/', function(request, response){
-    if(request.isAuthenticated())
-    response.set('Content-Type', 'text/html');
-    response.render('index', {
+  var user = request.user;
+    if(request.isAuthenticated()){
+      model.readUsers(user.Email, function(users){
+        response.set("Content-Type", "text/html");
+				response.render('index', {
+          users : users,
+          
+      })
+     var mail = user.Email;
+     function userMail(){
+        return mail;
+     }
     })
+  }else{
+    response.set("Content-Type", "text/html");
+		response.render('index', {
+  })
+}
 });
 
+/*
+router.get('/sendSMS/:email'), function(request,response){
+  var user = request.user;
+    model.readUsers(user.email, function(users){
+      for(var u of users){
+        const to = '351' + u.Contacto;
+        const from = 'WFDAI';
+        const text = 'Teste';
+        nexmo.message.sendSms(from,to,text, (error,response) =>{
+          if(error) {
+            throw error;
+          } else if(response.messages[0].status != '0') {
+            console.error(response);
+            throw 'Nexmo returned back a non-zero status';
+          } else {   
+            console.log(response);
+          }
+        });
+      }
+    })
+    response.send(users);
+}
 
+*/
 
-router.post('/sendSMS', function(request, response){
-  envioNotificacao();
+router.post('/sendSMS', function(response){
+  envioSMS();
   response.redirect('/');
 });
 
-function envioNotificacao(request, response){
-  global.connection.query('SELECT * from User Where UserID = 22', function(error, users, fields){
+function envioSMS(request, response){
+  model.readUsers(users.Email, function(users){
     for(var u of users){
       const to = '351' + u.Contacto;
+      const from = 'WFDAI';
+      const text = 'Teste 1';
+    }
+    nexmo.message.sendSms(from,to,text, (error,response) =>{
+      if(error) {
+        throw error;
+      } else if(response.messages[0].status != '0') {
+        console.error(response);
+        throw 'Nexmo returned back a non-zero status';
+      } else {   
+        console.log(response);
+      }
+    });
+    })
+    console.log(response);
+  }
+
+
+
+/*function envioNotificacao(request, response){
+   readUsers(email, callback) 
+  global.connection.query('SELECT * from User Where Email = ?', [email], function(error, users, fields){
+    for(var u of users){
+      const to = '351' + u.Contacto;
+    
   global.connection.query('SELECT * from Regras_User where UserID = 22', function(error, dados, fields){
     for (var i of dados){
       const from = 'WFDAI';
@@ -60,12 +121,15 @@ function envioNotificacao(request, response){
       }
     }
   });
-}   
-});
 }
+     
+});
+  
+}
+
     
 
-/*router.post('/sendSMS', function(request, response) {
+router.post('/sendSMS', function(request, response) {
        
 		global.connection.query('SELECT * from Regras_User WHERE UserID = 2' ,function(error, dados, fields){
 			if (error) throw error;

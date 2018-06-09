@@ -33,7 +33,7 @@ const model = require('./models/user.model');
 
 
 //This function will allow us to retrict the access to the routes
-global.secure = function (type) {
+global.secure = function isAuthenticated(type) {
 	return function (request, response, next) {
 		if (request.isAuthenticated()) {
 			if (type) {

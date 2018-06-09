@@ -1,6 +1,6 @@
 function data15() {
 
-    var chart = new CanvasJS.Chart("GastosPessoal", {
+    var chart = new CanvasJS.Chart("KpiDados", {
         animationEnabled: true,
         theme: "light1", // "light1", "light2", "dark1", "dark2"
         title:{
