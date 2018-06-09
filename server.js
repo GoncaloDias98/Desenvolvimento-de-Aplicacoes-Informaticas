@@ -124,6 +124,7 @@ app.set('views', 'views');
 
 //app.use('/', require('./controllers/index.route'));
 app.use('/public', express.static('public'));
+app.use('/users/public', express.static('public'));
 
 //new
 app.use('/login', require('./controllers/login.route'));
