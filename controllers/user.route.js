@@ -13,6 +13,15 @@ router.get('/', function(request, response) {
 	})	
 });
 
+router.get('/listar',  function(request, response) {
+	model.list(function(users) {
+		response.set("Content-Type", "text/html");
+		response.render('users-list', {
+			data: users
+		});
+	});	
+});
+
 router.get('/registar', function(request, response) {
 	response.set("Content-Type", "text/html");
 	response.render('user_registar', {

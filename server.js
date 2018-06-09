@@ -132,7 +132,6 @@ app.use('/registarempresa', require('./controllers/registarempresa.route'));
 app.use('/update_user', require('./controllers/user.route'));
 app.use('/users', require('./controllers/user.route'));
 app.use('/admin', require('./controllers/admin.route'));
-app.use('/adminreg', require('./controllers/adminreg.route'));
 app.use('/', require('./controllers/sms.route'));
 
 
