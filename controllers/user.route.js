@@ -16,7 +16,7 @@ router.get('/', function(request, response) {
 router.get('/listar',  function(request, response) {
 	model.list(function(users) {
 		response.set("Content-Type", "text/html");
-		response.render('users-list', {
+		response.render('users_list', {
 			data: users
 		});
 	});	
