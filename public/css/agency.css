@@ -699,10 +699,11 @@ ul.social-buttons li a {
   border-radius: 100%;
   outline: none;
   background-color: #212529;
+  margin:auto;
 }
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
-  background-color: #fed136;
+  background-color: #6c6c6c;
 }
 
 /*--------------------------------------------------------------------------------------NOVO ------------------------------------------------------------------------------------- */
