@@ -15,23 +15,43 @@
 						</div>
 						<% } %>
 
-							<form style="width: 50%; margin: 0 auto;" action="/login" method="post">
-								<div class="form-group">
-									<label for="email">Email:</label>
-									<input type="email" class="form-control" id="email-modal" placeholder="Insira o seu Email" name="email">
+							<div class="forecast-table">
+								<div class="container">
+									<div class="forecast-container">
+										<div class="today forecast">
+											<div class="forecast-header" style="font-size:22px; height: 70%">
+												<a style="color: black;"> LOGIN</a>
+												
+											</div>
+											<!-- .forecast-header -->
+											<div class="forecast-content">
+											
+												<form style="width: 50%; margin: 0 auto;" action="/login" method="post">
+													<div class="form-group">
+														<label for="email">Email:</label>
+														<input type="email" class="form-control" id="email-modal" placeholder="Insira o seu Email" name="email">
+													</div>
+													<div class="form-group">
+														<label for="password">Password:</label>
+														<input type="password" class="form-control" id="password" placeholder="Insira a Password" name="password">
+													</div>
+													<center><button style="font-size: 20px; width: 50%; color: black;" type="submit" >Submeter</button> </center>
+												</form>
+											</div>
+											<br>
+										
+											</form>
+										</div>
+									</div>
 								</div>
-								<div class="form-group">
-									<label for="password">Password:</label>
-									<input type="password" class="form-control" id="password" placeholder="Insira a Password" name="password">
-								</div>
-								<button style="width: 30%;" type="submit" class="btn btn-outline-success justify-content-center">Login</button>
-							</form>
-
-
+							</div>
 
 				</div>
 			</div>
 		</div>
+
+
+
 	</header>
 
 
