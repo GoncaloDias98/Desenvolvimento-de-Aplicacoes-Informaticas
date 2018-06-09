@@ -10,6 +10,7 @@ socket.on('smsStatus', function(data){
   response.innerHTML = '<h5>Text message sent to ' + data.number + '</h5>';
 })
 
+
 function envioNotificacao() {
   console.log('send');
   const number = numberInput.value.replace(/\D/g, '');
