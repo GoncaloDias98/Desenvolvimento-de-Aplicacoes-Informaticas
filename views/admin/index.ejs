@@ -1,6 +1,51 @@
 <% include partials/header %>
+ <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+		var test = <%- JSON.stringify(kpiDados) %>;
+		var teste=[["idKPI","Data","Clientes Ativos", "Subscritores",  "Nº de Clientes Total", "Uptime", "Mensagens Retidas", "Bytes Enviados", "Carga Sistema 5 min", "Carga Sistema 15 min"]];
+		
+      function drawChart() {
+		
+				for (i = 0; i < test.length; i++) { 
+				var teste2= [];
+			teste2.push( parseInt(test[i].idKPI));
+			teste2.push( parseInt(test[i].time));
+			teste2.push( parseInt(test[i].activeClients));
+			teste2.push( parseInt(test[i].subscriptions));
+			teste2.push( parseInt(test[i].totalClients));
+			teste2.push( parseInt(test[i].uptime));
+			teste2.push( parseInt(test[i].messages));
+			teste2.push( parseInt(test[i].bytesSent15));
+			teste2.push( parseInt(test[i].receivedLoad5));
+			teste2.push( parseInt(test[i].receivedLoad15));
+			teste.push(teste2);
+		}
+		
+		
+		//google.visualization.DataTable(test);
+        //var data = new google.visualization.DataTable(test);
+		//obj.measurements[0].series.$_time;
+		var data = new  google.visualization.arrayToDataTable(teste);
+		
 
+		//);//[
+        //  ['Year', 'Sales', 'Expenses'],
+          
+         // ['2016',  1030,      540]
+        //]);
 
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+		
+      }
+    </script>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -53,7 +98,9 @@
     </div>
 
   </div>
-
+  <div class="card ">
+	  <div id="chart_div" style="width: 100%; height: 90vh;"></div>
+	</div>
 
   
 
@@ -169,7 +216,7 @@
         </div>
       </div>
 
-      
+    
 
       <!-- Example DataTables Card-->
       <div class="card mb-3">
@@ -180,9 +227,9 @@
 
 
 
-
+<!--
             <script type="text/javascript">
-              var dataSet = [
+            var dataSet = [
                 ["", "", "", "", "", ""]
 
               ];
@@ -303,7 +350,7 @@
 
 
 
-            </script>
+            </script> --->
 
 
 
