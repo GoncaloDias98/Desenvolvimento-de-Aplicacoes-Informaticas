@@ -104,7 +104,7 @@
       </div>
     <form method='post' action='/sendSMS'>
       <% if (isAuthenticated) { %>
-      <input type="hidden" name="user" value="<%= user.Email %>" <% } %>>
+      <input type="hidden" name="user" id='user' value="<%= user.Email %>" <% } %>>
       <input type="submit">
     </form>
   </section>

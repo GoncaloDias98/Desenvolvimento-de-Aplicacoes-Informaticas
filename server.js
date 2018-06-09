@@ -59,12 +59,13 @@ app.use(bodyParser.json(), bodyParser.urlencoded({
 //new
 app.use(cookieParser());
 app.use(session({
-	secret: 'someRandomSecretKey',
-	resave: false,
-	saveUninitialized: false
-
-
-}));
+	cookieName: 'session',
+	secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
+	duration: 30 * 60 * 1000,
+	activeDuration: 5 * 60 * 1000,
+	resave: true,
+    saveUninitialized: true
+  }));
 // NEW 06/05/2018 - HTTPS
 
 app.use(helmet.hsts({
