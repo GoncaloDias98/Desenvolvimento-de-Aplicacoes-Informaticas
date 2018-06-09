@@ -1043,7 +1043,7 @@ width: 100%!important;
 
 .forecast-container {
   width: 70%;
-  background: #bababa;
+  background: #77bafd;
   display: table;
   table-layout: fixed;
   
@@ -1055,7 +1055,7 @@ width: 100%!important;
     display: table-cell;
     vertical-align: top; }
     .forecast-container .forecast:nth-child(even) {
-      background-color: #262936; }
+      background-color: #262e36; }
     @media screen and (max-width: 990px) {
       .forecast-container .forecast {
         display: block;
@@ -1100,7 +1100,7 @@ width: 100%!important;
           display: block;
           width: 100%; } }
     .forecast-container .forecast .forecast-header {
-      background:#626262;
+      background:#5e96f8;
       padding: 10px;
       text-align: center;
       font-weight: 400; }
