@@ -128,7 +128,6 @@ app.use('/public', express.static('public'));
 //new
 app.use('/login', require('./controllers/login.route'));
 app.use('/logout', require('./controllers/logout.route'));
-app.use('/registar', require('./controllers/registar.route'));
 app.use('/registarempresa', require('./controllers/registarempresa.route'));
 app.use('/update_user', require('./controllers/user.route'));
 app.use('/users', require('./controllers/user.route'));
