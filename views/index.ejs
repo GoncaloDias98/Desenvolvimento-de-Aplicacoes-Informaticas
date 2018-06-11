@@ -97,18 +97,6 @@
   </header>
   <!-- Services -->
 
-  
-  <section  class="bg-light">
-      <div class="col-lg-12 text-center"> 
-      <h2 class="section-heading text-uppercase">Envio SMS</h2>
-      </div>
-    <form method='post' action='/sendSMS'>
-      <% if (isAuthenticated) { %>
-      <input type="hidden" name="user" id='user' value="<%= user.Email %>" <% } %>>
-      <input type="submit">
-    </form>
-  </section>
-
   <section  id="services">
     <div class="container">
       <div class="row">
