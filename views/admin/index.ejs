@@ -3,7 +3,7 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 		var test = <%- JSON.stringify(kpiDados) %>;
-		var teste=[["idKPI","Clientes Ativos", "Subscritores",  "Nº de Clientes Total", "Uptime", "Mensagens Retidas", "Bytes Enviados", "Carga Sistema - 5 min", "Carga Sistema - 15 min"]];
+		var teste=[["idKPI","Clientes Ativos", "Subscritores",  "Nº de Clientes Total", "Uptime p/ Hora", "Mensagens Retidas", "Bytes Enviados", "Carga Sistema - 5 min", "Carga Sistema - 15 min"]];
 		
       function drawChart() {
 		
@@ -13,7 +13,7 @@
 			teste2.push( parseInt(test[i].activeClients));
 			teste2.push( parseInt(test[i].subscriptions));
 			teste2.push( parseInt(test[i].totalClients));
-			teste2.push( parseInt(test[i].uptime)/60);
+			teste2.push( parseInt(test[i].uptime)/3600);
 			teste2.push( parseInt(test[i].messages));
 			teste2.push( parseInt(test[i].bytesSent15));
 			teste2.push( parseInt(test[i].receivedLoad5));
