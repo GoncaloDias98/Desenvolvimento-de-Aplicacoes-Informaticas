@@ -157,12 +157,12 @@
       <section>
         <h1>Notificações</h1>
         <p></p>
-        <form>
-          <div action="/users/create_preferencia" style="margin:20px; width:30%; height:30%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
+        <form action='/subscreverTempMax' method='post'>
+          <div action="" style="margin:20px; width:30%; height:30%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
             <br>
-            <select id="combobox" class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+            <select id="combobox" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
               type="text" form="form">
-              <option value="">Selecione um...</option>
+              <option value="localidade">Selecione um...</option>
               <% include partials/listalocalidades %>
 
             </select>
@@ -171,12 +171,12 @@
             <br>  
 
             <center>
-              <button type="submit" style="margin: 0 auto;" class="btn btn-success">Adicionar Localização</button>
+              <button type="submit" style="margin: 0 auto;" action='/subscreverTempMax'class="btn btn-success">Adicionar Localização</button>
             </center>
 
             Temperatura Maxima:
-            <input type="number" max="50" min="-40" placeholder="Temp. Max" class="form-control" value=""> Temperatura Minima:
-            <input type="number" max="50" min="-40" placeholder="Temp. Min" class="form-control" value="">
+            <input type="number" max="50" min="0" placeholder="Temp. Max" name='temperaturaMax' id='temperaturaMax' class="form-control" value=""> Temperatura Minima:
+            <input type="number" max="50" min="-40" placeholder="Temp. Min" name='temperaturaMin' id='temperaturaMin' class="form-control" value="">
           </div>
         </form>
 

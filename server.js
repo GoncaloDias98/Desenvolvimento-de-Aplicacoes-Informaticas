@@ -21,6 +21,13 @@ const options = {
     }
 };
 
+var Pusher = require('pusher');
+
+Pusher.logToConsole = true;
+
+
+
+
 
 const socketio = require('socket.io');
 const Nexmo = require('nexmo');
