@@ -31,6 +31,7 @@ router.get('/', function(request, response){
 router.post('/subscreverTempMax', function(request, response){
   var user = request.user;
   model.readUsers(user.Email, function(){
+    console.log(request.body.localidade);
     const to = '351' + user.Contacto;
     const from = 'WFDAI';
     var data = {
@@ -38,7 +39,7 @@ router.post('/subscreverTempMax', function(request, response){
       'localidade': request.body.localidade,
       'UserID': user.UserID,
     };
-    const text = 'Obrigado por subscrever os nossos serviços.' + data.temperaturaMax_user;
+    const text = 'Obrigado por subscrever os nossos servicos ' + data.temperaturaMax_user;
     model.subscribeTempMax(data, function(){
       nexmo.message.sendSms(from, to, text, (error, response) =>{
         if(error){
