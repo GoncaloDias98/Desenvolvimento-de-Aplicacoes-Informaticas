@@ -79,6 +79,16 @@
             <li class="nav-item">
               <a href="/users" class="nav-link js-scroll-trigger" role="button">Personalizações</a>
             </li>
+			
+			<% if (user.UI === 'Preto') {%>
+					<li class="nav-item">
+						<link rel="stylesheet” href="public/css/agencypreto.css">
+					</li>
+				<% } else { %>
+					<li class="nav-item">
+						<link rel="stylesheet” href="public/css/agency.css">
+					</li>
+				<% } %>
 
             <% if (user.TipoUser === 'admin') {%>
               <li class="nav-item">
