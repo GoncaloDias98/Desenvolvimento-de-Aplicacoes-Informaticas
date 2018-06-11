@@ -7,7 +7,7 @@
 
   <div id="colabListView" class="row">
     <div class="col-md-12">
-      <table class="table">
+      <table class="table" id='Table'>
         <thead>
           <tr>
             <th class="listanome">Nome</th>
@@ -20,31 +20,17 @@
           </tr>
         </thead>
         <tbody>
-
+        <% for (var u of users) { %>
           <tr>
-            <td class="listanome">
-              exemplo
-            </td>
-            <td class="listaemail">
-                exemplo
-            </td>
-            <td class="listanif">
-                exemplo
-            </td>
-            <td class="listcontacto">
-                exemplo
-            </td>
-            <td class="listmorada">
-                exemplo
-            </td>
-            <td class="listempresa">
-                exemplo
-            </td>
-            <td class="listui">
-                exemplo
-            </td>
-
+            <td><%= u.Nome %>></td>
+            <td><%= u.Email %></td>
+            <td><%= u.NIF %></td>
+            <td><%= u.Contacto %></td>
+            <td><%= u.Morada %></td>
+            <td><%= u.Empresa %></td>
+            <td><%= u.UI %></td>
           </tr>
+          <% } %>
         </tbody>
       </table>
 

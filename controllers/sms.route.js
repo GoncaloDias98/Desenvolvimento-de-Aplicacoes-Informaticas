@@ -28,10 +28,6 @@ router.get('/', function(request, response){
 }
 });
 
-router.post('/sendSMS', function(response){
-  notificarTempMax();
-});
-
 router.post('/subscreverTempMax', function(request, response){
   var user = request.user;
   model.readUsers(user.Email, function(){
