@@ -24,14 +24,24 @@
                 <h1>Notificações</h1>
                 <p></p>
                 <form action='/subscreverTempMax' method='post'>
+                  <center>
+                      <button type="button" onclick="editarTempMax()">Temp Max</button>
+                      <button type="button" onclick="editarTempMin()">Temp Min</button>
+                    </center>
+
+
+
                   <div action="" style="margin:20px; width:50%; height:50%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
-                    <br> Temperatura Maxima:
-                    <input type="number" max="50" min="0" placeholder="Temp. Max (<50)" name='temperaturaMax' id='temperaturaMax' class="form-control"
-                      value=""> Temperatura Minima:
+                   <div id="editarTempMax" style="display:none"> 
+                    Temperatura Maxima:
+                    <input type="number" max="50" min="0" placeholder="Temp. Max (<50)" name='temperaturaMax' id='temperaturaMax' class="form-control" value=""> 
+                      </div>
+                      <div id="editarTempMin" style="display:none">
+                    Temperatura Minima:
                     <input type="number" max="50" min="-40" placeholder="Temp. Min (>-40)" name='temperaturaMin' id='temperaturaMin' class="form-control"
                       value="">
                       <br>
-
+                    </div>
                     <select id="combobox" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
                       type="text" form="form">
                       <option value="localidade">Selecione um...</option>

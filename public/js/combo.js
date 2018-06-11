@@ -161,3 +161,21 @@ function editarDados() {
       x.style.display = "none";
   }
 }
+
+function editarTempMax() {
+  var x = document.getElementById("editarTempMax");
+  if (x.style.display === "none") {
+      x.style.display = "block";
+  } else {
+      x.style.display = "none";
+  }
+}
+
+function editarTempMin() {
+  var x = document.getElementById("editarTempMin");
+  if (x.style.display === "none") {
+      x.style.display = "block";
+  } else {
+      x.style.display = "none";
+  }
+}
