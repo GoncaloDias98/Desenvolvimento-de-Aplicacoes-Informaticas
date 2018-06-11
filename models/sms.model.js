@@ -28,8 +28,16 @@ module.exports = {
 		)
 	},
 
-	listSubs(callback){
-		var sql = 'select Email, UserID, Contacto, temperaturaMax_user, temperaturaMin_user, localidade from User, Regras_User where UserID = UserID_Regras';
+	listSubsMax(callback){
+		var sql = 'SELECT Email, UserID, Contacto, temperaturaMax_user, localidade from User, Regras_User where UserID = UserID_Regras';
+		global.connection.query(sql, function(error, rows, fields){
+			if (error) throw error;
+			callback(rows);
+		});
+	},
+
+	listSubsMin(callback){
+		var sql = 'SELECT Email, UserID, Contacto, temperaturaMin_user, localidade from User, Regras_User where UserID = UserID_Regras';
 		global.connection.query(sql, function(error, rows, fields){
 			if (error) throw error;
 			callback(rows);

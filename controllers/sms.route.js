@@ -3,8 +3,8 @@ const model = require('../models/sms.model');
 const router = express.Router();
 const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
-	apiKey: '04f7c2df',
-	apiSecret: 'dYMDLLInSB6jt3Lm'
+	apiKey: '4d34f4fd',
+	apiSecret: 'sQXi83kXCIH8mcGW'
 }, {
 	debug: true
 });
@@ -29,22 +29,7 @@ router.get('/', function(request, response){
 });
 
 router.post('/sendSMS', function(response){
-  model.listSubs(function(users){ 
-    const to = '351' + JSON.stringify(users.Contacto);
-    const from = 'WFDAI';
-    const text = 'Teste 1';
-    nexmo.message.sendSms(from, to, text, (error, response) =>{
-      if(error){
-        throw(error);
-      }else if (response.messages[0].status != '0'){
-        console.error(response);
-        throw 'Nexmo returned back a non-zero status';
-      } else{
-        console.log(response);
-      }
-    });
-  
-})
+  notificarTempMax();
 });
 
 router.post('/subscreverTempMax', function(request, response){
@@ -100,5 +85,42 @@ router.post('/subscreverTempMax', function(request, response){
   })
   response.redirect('/');
   });
+
+  function notificarTempMax(){
+    model.listSubsMax(function (users){
+      for (var i = 0; i < users.length; i++) {
+      const to = '351' + users[i].Contacto;
+      const from = 'WFDAI';
+      if(users[i].temperaturaMax > 24){
+      const text = 'Teste 1 ' + users[i].temperaturaMax_user;
+        nexmo.message.sendSms(from, to, text, (error, response) =>{
+          if(error){
+            throw(error);
+          }else if (response.messages[0].status != '0'){
+            console.error(response);
+            throw 'Nexmo returned back a non-zero status';
+          } else{
+            console.log(response);
+          }
+        }); 
+      }else{
+        const text = 'Teste 2 ' + users[i].temperaturaMax_user;
+        nexmo.message.sendSms(from, to, text, (error, response) =>{
+          if(error){
+            throw(error);
+          }else if (response.messages[0].status != '0'){
+            console.error(response);
+            throw 'Nexmo returned back a non-zero status';
+          } else{
+            console.log(response);
+          }
+      });
+    }
+  }
+    })
+  }
+
+  //setInterval(notificarTempMax, 10000);
+
 
 module.exports = router;
