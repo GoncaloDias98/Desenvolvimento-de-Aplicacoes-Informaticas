@@ -29,8 +29,6 @@
                       <button type="button" onclick="editarTempMin()">Temp Min</button>
                     </center>
 
-
-
                   <div action="" style="margin:20px; width:50%; height:50%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
                    <div id="editarTempMax" style="display:none"> 
                     Temperatura Maxima:
@@ -42,16 +40,18 @@
                       value="">
                       <br>
                     </div>
-                    <select id="combobox" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+                    <select class="selectpicker" id='localidade' name='localidade' >
+                        <option selected>Selecione uma localidade</option>
+                        <% include partials/listalocalidades %>
+                      </select>
+
+                   <!-- <select id="localidade" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
                       type="text" form="form">
-                      <option value="localidade">Selecione um...</option>
+                      <option name='localidadeteste' id='localidadeteste' selected>Selecione um...</option>
                       <% include partials/listalocalidades %>
-
-                    </select>
-
+                    </select> -->
                     <br>
                     <br>
-
                     <center>
                       <button type="submit" style="margin: 0 auto;" action='/subscreverTempMax' class="btn btn-success">Adicionar Localização</button>
                     </center>
