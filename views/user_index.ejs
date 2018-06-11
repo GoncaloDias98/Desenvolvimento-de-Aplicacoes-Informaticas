@@ -17,85 +17,41 @@
         <div class="container">
           <div class="intro-text">
             <div class="ui-widget justify-content-ter">
+              <div style="float: left; width: 40%;overflow: hidden;">
+                <div id="container"></div>
+              </div>
+              <div style="overflow: hidden;">
+                <h1>Notificações</h1>
+                <p></p>
+                <form action='/subscreverTempMax' method='post'>
+                  <div action="" style="margin:20px; width:50%; height:50%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
+                    <br> Temperatura Maxima:
+                    <input type="number" max="50" min="0" placeholder="Temp. Max (<50)" name='temperaturaMax' id='temperaturaMax' class="form-control"
+                      value=""> Temperatura Minima:
+                    <input type="number" max="50" min="-40" placeholder="Temp. Min (>-40)" name='temperaturaMin' id='temperaturaMin' class="form-control"
+                      value="">
+                      <br>
 
-              <form class="form-inline justify-content-r " id="form">
-                <script>
-                  $(document).ready(function () {
-                    $('select').selectpicker();
-                    $('input').addClass(' form-control input-lg text-ter text-xs-cer');
-                    $('li').addClass(' list-group');
-                    $('.selectpicker').selectpicker();
-                  })
-                  $(".selectpicker").change(function () {
-                    alert("Handler for .change() called. .selectpicker");
-                  });
-                </script>
+                    <select id="combobox" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+                      type="text" form="form">
+                      <option value="localidade">Selecione um...</option>
+                      <% include partials/listalocalidades %>
 
+                    </select>
 
-  <div id="container" style="margin-top: -120px;"></div>
+                    <br>
+                    <br>
 
-          
-              <br>
+                    <center>
+                      <button type="submit" style="margin: 0 auto;" action='/subscreverTempMax' class="btn btn-success">Adicionar Localização</button>
+                    </center>
+                  </div>
+                </form>
+
               </div>
 
-
-              <div class="card" id="weathercard" style="width: 40%;">
-                <span class="city">Meteorologia</span>
-                <br>
-                <br>
-                <br>
-                <br>
-                <!--<div class="sun"></div> -->
-                <span class="temp" id="Temperatura"> &#176; </span>
-
-                <div class="forecast clear">
-                  <div class="day tue">
-                    <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa
-                    <br>
-                    <i class="fas fa-tint" id="Humidade"></i> %
-                    <br>
-                  </div>
-                  <div class="day wed">
-                    <i class="far fa-compass" id="DirecaoVento"></i>
-                    <br>
-                    <i class="fas fa-eye" id="Visibilidade"></i> Km
-                    <br>
-                  </div>
-                  <div class="day thu">
-                    <i class="far fa-sun" id="NascerSol"></i>
-                    <br>
-                    <i class="fas fa-sun" id="PorSol"></i>
-                  </div>
-                  <div class="day fri">
-                    <i class="far fa-clock" id="ts"> </i>
-                  </div>
-                </div>
-                <div class="card" style="width: 18rem; display:none; font-size:26px;">
-                  <div class="card-body">
-                    <h5 class="card-title" style="color:black;">Meteorologia</h5>
-                    <div class="card-text" style="color:black;">
-                      <i class="far fa-compass" id="DirecaoVento"></i>
-                      <br>
-                      <i class="fas fa-angle-double-right" id="VelocidadeVento"></i> Kmh
-                      <br>
-                      <i class="fas fa-thermometer-half" id="Temperatura"></i> ºC
-                      <br>
-                      <i class="fas fa-tachometer-alt" id="Pressao"></i> hPa
-                      <br>
-                      <i class="fas fa-tint" id="Humidade"></i> %
-                      <br>
-                      <i class="fas fa-eye" id="Visibilidade"></i> Km
-                      <br>
-                      <i class="far fa-sun" id="NascerSol"></i>
-                      <br>
-                      <i class="fas fa-sun" id="PorSol"></i>
-                      <i class="far fa-clock" id="ts"> </i>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
             </div>
+
           </div>
         </div>
       </header>
@@ -104,8 +60,10 @@
         <h1>Dados Pessoais</h1>
         <p></p>
 
-       <center> <button id="editarbtn" type="button" onclick="editarDados()" >Editar</button> </center>
-        <div class="container" >
+        <center>
+          <button id="editarbtn" type="button" onclick="editarDados()">Editar</button>
+        </center>
+        <div class="container">
 
 
           <div class="panel-body" id="editardados" style="display:none">
@@ -136,7 +94,7 @@
                 <input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
               </div>
               <div class="form-group">
-                  <label for="Tema">Tema:</label>
+                <label for="Tema">Tema:</label>
                 <select>
                   <option value="Original">Original</option>
                   <option value="Preto">Preto</option>
@@ -168,15 +126,17 @@
             </select>
 
             <br>
-            <br>  
+            <br>
 
             <center>
-              <button type="submit" style="margin: 0 auto;" action='/subscreverTempMax'class="btn btn-success">Adicionar Localização</button>
+              <button type="submit" style="margin: 0 auto;" action='/subscreverTempMax' class="btn btn-success">Adicionar Localização</button>
             </center>
 
             Temperatura Maxima:
-            <input type="number" max="50" min="0" placeholder="Temp. Max" name='temperaturaMax' id='temperaturaMax' class="form-control" value=""> Temperatura Minima:
-            <input type="number" max="50" min="-40" placeholder="Temp. Min" name='temperaturaMin' id='temperaturaMin' class="form-control" value="">
+            <input type="number" max="50" min="0" placeholder="Temp. Max" name='temperaturaMax' id='temperaturaMax' class="form-control"
+              value=""> Temperatura Minima:
+            <input type="number" max="50" min="-40" placeholder="Temp. Min" name='temperaturaMin' id='temperaturaMin' class="form-control"
+              value="">
           </div>
         </form>
 
