@@ -31,14 +31,18 @@ router.get('/listar',  function(request, response) {
 	});	
 });
 
-router.get('/empresa',  function(request, response) {
-	model.listempresa(function(users) {
-		response.set("Content-Type", "text/html");
-		response.render('empresa_index', {
-			users: users
-		});
-	});	
+router.get('/empresa', function(request,response){
+	var user = request.user;
+	if(request.isAuthenticated()){
+		model.listempresa(user.Empresa, function(users){
+			response.set("Content-Type", "text/html");
+			response.render('empresa_index', {
+	  		users : users
+  			})
+		})
+	}
 });
+
 
 router.get('/registar', function(request, response) {
 	response.set("Content-Type", "text/html");
@@ -74,7 +78,7 @@ router.post('/registar', function(request, response) {
 			'password': request.body.password,
 			'UI': request.body.UI,
 			};
-			const from = 'WFDAI';
+			const from = 'WFDAI ';
 			const to = '351' + request.body.Contacto;
 			const text = 'Efetue o pagamento no valor de 10€ para: PT50 XXXX XXXX XXXXXXXXXXX XX'
 			nexmo.message.sendSms(from, to, text, (error, response) =>{

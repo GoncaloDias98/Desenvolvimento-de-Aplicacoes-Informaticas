@@ -83,15 +83,19 @@ router.post('/subscreverTempMax', function(request, response){
   });
 
   function notificarTempMax(){
-    model.listTempCidades(function (dados){
-      for (var u = 0; u < dados.length; u++){
+    var user = request.user;
     model.listSubsMax(function (users){
+      model.listTempCidades(function (dados){
+        model.readUsers(user.email, function(dadosUser){
+
+        })
+        for (var u = 0; u < dados.length; u++){
+      const local = dados[u].temperatura;
       for (var i = 0; i < users.length; i++) {
-        var local = dados[u].temperatura;
       const to = '351' + users[i].Contacto;
       const from = 'WFDAI';
       if(users[i].temperaturaMax > local){
-      const text = 'T' + users[i].temperaturaMax_user + ' ' + dados[u].localidade;
+      const text = 'Teste 1' + users[i].temperaturaMax_user + ' ' + users[i].localidade_user;
         nexmo.message.sendSms(from, to, text, (error, response) =>{
           if(error){
             throw(error);
@@ -116,15 +120,15 @@ router.post('/subscreverTempMax', function(request, response){
       }); 
     } 
   }
-})
-    }
+}
+    })
   })
 }
 
 
 
 
-  //setInterval(notificarTempMax, 10000);
+// setInterval(notificarTempMax, 10000);
 
 
 module.exports = router;
