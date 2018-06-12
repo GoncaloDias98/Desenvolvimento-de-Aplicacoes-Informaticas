@@ -1,0 +1,42 @@
+<% include admin/partials/headerempresa %>
+
+<div class="panel-body" id="editardados" style="">
+    <% if (errors.length) { %>
+      <div class="alert alert-danger">
+        <ul>
+          <% for (var e of errors) { %>
+            <li>
+              <%= e.msg %>
+            </li>
+            <% }%>
+        </ul>
+      </div>
+      <% } %>
+        <form align="center" style="width: 50%; margin: 0 auto;" method="post">
+          <div class="form-group">
+            <label for="Nome">Nome:</label>
+            <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
+          </div>
+          <div class="form-group">
+            <label for="Email">Email:</label>
+            <input type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>" disabled>
+          </div>
+          <div class="form-group">
+            <label for="Contacto">Contacto:</label>
+            <input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
+          </div>
+          <div class="form-group">
+            <label for="Tema">Tema:</label>
+            <select id="UI">
+              <option value="Original" selected="selected">Original</option>
+              <option value="Preto">Preto</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success">Atualizar</button>
+
+        </form>
+
+  </div>
+</div>
+
+<% include admin/partials/footer %>

@@ -26,6 +26,14 @@ read(email, callback) {
 		});
 	},
 
+	readEmpresas(UserID, callback) {
+		var sql = "SELECT * from User where UserID=?";
+		global.connection.query(sql, [UserID], function(error, rows, fields) {
+			if (error) throw error;
+			callback(rows[0]);
+		});
+	},
+
 create(data, callback) {
 	var sql = "INSERT INTO User (Nome, Password, Email, NIF, Contacto, Morada, TipoUser, Empresa, UI) VALUES (?,?,?,?,?,?,?,?,?)";
 	var salt = bcrypt.genSaltSync(10);
@@ -50,6 +58,14 @@ update(email, data, callback) {
 			callback(rows[0]);
 		});
 	},
+
+updateFuncionario(UserID, data, callback){
+	var sql = 'UPDATE User SET Nome=?, Contacto=?, UI=? WHERE UserID=?';
+	global.connection.query(sql, [data.Nome, data.Contacto, data.UI, UserID], function(error, rows){
+		if(error) throw error;
+		callback(rows[0]);
+	});
+},
 
 remove(email, callback) {
 		var sql = "DELETE from `mydb`.`User` WHERE Email=?";

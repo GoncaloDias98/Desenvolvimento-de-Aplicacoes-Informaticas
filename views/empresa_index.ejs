@@ -22,7 +22,7 @@
         <tbody>
         <% for (var u of users) { %>
           <tr>
-            <td><%= u.Nome %></td>
+            <td><a href='/users/<%= u.UserID %>'><%= u.Nome %></a></td>
             <td><%= u.Email %></td>
             <td><%= u.NIF %></td>
             <td><%= u.Contacto %></td>
