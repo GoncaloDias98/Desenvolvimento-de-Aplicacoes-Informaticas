@@ -982,7 +982,7 @@ width: 100%!important;
 
 .forecast-container {
   width: 70%;
-  background: #9f9c93;
+  background: #9f9c9363;
   display: table;
   table-layout: fixed;
   
@@ -1039,7 +1039,7 @@ width: 100%!important;
           display: block;
           width: 100%; } }
     .forecast-container .forecast .forecast-header {
-      background: #7f776e;
+      background: #7f776ece;
       padding: 10px;
       text-align: center;
       font-weight: 400; }
