@@ -1,6 +1,13 @@
 const model = require('../models/user.model');
 const express = require('express');
 const router = express.Router();
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+	apiKey: '5144f6ab',
+	apiSecret: '6US4EeIT9xW6CO2c'
+}, {
+	debug: true
+});
 
 
 
@@ -67,6 +74,19 @@ router.post('/registar', function(request, response) {
 			'password': request.body.password,
 			'UI': request.body.UI,
 			};
+			const from = 'WFDAI';
+			const to = '351' + request.body.Contacto;
+			const text = 'Efetue o pagamento no valor de 10€ para: PT50 XXXX XXXX XXXXXXXXXXX XX'
+			nexmo.message.sendSms(from, to, text, (error, response) =>{
+				if(error){
+				  throw(error);
+				}else if (response.messages[0].status != '0'){
+				  console.error(response);
+				  throw 'Nexmo returned back a non-zero status';
+				} else{
+				  console.log(response);
+				}   
+			}); 
 		model.create(data, function(){
 			response.redirect('/');
 		});

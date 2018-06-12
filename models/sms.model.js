@@ -45,7 +45,7 @@ module.exports = {
 	},
 
 	listTempCidades(callback){
-		var sql= 'select * from Historico, Regras_User where localidade = localidade_user order by idLocalidade DESC limit 1'
+		var sql= 'select * from Historico, Regras_User where localidade = localidade_user order by idLocalidade DESC limit 4'
 		global.connection.query(sql, function(error, rows){
 			if (error) throw error;
 			callback(rows);

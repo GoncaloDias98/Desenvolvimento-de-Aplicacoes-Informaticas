@@ -87,10 +87,11 @@ router.post('/subscreverTempMax', function(request, response){
       for (var u = 0; u < dados.length; u++){
     model.listSubsMax(function (users){
       for (var i = 0; i < users.length; i++) {
+        var local = dados[u].temperatura;
       const to = '351' + users[i].Contacto;
       const from = 'WFDAI';
-      if(users[i].temperaturaMax > dados[i].temperatura){
-      const text = 'Teste 1 ' + users[i].temperaturaMax_user + ' ' + dados.localidade;
+      if(users[i].temperaturaMax > local){
+      const text = 'T' + users[i].temperaturaMax_user + ' ' + dados[u].localidade;
         nexmo.message.sendSms(from, to, text, (error, response) =>{
           if(error){
             throw(error);
