@@ -4,16 +4,18 @@
 	<header class="masthead">
 		<div class="container">
 			<div class="intro-text" align="center">
-				<div class="forecast-table">
+
+				<div class="forecast-table" style="height:80%">
 					<div class="container">
 						<div class="forecast-container">
 							<div class="today forecast">
 								<div class="forecast-header" style="font-size:18px; height: 60%">
-										<a  href="/registar"> Subscritor</a>
-										<a style="color: black;">/</a>
-										<a style="color: black;">Empresa</a>
-										<a style="color: black;">/</a>
-										<a href="/user/registarfree">Free</a>
+
+									<a href="/registar"> Subscritor</a>
+									<a style="color: black;">/</a>
+									<a href="/registarempresa">Empresa</a>
+									<a style="color: black;">/</a>
+									<a style="color: black;">Free</a>
 								</div>
 								<!-- .forecast-header -->
 								<div class="forecast-content">
@@ -24,6 +26,7 @@
 										<% if (errors.length) { %>
 											<div class="alert alert-danger">
 												<ul>
+
 													<% for (var e of errors) { %>
 														<li>
 															<%= e.msg %>
@@ -32,15 +35,18 @@
 												</ul>
 											</div>
 											<% } %>
-												<form style="width:50%; margin: 0 auto;" action="/registarempresa" method="post">
+
+												<form style="width:50%; margin: 0 auto;" action="/users/registarfree" method="post">
 													<div class="form-group">
-														<input style="height:25px" type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
+														<input pattern="[a-zA-Z0-9À-ž\s]{3,20}$" style="height:25px" type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome"
+														    name="Nome" value="<%= user.Nome %>">
 													</div>
 													<div class="form-group">
 														<input style="height:25px" type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
 													</div>
 													<div class="form-group">
-														<input style="height:25px" type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>">
+														<input style="height:25px" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" class="form-control" id="type"
+														    placeholder="Email" name="Email" value="<%= user.Email %>">
 													</div>
 													<div class="form-group">
 														<input style="height:25px" type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
@@ -53,22 +59,14 @@
 														<input style="height:25px" type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
 													</div>
 													<div class="form-group">
-															<input style="height:25px" type="text" placeholder="Nome da empresa" class="form-control" id="empresa" name="empresa">
-														</div>
-													<div class="form-group">
-														<input style="height:25px" type="text" placeholder="100€" class="form-control" id="preco" name="preco" disabled>
-													</div>
-													
-													<div class="form-group">
 														<label for="Tema">Tema:</label>
-														<select>
-															<option value="Original">Original</option>
+														<select id="UI">
+															<option value="Original" selected="selected">Original</option>
 															<option value="Preto">Preto</option>
 														</select>
 													</div>
 
-
-													<button type="submit" class="btn btn-success">Subscrever</button>
+													<button type="submit" class="btn btn-success">Registar</button>
 
 												</form>
 									</div>

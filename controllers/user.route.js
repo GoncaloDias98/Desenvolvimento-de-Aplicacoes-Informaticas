@@ -143,6 +143,47 @@ router.post('/registar', function(request, response) {
 	}
 });
 
+router.get('/registarfree', function(request, response) {
+	response.set("Content-Type", "text/html");
+	response.render('free_registar', {
+		isNew: true,
+		user: {},
+		errors: []
+	});
+});
+router.post('/registarfree', function(request, response) {
+
+	request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({min: 5, max: 10});
+	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({min: 8, max: 15});
+	request.checkBody('Email', 'Email should have between 6 and 150 chars').isLength({min: 6, max: 150});
+	request.checkBody('NIF', 'NIF should have 9 chars').isLength({min: 9, max: 9});
+	request.checkBody('Contacto', 'Contacto should have between 0 and 150 chars').isLength({min: 0, max: 150});
+	request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({min: 0, max: 20});
+	var errors = request.validationErrors();	
+	if (errors) {
+		response.render('free_registar', {
+			isNew: true,
+			user: {},
+			errors: errors
+		});
+	}else{
+		var data = {
+			'Nome': request.body.Nome,
+			'Email': request.body.Email,
+			'NIF': request.body.NIF,
+			'Contacto': request.body.Contacto,
+			'Morada': request.body.Morada,
+			'tipo': "free",
+			'password': request.body.password,
+			'UI': request.body.UI,
+			};
+			
+	
+
+	}
+});
+
+
 router.get('/:UserID',  function(request, response) {
 	model.readEmpresas(request.params.UserID, function(user) {
 			response.set("Content-Type", "text/html");
