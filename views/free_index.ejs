@@ -1,0 +1,154 @@
+<% include partials/headerforms %>
+
+  <!-- Pagina a apresentar -->
+  <header class="masthead">
+    <div class="container">
+      <div class="intro-text">
+        <div class="ui-widget justify-content-ter">
+          <div style="float: left; width: 40%;overflow: hidden; margin-top:-150px">
+            <div id="container"></div>
+          </div>
+          <div style="overflow: hidden;">
+            <h1>Notificações</h1>
+            <p></p>
+            <form action='/subscreverTempMax' method='post'>
+              <center>
+                <button class="btn btn-info" type="button" onclick="editarTempMax()">Temp Max</button>
+              </center>
+
+              <div action="" style="margin:20px; width:50%; height:50%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
+                <div id="editarTempMax" style="display:none">
+                  Temperatura Maxima:
+                  <input type="number" max="50" min="0" placeholder="Temp. Max (<50)" name='temperaturaMax' id='temperaturaMax' class="form-control"
+                    value="">
+
+                  <select class="selectpicker" id='localidade' name='localidade'>
+                    <option selected>Selecione uma localidade</option>
+                    <% include partials/listalocalidades %>
+                  </select>
+
+                  <!-- <select id="localidade" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+                      type="text" form="form">
+                      <option name='localidadeteste' id='localidadeteste' selected>Selecione um...</option>
+                      <% include partials/listalocalidades %>
+                    </select> -->
+                  <br>
+                  <center>
+                    <button type="submit" style="margin: 0 auto;" action='/subscreverTempMax' class="btn btn-success">Adicionar Localização</button>
+                  </center>
+                </div>
+            </form>
+            </div>
+            <form action='/subscreverTempMin' method='post'>
+              <center>
+                <button class="btn btn-info" type="button" onclick="editarTempMin()">Temp Min</button>
+              </center>
+
+              <div action="" style="margin:20px; width:50%; height:50%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
+                <div id="editarTempMax" style="display:none">
+                  Temperatura Maxima:
+                  <input type="number" max="50" min="0" placeholder="Temp. Max (<50)" name='temperaturaMax' id='temperaturaMax' class="form-control"
+                    value="">
+                </div>
+                <div id="editarTempMin" style="display:none">
+                  Temperatura Minima:
+                  <input type="number" max="50" min="-40" placeholder="Temp. Min (>-40)" name='temperaturaMin' id='temperaturaMin' class="form-control"
+                    value="">
+                  <select class="selectpicker" id='localidade' name='localidade'>
+                    <option selected>Selecione uma localidade</option>
+                    <% include partials/listalocalidades %>
+                  </select>
+
+                  <!-- <select id="localidade" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+                      type="text" form="form">
+                      <option name='localidadeteste' id='localidadeteste' selected>Selecione um...</option>
+                      <% include partials/listalocalidades %>
+                    </select> -->
+                  <br>
+                  <br>
+                  <center>
+                    <button type="submit" style="margin: 0 auto;" action='/subscreverTempMin' class="btn btn-success">Adicionar Localização</button>
+                  </center>
+                </div>
+            </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-light">
+    <h1>Dados Pessoais</h1>
+    <p></p>
+
+    <center>
+      <button style="width: 10%" id="editarbtn" type="button" onclick="editarDados()">Editar</button>
+    </center>
+    <div class="container">
+
+
+      <div class="panel-body" id="editardados" style="display:none">
+
+            <form align="center" style="width: 50%; margin: 0 auto;" action="/users/update_user" method="post">
+              <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
+              </div>
+              <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>" disabled>
+              </div>
+              <div class="form-group">
+                <label for="NIF">NIF:</label>
+                <input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
+              </div>
+              <div class="form-group">
+                <label for="Contacto">Contacto:</label>
+                <input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
+              </div>
+              <div class="form-group">
+                <label for="Morada">Morada:</label>
+                <input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
+              </div>
+              <div class="form-group">
+                <label for="Tema">Tema:</label>
+                <select id="UI">
+                  <option value="Original" selected="selected">Original</option>
+                  <option value="Preto">Preto</option>
+                </select>
+              </div>
+
+
+
+              <button type="submit" class="btn btn-success">Atualizar</button>
+
+            </form>
+
+      </div>
+    </div>
+
+  </section>
+  <section style="display:none">
+      
+      <form action='/subscreverTempMax' method='post'>
+       
+          <select id="combobox" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+            type="text" form="form">
+
+      </form>
+
+
+
+
+
+
+  </section>  
+
+  <% include partials/footer %>
