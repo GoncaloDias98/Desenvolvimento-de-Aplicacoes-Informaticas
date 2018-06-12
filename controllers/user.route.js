@@ -83,7 +83,7 @@ router.post('/empresareg', function(request, response) {
 		model.create(data, function(){
 			response.redirect('/users/empresa');
 		});
-	}
+	}	
 })
 });
 
@@ -140,6 +140,37 @@ router.post('/registar', function(request, response) {
 		});
 	
 
+	}
+});
+
+router.get('/:UserID',  function(request, response) {
+	model.readEmpresas(request.params.UserID, function(user) {
+			response.set("Content-Type", "text/html");
+			response.render('empresa_edit_user', {
+				isNew: false,
+				user : user,
+				errors: []
+			})
+		})
+		});
+
+router.post('/:UserID', function(request, response) {
+	var data = {
+		'Nome': request.body.Nome,
+		'Email': request.body.Email,
+		'Contacto': request.body.Contacto,
+		'UI': request.body.UI,
+	};
+	var errors = request.validationErrors();
+	if (errors) {
+		data.Nome = request.user.Nome;
+		response.render('empresa_edit_user', {
+			user: data, errors: errors
+		})
+	}else{
+		model.updateFuncionario(request.params.UserID, data, function(){
+			response.redirect('/users/empresa');
+		});
 	}
 });
 
