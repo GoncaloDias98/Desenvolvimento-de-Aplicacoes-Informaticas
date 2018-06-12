@@ -6,31 +6,12 @@ const app = express();
 const validator = require('express-validator');
 const bcrypt = require('bcrypt');
 
-const helmet = require('helmet');
-const options = {
-    checkExpirationInterval: 1000 * 60 * 15,// 15 min // How frequently expired sessions will be cleared; milliseconds.
-    expiration: 1000 * 60 * 60 * 24 * 7,// 1 week // The maximum age of a valid session; milliseconds.
-    createDatabaseTable: true,// Whether or not to create the sessions database table, if one does not already exist.
-    schema: {
-        tableName: 'sessions',
-        columnNames: {
-            session_id: 'session_id',
-            expires: 'expires',
-            data: 'data'
-        }
-    }
-};
-
-var Pusher = require('pusher');
-
-Pusher.logToConsole = true;
 
 
 
 
 
 const socketio = require('socket.io');
-const Nexmo = require('nexmo');
 const ejs = require('ejs');
 //new
 const cookieParser = require('cookie-parser');
@@ -74,11 +55,6 @@ app.use(session({
     saveUninitialized: true
   }));
 // NEW 06/05/2018 - HTTPS
-
-app.use(helmet.hsts({
-	maxAge: 7776000000,
-	includeSubdomains: true
-}));
 
 app.set('trust proxy', 1);
 

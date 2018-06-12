@@ -43,7 +43,7 @@ router.get('/empresa', function(request,response){
 	}
 });
 
-router.get('/empresa/registar', function(request, response) {
+router.get('/empresareg', function(request, response) {
 	response.set("Content-Type", "text/html");
 	response.render('empresa_registar_users', {
 		isNew: true,
@@ -51,8 +51,10 @@ router.get('/empresa/registar', function(request, response) {
 		errors: []
 	});
 });
-router.post('/empresa/registar', function(request, response) {
 
+router.post('/empresareg', function(request, response) {
+	var user = request.user;
+	model.read(user.Email, function(users){
 	request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({min: 5, max: 10});
 	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({min: 8, max: 15});
 	request.checkBody('Email', 'Email should have between 6 and 150 chars').isLength({min: 6, max: 150});
@@ -75,14 +77,14 @@ router.post('/empresa/registar', function(request, response) {
 			'Morada': request.body.Morada,
 			'tipo': "subscritor individual",
 			'password': request.body.password,
+			'empresa' : user.Empresa,
 			'UI': request.body.UI,
 			};
 		model.create(data, function(){
-			response.redirect('/empresa');
+			response.redirect('/users/empresa');
 		});
-	
-
 	}
+})
 });
 
 
