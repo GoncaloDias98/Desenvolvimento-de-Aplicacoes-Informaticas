@@ -22,13 +22,14 @@
         <tbody>
         <% for (var u of users) { %>
           <tr>
-            <td><a href='/users/<%= u.UserID %>'><%= u.Nome %></a></td>
+            <td><%= u.Nome %></a></td>
             <td><%= u.Email %></td>
             <td><%= u.NIF %></td>
             <td><%= u.Contacto %></td>
             <td><%= u.Morada %></td>
             <td><%= u.Empresa %></td>
             <td><%= u.UI %></td>
+            <td><a href='/users/<%= u.UserID %>'><i class="fas fa-cogs"'></i></a></td>
           </tr>
           <% } %>
         </tbody>
