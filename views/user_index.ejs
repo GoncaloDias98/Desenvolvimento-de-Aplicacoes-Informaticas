@@ -91,17 +91,7 @@
 
 
       <div class="panel-body" id="editardados" style="display:none">
-        <% if (errors.length) { %>
-          <div class="alert alert-danger">
-            <ul>
-              <% for (var e of errors) { %>
-                <li>
-                  <%= e.msg %>
-                </li>
-                <% }%>
-            </ul>
-          </div>
-          <% } %>
+
             <form align="center" style="width: 50%; margin: 0 auto;" action="/users/update_user" method="post">
               <div class="form-group">
                 <label for="Nome">Nome:</label>
