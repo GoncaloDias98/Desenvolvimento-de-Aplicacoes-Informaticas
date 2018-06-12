@@ -87,7 +87,6 @@ router.post('/subscreverTempMax', function(request, response){
     model.listSubsMax(function (users){
       model.listTempCidades(function (dados){
         model.readUsers(user.email, function(dadosUser){
-
         })
         for (var u = 0; u < dados.length; u++){
       const local = dados[u].temperatura;

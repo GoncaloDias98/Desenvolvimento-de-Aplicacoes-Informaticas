@@ -13,14 +13,25 @@ const nexmo = new Nexmo({
 
 
 router.get('/', function(request, response) {
-	model.list(function(users) {
-		response.set("Content-Type", "text/html");
-		response.render('user_index', {
-			data: users,
-			errors: []
+	var user = request.user;
+	if(request.isAuthenticated()){
+		model.list(function(users){
+			response.set('Content-Type', 'text/html');
+			if(user.Pagamento === 'Pago'){
+				response.render('user_index', {
+					users : users
+				})
+			}else{
+				response.render('sub_index',{
+					users : users
+				})
+			}
 		})
-	})	
-});
+	}else{
+		response.redirect('/');
+	}
+	})
+
 
 router.get('/listar',  function(request, response) {
 	model.list(function(users) {
@@ -121,6 +132,7 @@ router.post('/registar', function(request, response) {
 			'tipo': "subscritor individual",
 			'password': request.body.password,
 			'UI': request.body.UI,
+			'Pagamento': 'Pago',
 			};
 			const from = 'WFDAI ';
 			const to = '351' + request.body.Contacto;
