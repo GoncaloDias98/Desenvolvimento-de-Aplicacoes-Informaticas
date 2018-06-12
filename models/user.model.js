@@ -35,11 +35,11 @@ read(email, callback) {
 	},
 
 create(data, callback) {
-	var sql = "INSERT INTO User (Nome, Password, Email, NIF, Contacto, Morada, TipoUser, Empresa, UI) VALUES (?,?,?,?,?,?,?,?,?)";
+	var sql = "INSERT INTO User (Nome, Password, Email, NIF, Contacto, Morada, TipoUser, Empresa, UI, Pagamento) VALUES (?,?,?,?,?,?,?,?,?,?)";
 	var salt = bcrypt.genSaltSync(10);
 	var hash = bcrypt.hashSync(data.password, salt);	
 	global.connection.query(
-		sql, [data.Nome, hash, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.ui], function(error, rows, fields) {
+		sql, [data.Nome, hash, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.ui, data.Pagamento], function(error, rows, fields) {
 		if (error) throw error;
 		callback(rows[0]);
 		console.log(sql);

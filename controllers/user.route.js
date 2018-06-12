@@ -132,6 +132,7 @@ router.post('/registar', function(request, response) {
 			'tipo': "subscritor individual",
 			'password': request.body.password,
 			'UI': request.body.UI,
+			'Pagamento': 'Pago',
 			};
 			const from = 'WFDAI ';
 			const to = '351' + request.body.Contacto;
