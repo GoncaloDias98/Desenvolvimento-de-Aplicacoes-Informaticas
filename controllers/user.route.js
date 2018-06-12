@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 
+
+
 router.get('/', function(request, response) {
 	model.list(function(users) {
 		response.set("Content-Type", "text/html");
@@ -17,6 +19,15 @@ router.get('/listar',  function(request, response) {
 	model.list(function(users) {
 		response.set("Content-Type", "text/html");
 		response.render('users_list', {
+			users: users
+		});
+	});	
+});
+
+router.get('/empresa',  function(request, response) {
+	model.listempresa(function(users) {
+		response.set("Content-Type", "text/html");
+		response.render('empresa_index', {
 			users: users
 		});
 	});	
@@ -54,6 +65,7 @@ router.post('/registar', function(request, response) {
 			'Morada': request.body.Morada,
 			'tipo': "subscritor individual",
 			'password': request.body.password,
+			'UI': request.body.UI,
 			};
 		model.create(data, function(){
 			response.redirect('/');
@@ -98,7 +110,8 @@ router.post('/update_user', function(request, response) {
 			'NIF': request.body.NIF,
 			'Contacto': request.body.Contacto,
 			'Morada': request.body.Morada,
-			'tipo': "subscritor individual",
+			'tipo': "",
+			'UI': request.body.UI,
 			};
 		model.update(request.body.Email, data, function(){
 			response.redirect('/');

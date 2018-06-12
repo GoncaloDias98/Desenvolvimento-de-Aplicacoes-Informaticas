@@ -34,7 +34,7 @@ router.post('/', function(request, response) {
 			'NIF': request.body.NIF,
 			'Contacto': request.body.Contacto,
 			'Morada': request.body.Morada,
-			'tipo': 'subscritor empresa',
+			'tipo': 'empresa',
 			'password': request.body.password,
 			};
 

@@ -8,6 +8,14 @@ list(callback) {
 			callback(rows);
 		});
 	},
+	
+listempresa(empresa,callback) {
+		var sql = 'SELECT * from User where Empresa=? ';
+		global.connection.query(sql, [empresa], function(error, rows, fields){
+			if (error) throw error;
+			callback(rows);
+		});
+	},
 
 
 read(email, callback) {
@@ -33,11 +41,11 @@ create(data, callback) {
 
 
 update(email, data, callback) {
-		var sql = "UPDATE `mydb`.`User` SET `Nome`=?, `Password`=?, `NIF`=?, `Contacto`=?, `Morada`=?, `TipoUser`=?, `Empresa`=? WHERE `Email`=?";
+		var sql = "UPDATE `mydb`.`User` SET `Nome`=?, `Password`=?, `NIF`=?, `Contacto`=?, `Morada`=?, `TipoUser`=?, `Empresa`=?,`UI`=?  WHERE `Email`=?";
 		var salt = bcrypt.genSaltSync(10);		
 		var hash = bcrypt.hashSync(data.password, salt);
 		global.connection.query(
-			sql, [data.Nome, hash,  data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, email], function(error, rows, fields) {
+			sql, [data.Nome, hash,  data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.UI, email], function(error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);
 		});

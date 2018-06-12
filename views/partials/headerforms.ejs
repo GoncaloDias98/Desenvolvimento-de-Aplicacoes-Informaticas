@@ -89,6 +89,13 @@
             <li class="nav-item">
               <a href="/admin" class="nav-link js-scroll-trigger" role="button">Gestão</a>
             </li>
+			
+			<% } else { %>
+				<% if (user.TipoUser === 'subscritor empresa') {%>
+            <li class="nav-item">
+              <a href="/user/empresa" class="nav-link js-scroll-trigger" role="button">Gestão Trabalhadores</a>
+            </li>
+				<% } %>
             <% } %>
             <% } %>
 
