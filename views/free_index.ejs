@@ -5,73 +5,10 @@
     <div class="container">
       <div class="intro-text">
         <div class="ui-widget justify-content-ter">
-          <div style="float: left; width: 40%;overflow: hidden; margin-top:-150px">
+          
             <div id="container"></div>
           </div>
-          <div style="overflow: hidden;">
-            <h1>Notificações</h1>
-            <p></p>
-            <form action='/subscreverTempMax' method='post'>
-              <center>
-                <button class="btn btn-info" type="button" onclick="editarTempMax()">Temp Max</button>
-              </center>
-
-              <div action="" style="margin:20px; width:50%; height:50%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
-                <div id="editarTempMax" style="display:none">
-                  Temperatura Maxima:
-                  <input type="number" max="50" min="0" placeholder="Temp. Max (<50)" name='temperaturaMax' id='temperaturaMax' class="form-control"
-                    value="">
-
-                  <select class="selectpicker" id='localidade' name='localidade'>
-                    <option selected>Selecione uma localidade</option>
-                    <% include partials/listalocalidades %>
-                  </select>
-
-                  <!-- <select id="localidade" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
-                      type="text" form="form">
-                      <option name='localidadeteste' id='localidadeteste' selected>Selecione um...</option>
-                      <% include partials/listalocalidades %>
-                    </select> -->
-                  <br>
-                  <center>
-                    <button type="submit" style="margin: 0 auto;" action='/subscreverTempMax' class="btn btn-success">Adicionar Localização</button>
-                  </center>
-                </div>
-            </form>
-            </div>
-            <form action='/subscreverTempMin' method='post'>
-              <center>
-                <button class="btn btn-info" type="button" onclick="editarTempMin()">Temp Min</button>
-              </center>
-
-              <div action="" style="margin:20px; width:50%; height:50%; margin-left:auto; margin-right:auto" class="ui-widget justify-contenter">
-                <div id="editarTempMax" style="display:none">
-                  Temperatura Maxima:
-                  <input type="number" max="50" min="0" placeholder="Temp. Max (<50)" name='temperaturaMax' id='temperaturaMax' class="form-control"
-                    value="">
-                </div>
-                <div id="editarTempMin" style="display:none">
-                  Temperatura Minima:
-                  <input type="number" max="50" min="-40" placeholder="Temp. Min (>-40)" name='temperaturaMin' id='temperaturaMin' class="form-control"
-                    value="">
-                  <select class="selectpicker" id='localidade' name='localidade'>
-                    <option selected>Selecione uma localidade</option>
-                    <% include partials/listalocalidades %>
-                  </select>
-
-                  <!-- <select id="localidade" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
-                      type="text" form="form">
-                      <option name='localidadeteste' id='localidadeteste' selected>Selecione um...</option>
-                      <% include partials/listalocalidades %>
-                    </select> -->
-                  <br>
-                  <br>
-                  <center>
-                    <button type="submit" style="margin: 0 auto;" action='/subscreverTempMin' class="btn btn-success">Adicionar Localização</button>
-                  </center>
-                </div>
-            </form>
-            </div>
+         
           </div>
 
         </div>
