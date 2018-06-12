@@ -4,78 +4,77 @@
 	<header class="masthead">
 		<div class="container">
 			<div class="intro-text" align="center">
-				<div class="ui-widget justify-content-center">
+				<div class="forecast-table">
+					<div class="container">
+						<div class="forecast-container">
+							<div class="today forecast">
+								<div class="forecast-header" style="font-size:18px; height: 60%">
 
-					<% if (errors.length) { %>
-						<div class="alert alert-danger">
-							<ul>
-								<% for (var e of errors) { %>
-									<li>
-										<%= e.msg %>
-									</li>
-									<% }%>
-							</ul>
-						</div>
-						<% } %>
-							<div class="forecast-table">
-								<div class="container">
-									<div class="forecast-container">
-										<div class="today forecast">
-											<div class="forecast-header" style="font-size:22px; height: 70%">
-												<h2>Registar </h2>
-												<a style="color: black;">Empresa</a>
-												<a style="color: black;">/</a>
-												<a href="/users/registar"> Subscritor</a>
+									<a style="color: black;">Empresa</a>
+									<a style="color: black;">/</a>
+									<a href="/users/registar"> Subscritor</a>
+								</div>
+								<!-- .forecast-header -->
+								<div class="forecast-content">
+									<div style="margin-top:-20px" class="ui-widget justify-content-center">
+										<center>
+											<h3>Registar </h3>
+										</center>
+										<% if (errors.length) { %>
+											<div class="alert alert-danger">
+												<ul>
+													<% for (var e of errors) { %>
+														<li>
+															<%= e.msg %>
+														</li>
+														<% }%>
+												</ul>
 											</div>
-											<!-- .forecast-header -->
-											<div class="forecast-content">
+											<% } %>
 												<form style="width:50%; margin: 0 auto;" action="/registarempresa" method="post">
 													<div class="form-group">
-														<label for="Nome">Nome:</label>
 														<input style="height:25px" type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
 													</div>
 													<div class="form-group">
-														<label for="password">Password:</label>
 														<input style="height:25px" type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
 													</div>
 													<div class="form-group">
-														<label for="Email">Email:</label>
 														<input style="height:25px" type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>">
 													</div>
 													<div class="form-group">
-														<label for="NIF">NIF</label>
 														<input style="height:25px" type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
 													</div>
 													<div class="form-group">
-														<label for="Contacto">Contacto:</label>
-														<input style="height:25px" type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
+														<input style="height:25px" type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto"
+														    value="<%= user.Contacto %>">
 													</div>
 													<div class="form-group">
-														<label for="Morada">Morada:</label>
 														<input style="height:25px" type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
 													</div>
-
 													<div class="form-group">
-														<label for="preco">Preço por mês:</label>
+															<input style="height:25px" type="text" placeholder="Nome da empresa" class="form-control" id="empresa" name="empresa">
+														</div>
+													<div class="form-group">
 														<input style="height:25px" type="text" placeholder="100€" class="form-control" id="preco" name="preco" disabled>
 													</div>
+													
 													<div class="form-group">
-															<label for="Tema">Tema:</label>
-														  <select>
+														<label for="Tema">Tema:</label>
+														<select>
 															<option value="Original">Original</option>
 															<option value="Preto">Preto</option>
-														  </select>
-														</div>
+														</select>
+													</div>
 
 
 													<button type="submit" class="btn btn-success">Subscrever</button>
 
 												</form>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

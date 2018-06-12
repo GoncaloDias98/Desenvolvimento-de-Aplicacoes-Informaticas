@@ -20,6 +20,7 @@ router.post('/', function(request, response) {
 	request.checkBody('NIF', 'NIF should have 9 chars').isLength({min: 9, max: 9});
 	request.checkBody('Contacto', 'Contacto should have between 0 and 150 chars').isLength({min: 0, max: 150});
 	request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({min: 0, max: 20});
+	request.checkBody('empresa', 'Empresa should have between 2 and 20 chars').isLength({min: 2, max: 20});
 	var errors = request.validationErrors();	
 	if (errors) {
 		response.render('empresa_registar', {
@@ -36,6 +37,7 @@ router.post('/', function(request, response) {
 			'Morada': request.body.Morada,
 			'tipo': 'empresa',
 			'password': request.body.password,
+			'empresa': request.body.empresa,
 			};
 
 		model.create(data, function(){

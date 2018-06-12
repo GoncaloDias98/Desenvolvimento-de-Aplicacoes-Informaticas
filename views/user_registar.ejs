@@ -1,46 +1,50 @@
 <% include partials/headerforms %>
 	<!-- Pagina a apresentar -->
 
-	<header class="masthead" >
-		<div class="container" >
-			<div class="intro-text" align="center" >
-				
-							<div class="forecast-table"  style="height:80%">
-								<div class="container">
-									<div class="forecast-container">
-										<div class="today forecast">
-											<div class="forecast-header" style="font-size:18px; height: 60%">
-											
-												<a href="/registarempresa">Empresa</a>
-												<a style="color: black;">/</a>
-												<a style="color: black"> Subscritor</a>
+	<header class="masthead">
+		<div class="container">
+			<div class="intro-text" align="center">
+
+				<div class="forecast-table" style="height:80%">
+					<div class="container">
+						<div class="forecast-container">
+							<div class="today forecast">
+								<div class="forecast-header" style="font-size:18px; height: 60%">
+
+									<a style="color: black"> Subscritor</a>
+									<a style="color: black;">/</a>
+									<a href="/registarempresa">Empresa</a>
+								</div>
+								<!-- .forecast-header -->
+								<div class="forecast-content">
+									<div style="margin-top:-20px" class="ui-widget justify-content-center">
+										<center>
+											<h3>Registar </h3>
+										</center>
+										<% if (errors.length) { %>
+											<div class="alert alert-danger">
+												<ul>
+
+													<% for (var e of errors) { %>
+														<li>
+															<%= e.msg %>
+														</li>
+														<% }%>
+												</ul>
 											</div>
-											<!-- .forecast-header -->
-											<div class="forecast-content">
-													<div style="margin-top:-20px" class="ui-widget justify-content-center">
-															<center>	<h3>Registar </h3></center>	
-															<% if (errors.length) { %>
-																<div class="alert alert-danger">
-																	<ul>
-																		
-																		<% for (var e of errors) { %>
-																			<li>
-																				<%= e.msg %>
-																			</li>
-																			<% }%>
-																	</ul>
-																</div>
-																<% } %>
-											
+											<% } %>
+
 												<form style="width:50%; margin: 0 auto;" action="/users/registar" method="post">
 													<div class="form-group">
-														<input  pattern="[a-zA-Z0-9À-ž\s]{3,20}$" style="height:25px" type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
+														<input pattern="[a-zA-Z0-9À-ž\s]{3,20}$" style="height:25px" type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome"
+														    name="Nome" value="<%= user.Nome %>">
 													</div>
 													<div class="form-group">
 														<input style="height:25px" type="pwd" class="form-control" id="password" placeholder="Enter password" name="password" value="<%= user.password %>">
 													</div>
 													<div class="form-group">
-														<input style="height:25px" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>">
+														<input style="height:25px" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" class="form-control" id="type"
+														    placeholder="Email" name="Email" value="<%= user.Email %>">
 													</div>
 													<div class="form-group">
 														<input style="height:25px" type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
@@ -56,20 +60,21 @@
 														<input style="height:25px" type="text" placeholder="10€" class="form-control" id="preco" name="preco" disabled>
 													</div>
 													<div class="form-group">
-														  <select id="UI">
+														<label for="Tema">Tema:</label>
+														<select id="UI">
 															<option value="Original" selected="selected">Original</option>
 															<option value="Preto">Preto</option>
-														  </select>
-														</div>
+														</select>
+													</div>
 
 													<button type="submit" class="btn btn-success">Subscrever</button>
 
 												</form>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
