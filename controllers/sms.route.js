@@ -3,8 +3,8 @@ const model = require('../models/sms.model');
 const router = express.Router();
 const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
-	apiKey: '4d34f4fd',
-	apiSecret: 'sQXi83kXCIH8mcGW'
+	apiKey: '5144f6ab',
+	apiSecret: '6US4EeIT9xW6CO2c'
 }, {
 	debug: true
 });
@@ -31,15 +31,14 @@ router.get('/', function(request, response){
 router.post('/subscreverTempMax', function(request, response){
   var user = request.user;
   model.readUsers(user.Email, function(){
-    console.log(request.body.localidade);
     const to = '351' + user.Contacto;
     const from = 'WFDAI';
     var data = {
       'temperaturaMax_user': request.body.temperaturaMax,
       'localidade': request.body.localidade,
-      'UserID': user.UserID,
+      'UserID': user.UserID
     };
-    const text = 'Obrigado por subscrever os nossos servicos ' + data.temperaturaMax_user;
+    const text = 'Acabou de subscrever o servico de notificacao por temperatura superior a: ' + data.temperaturaMax_user + ' na cidade de:' + data.localidade;
     model.subscribeTempMax(data, function(){
       nexmo.message.sendSms(from, to, text, (error, response) =>{
         if(error){
@@ -66,7 +65,7 @@ router.post('/subscreverTempMax', function(request, response){
       'localidade': request.body.localidade,
       'UserID': user.UserID,
     };
-    const text = 'Obrigado por subscrever os nossos serviços. \n Acabou de subscrever o serviço de notificacao por temperatura minima no valor de: ' + data.temperaturaMin_user + ' na cidade de:' + data.localidade;
+    const text = 'Acabou de subscrever o serviço de notificacao por temperatura inferior a: ' + data.temperaturaMin_user + ' na cidade de:' + data.localidade;
     model.subscribeTempMax(data, function(){
       nexmo.message.sendSms(from, to, text, (error, response) =>{
         if(error){
@@ -84,12 +83,14 @@ router.post('/subscreverTempMax', function(request, response){
   });
 
   function notificarTempMax(){
+    model.listTempCidades(function (dados){
+      for (var u = 0; u < dados.length; u++){
     model.listSubsMax(function (users){
       for (var i = 0; i < users.length; i++) {
       const to = '351' + users[i].Contacto;
       const from = 'WFDAI';
-      if(users[i].temperaturaMax > 24){
-      const text = 'Teste 1 ' + users[i].temperaturaMax_user;
+      if(users[i].temperaturaMax > dados[i].temperatura){
+      const text = 'Teste 1 ' + users[i].temperaturaMax_user + ' ' + dados.localidade;
         nexmo.message.sendSms(from, to, text, (error, response) =>{
           if(error){
             throw(error);
@@ -110,12 +111,17 @@ router.post('/subscreverTempMax', function(request, response){
             throw 'Nexmo returned back a non-zero status';
           } else{
             console.log(response);
-          }
-      });
+          }   
+      }); 
+    } 
+  }
+})
     }
-  }
-    })
-  }
+  })
+}
+
+
+
 
   //setInterval(notificarTempMax, 10000);
 
