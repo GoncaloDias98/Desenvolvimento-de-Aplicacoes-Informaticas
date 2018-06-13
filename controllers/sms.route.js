@@ -85,7 +85,19 @@ router.post('/subscreverTempMax', function(request, response){
   function notificarTemperaturaMaxima(){
     model.listSubsMax(function(users){
       for (var i = 0; i < users.length; i++){
-        
+        const to = users[i].Contacto;
+        const from = 'WFDAI';
+        const text = 'A temperatura vai ser superior a ' + users[i].temperaturaMax_user + ' graus na localidade de: ' + users[i].localidade_user;
+        nexmo.message.sendSms(from, to, text, (error, response) =>{
+          if(error){
+            throw(error);
+          }else if (response.messages[0].status != '0'){
+            console.error(response);
+            throw 'Nexmo returned back a non-zero status';
+          } else{
+            console.log(response);
+          }
+        }); 
       }
     })
   }
@@ -146,7 +158,7 @@ function envioNotificacaoTemperaturaMinima(){
 })
 }
 
-//setInterval(notificarTempMax, 10000);
+setInterval(notificarTemperaturaMaxima, 10000);
 
 
 module.exports = router;
