@@ -9,6 +9,8 @@ const nexmo = new Nexmo({
 	debug: true
 });
 
+const UserI = ["Preto","Original"];
+
 
 router.get('/', function (request, response) {
 	var user = request.user;
@@ -250,7 +252,7 @@ router.post('/registarfree', function (request, response) {
 });
 
 
-router.get('/:UserID', function (request, response) {
+/*router.get('/:UserID', function (request, response) {
 	model.readEmpresas(request.params.UserID, function (user) {
 		response.set("Content-Type", "text/html");
 		response.render('empresa_edit_user', {
@@ -281,7 +283,7 @@ router.post('/:UserID', function (request, response) {
 		});
 	}
 });
-
+*/
 router.get('/update_user', function (request, response) {
 	model.read(request.params.Email, function (user) {
 		if (user != undefined) {
@@ -318,7 +320,7 @@ router.post('/update_user', function (request, response) {
 		min: 0,
 		max: 20
 	});
-	request.checkBody('UI', 'User Interface should be Preto or Original').isIn[Preto,Original];
+	request.checkBody('UI', 'User Interface should be Preto or Original').exists(UserI);
 	var errors = request.validationErrors();
 	if (errors) {
 		response.render('user_index', {
