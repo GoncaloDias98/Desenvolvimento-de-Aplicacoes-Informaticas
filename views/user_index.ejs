@@ -134,26 +134,31 @@
 
   </section>
   
-  	<div id="colabListView" class="row">
+  <div id="colabListView" class="row">
     <div class="col-md-12">
       <table class="table" id='Table'>
         <thead>
           <tr>
-            <th>Localizações Preferidas</th>
-
+              <th>User ID</th>
+            <th>Temperatura Maxima</th>
+            <th>Localidade</th>
+            <th>Temperatura Minima</th>
           </tr>
         </thead>
         <tbody>
+        <% for (var u of usersRegras) { %>
           <tr>
-         
-            <td><a href='/users/preferencias'><i class="fas fa-cogs"'></i></a></td>
+              <td><%= u.UserID %></td>
+            <td><%= u.temperaturaMax_user %></td>
+            <td><%= u.localidade_user %></td>
+            <td><%= u.temperaturaMin_user %></td>
+            <!--<td><a href='/users/<%= u.UserID %>'><i class="fas fa-cogs"></i></a></td> -->
           </tr>
-         
+          <% } %>
         </tbody>
       </table>
-	
-	  </div>
     </div>
+  </div>
 	
   <section style="display:none">
       

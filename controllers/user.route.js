@@ -1,4 +1,5 @@
 const model = require('../models/user.model');
+const userModel = require('../models/sms.model');
 const express = require('express');
 const router = express.Router();
 const Nexmo = require('nexmo');
@@ -14,10 +15,12 @@ router.get('/', function (request, response) {
 	var user = request.user;
 	if (request.isAuthenticated()) {
 		model.list(function (users) {
+			userModel.listRegrasUsers(function(usersRegras){
 			response.set('Content-Type', 'text/html');
 			if (user.Pagamento === 'Pago') {
 				response.render('user_index', {
-					users: users
+					users: users,
+					usersRegras : usersRegras
 				})
 			}else{
 				response.render('free_index', {
@@ -25,9 +28,11 @@ router.get('/', function (request, response) {
 				})
 			}
 		})
-	} else {
+	})
+ } else {
 		response.redirect('/');
 	}
+	
 })
 
 

@@ -50,5 +50,13 @@ module.exports = {
 			callback(rows[0]);
 		})
 	},
+
+	listRegrasUsers(callback){
+		var sql = 'SELECT * from Regras_User';
+		global.connection.query(sql, function(error, rows){
+			if(error) throw error;
+			callback(rows);
+		})
+	}
     
 };

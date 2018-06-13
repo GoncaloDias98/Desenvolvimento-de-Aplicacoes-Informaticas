@@ -1,7 +1,5 @@
 <% include admin/partials/headerempresa %>
 
-
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 
@@ -22,7 +20,7 @@
         <tbody>
         <% for (var u of users) { %>
           <tr>
-            <td><%= u.Nome %></a></td>
+            <td><%= u.Nome %></td>
             <td><%= u.Email %></td>
             <td><%= u.NIF %></td>
             <td><%= u.Contacto %></td>
@@ -34,13 +32,7 @@
           <% } %>
         </tbody>
       </table>
-
-
-
-
-
     </div>
-
   </div>
 
   <!-- Scroll to Top Button-->
