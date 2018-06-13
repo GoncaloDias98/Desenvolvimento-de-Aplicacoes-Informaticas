@@ -66,19 +66,19 @@ router.get('/empresareg', function (request, response) {
 router.post('/empresareg', function (request, response) {
 	var user = request.user;
 	model.read(user.Email, function (users) {
-		request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({
-			min: 5,
-			max: 10
+		request.checkBody('Nome', 'O Nome deve ter entre 3 e 20 caracteres').isLength({
+			min: 3,
+			max: 20
 		});
-		request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({
+		request.checkBody('password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
 			min: 8,
-			max: 15
+			max: 20
 		});
-		request.checkBody('Email', 'Email should have between 6 and 150 chars').isLength({
-			min: 6,
+		request.checkBody('Email', 'Email inválido').isLength({
+			min: 5,
 			max: 150
 		});
-		request.checkBody('NIF', 'NIF should have 9 chars').isLength({
+		request.checkBody('NIF', 'O NIF pode apenas ter 9 caracteres').isLength({
 			min: 9,
 			max: 9
 		});
