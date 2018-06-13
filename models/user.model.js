@@ -92,9 +92,9 @@ module.exports = {
 
 	/*--------------------PREFERENCIAS----------------------*/
 
-	readpreferencias(email, callback) {
-		var sql = "SELECT Localidade from Associacao where Email_User=?";
-		global.connection.query(sql, [email], function (error, rows, fields) {
+	listpreferencias(UserID, callback) {
+		var sql = "SELECT localidade_user from Regras_User where UserID_Regras=?";
+		global.connection.query(sql, [UserID], function (error, rows, fields) {
 			if (error) throw error;
 			callback(rows[0]);
 		});

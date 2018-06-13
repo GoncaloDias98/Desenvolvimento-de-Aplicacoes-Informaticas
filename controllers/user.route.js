@@ -250,9 +250,20 @@ router.post('/registarfree', function (request, response) {
 
 	}
 });
+router.get('/preferencias', function (request, response) {
+	if(request.isAuthenticated() ){
+		model.listpreferencias(function(preferencias){
+			response.set("Content-Type", "text/html");
+			response.render('admin', {
+				preferencias : preferencias
+			})
+		});
+	}else{
+		response.redirect('/');
+	}
+});
 
-
-/*router.get('/:UserID', function (request, response) {
+router.get('/:UserID', function (request, response) {
 	model.readEmpresas(request.params.UserID, function (user) {
 		response.set("Content-Type", "text/html");
 		response.render('empresa_edit_user', {
@@ -283,7 +294,7 @@ router.post('/:UserID', function (request, response) {
 		});
 	}
 });
-*/
+
 router.get('/update_user', function (request, response) {
 	model.read(request.params.Email, function (user) {
 		if (user != undefined) {
