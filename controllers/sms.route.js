@@ -82,41 +82,23 @@ router.post('/subscreverTempMax', function(request, response){
   response.redirect('/');
   });
 
-  function notificarTempMax(){
-    model.listSubsMax(function (users){
-      model.listTempCidades(function (dados){
-      for (var u = 0; u < dados.length; u++){
-      const local = dados[u].temperatura;
-      for (var i = 0; i < users.length; i++) {
-      const to = '351' + users[i].Contacto;
-      const from = 'WFDAI';
-      const text = 'Teste 1' + dados[u].temperaturaMax_user + ' ' + dados[i].localidade_user;
-        nexmo.message.sendSms(from, to, text, (error, response) =>{
-          if(error){
-            throw(error);
-          }else if (response.messages[0].status != '0'){
-            console.error(response);
-            throw 'Nexmo returned back a non-zero status';
-          } else{
-            console.log(response);
-          }
-        }); 
-    }
-  }
-})
+  function notificarTemperaturaMaxima(){
+    model.listSubsMax(function(users){
+      for (var i = 0; i < users.length; i++){
+        
+      }
     })
   }
 
- /* function notificarTempMax(){
+  function envioNotificacaoTemperaturaMaxima(){
     model.listSubsMax(function (users){
-      model.listTempCidades(function (dados){
-      for (var u = 0; u < dados.length; u++){
-      const local = dados[u].temperatura;
-      for (var i = 0; i < users.length; i++) {
+      for (var i = 0; i < users.length; i++){
+      model.listTempCidades(users[i].UserID_Regras, function(dados){
+        for(var u = 0; u < dados.length; u++){
       const to = '351' + users[i].Contacto;
       const from = 'WFDAI';
-      if(users[i].temperaturaMax > local){
-      const text = 'Teste 1' + users[i].temperaturaMax_user + ' ' + users[i].localidade_user;
+      if(dados[u].temperatura > users[i].temperaturaMax_user){
+      const text = 'Teste 1' + users[i].temperaturaMax_user + ' ' + dados[u].localidade;
         nexmo.message.sendSms(from, to, text, (error, response) =>{
           if(error){
             throw(error);
@@ -127,24 +109,42 @@ router.post('/subscreverTempMax', function(request, response){
             console.log(response);
           }
         }); 
-      }else{
-        const text = 'Teste 2 ' + users[i].temperaturaMax_user;
-        nexmo.message.sendSms(from, to, text, (error, response) =>{
-          if(error){
-            throw(error);
-          }else if (response.messages[0].status != '0'){
-            console.error(response);
-            throw 'Nexmo returned back a non-zero status';
-          } else{
-            console.log(response);
-          }   
+    }else{
+      next();
+    }
+  }
+  })
+}
+})
+}
+
+function envioNotificacaoTemperaturaMinima(){
+  model.listSubsMax(function (users){
+    for (var i = 0; i < users.length; i++){
+    model.listTempCidades(users[i].UserID_Regras, function(dados){
+      for(var u = 0; u < dados.length; u++){
+    const to = '351' + users[i].Contacto;
+    const from = 'WFDAI';
+    if(dados[u].temperatura < users[i].temperaturaMin_user){
+    const text = 'Teste 1' + users[i].temperaturaMin_user + ' ' + dados[u].localidade;
+      nexmo.message.sendSms(from, to, text, (error, response) =>{
+        if(error){
+          throw(error);
+        }else if (response.messages[0].status != '0'){
+          console.error(response);
+          throw 'Nexmo returned back a non-zero status';
+        } else{
+          console.log(response);
+        }
       }); 
-    } 
+  }else{
+    next();
   }
 }
-    })
-  })
-}*/
+})
+}
+})
+}
 
 //setInterval(notificarTempMax, 10000);
 

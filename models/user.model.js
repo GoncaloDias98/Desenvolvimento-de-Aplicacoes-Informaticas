@@ -39,7 +39,7 @@ module.exports = {
 		var salt = bcrypt.genSaltSync(10);
 		var hash = bcrypt.hashSync(data.password, salt);
 		global.connection.query(
-			sql, [data.Nome, hash, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.ui, data.Pagamento],
+			sql, [data.Nome, hash, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.UI, data.Pagamento],
 			function (error, rows, fields) {
 				if (error) throw error;
 				callback(rows[0]);

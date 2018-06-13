@@ -28,7 +28,7 @@ module.exports = {
 	},
 
 	listSubsMax(callback){
-		var sql = 'SELECT Email, UserID, UserID_Regras, Contacto, temperaturaMax_user, localidade, localidade_user from User, Regras_User, Historico where UserID = UserID_Regras and localidade = localidade_user';
+		var sql = 'SELECT Email, UserID, UserID_Regras, Contacto, temperaturaMax_user, localidade, localidade_user from User, Regras_User, Historico WHERE UserID_Regras = UserID and localidade = localidade_user';
 		global.connection.query(sql, function(error, rows){
 			if (error) throw error;
 			callback(rows);
@@ -43,11 +43,11 @@ module.exports = {
 		});
 	},
 
-	listTempCidades(callback){
-		var sql= 'SELECT localidade, idLocalidade,  UserID, UserID_Regras, temperatura, temperaturaMax_user, temperaturaMin_user, localidade_user FROM Historico, Regras_User, User WHERE localidade = localidade_user and UserID = UserID_Regras order by idLocalidade DESC'
-		global.connection.query(sql, function(error, rows){
+	listTempCidades(UserID_Regras, callback){
+		var sql= 'SELECT localidade, idLocalidade,  UserID, UserID_Regras, temperatura, temperaturaMax_user, temperaturaMin_user, localidade_user FROM Historico, Regras_User, User WHERE UserID_Regras = ? and localidade = localidade_user order by idLocalidade DESC';
+		global.connection.query(sql, [UserID_Regras], function(error, rows){
 			if (error) throw error;
-			callback(rows);
+			callback(rows[0]);
 		})
 	},
     
