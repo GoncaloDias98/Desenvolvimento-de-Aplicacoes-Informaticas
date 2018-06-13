@@ -44,7 +44,7 @@ module.exports = {
 				console.log(sql);
 			});
 	},
-	
+
 	createfree(data, callback) {
 		var sql = "INSERT INTO User (Nome, Password, Email, NIF, Contacto, Morada, TipoUser, Empresa, UI) VALUES (?,?,?,?,?,?,?,?,?)";
 		global.connection.query(

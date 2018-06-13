@@ -4,12 +4,6 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
 const validator = require('express-validator');
-const bcrypt = require('bcrypt');
-
-
-
-
-
 
 const socketio = require('socket.io');
 const ejs = require('ejs');
@@ -52,8 +46,8 @@ app.use(session({
 	duration: 30 * 60 * 1000,
 	activeDuration: 5 * 60 * 1000,
 	resave: true,
-    saveUninitialized: true
-  }));
+	saveUninitialized: true
+}));
 // NEW 06/05/2018 - HTTPS
 
 app.set('trust proxy', 1);

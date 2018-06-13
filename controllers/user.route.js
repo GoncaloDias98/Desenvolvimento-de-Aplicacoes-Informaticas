@@ -15,24 +15,24 @@ router.get('/', function (request, response) {
 	var user = request.user;
 	if (request.isAuthenticated()) {
 		model.list(function (users) {
-			userModel.listRegrasUsers(function(usersRegras){
-			response.set('Content-Type', 'text/html');
-			if (user.Pagamento === 'Pago') {
-				response.render('user_index', {
-					users: users,
-					usersRegras : usersRegras
-				})
-			}else{
-				response.render('free_index', {
-					users: users
-				})
-			}
+			userModel.listRegrasUsers(function (usersRegras) {
+				response.set('Content-Type', 'text/html');
+				if (user.Pagamento === 'Pago') {
+					response.render('user_index', {
+						users: users,
+						usersRegras: usersRegras
+					})
+				} else {
+					response.render('free_index', {
+						users: users
+					})
+				}
+			})
 		})
-	})
- } else {
+	} else {
 		response.redirect('/');
 	}
-	
+
 })
 
 
@@ -251,14 +251,14 @@ router.post('/registarfree', function (request, response) {
 	}
 });
 router.get('/preferencias', function (request, response) {
-	if(request.isAuthenticated() ){
-		model.listpreferencias(function(preferencias){
+	if (request.isAuthenticated()) {
+		model.listpreferencias(function (preferencias) {
 			response.set("Content-Type", "text/html");
 			response.render('admin', {
-				preferencias : preferencias
+				preferencias: preferencias
 			})
 		});
-	}else{
+	} else {
 		response.redirect('/');
 	}
 });

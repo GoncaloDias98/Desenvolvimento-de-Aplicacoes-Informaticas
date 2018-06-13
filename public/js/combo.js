@@ -111,43 +111,43 @@ var data = [
 // Create the chart
 Highcharts.mapChart('container', {
   chart: {
-      map: 'countries/pt/pt-all'
+    map: 'countries/pt/pt-all'
   },
 
   title: {
-      text: 'Temperatura Distrito'
+    text: 'Temperatura Distrito'
   },
 
   mapNavigation: {
-      enabled: true,
-      buttonOptions: {
-          verticalAlign: 'bottom'
-      }
+    enabled: true,
+    buttonOptions: {
+      verticalAlign: 'bottom'
+    }
   },
 
   colorAxis: {
-      min: 0
+    min: 0
   },
 
   series: [{
-      data: data,
-      name: 'Distrito',
-      states: {
-          hover: {
-              color: '#BADA55'
-          }
-      },
-      dataLabels: {
-          enabled: true,
-          format: '{point.name}'
+    data: data,
+    name: 'Distrito',
+    states: {
+      hover: {
+        color: '#BADA55'
       }
+    },
+    dataLabels: {
+      enabled: true,
+      format: '{point.name}'
+    }
   }, {
-      name: 'Separators',
-      type: 'mapline',
-      data: Highcharts.geojson(Highcharts.maps['countries/pt/pt-all'], 'mapline'),
-      color: 'silver',
-      showInLegend: false,
-      enableMouseTracking: false
+    name: 'Separators',
+    type: 'mapline',
+    data: Highcharts.geojson(Highcharts.maps['countries/pt/pt-all'], 'mapline'),
+    color: 'silver',
+    showInLegend: false,
+    enableMouseTracking: false
   }]
 });
 
@@ -156,26 +156,26 @@ Highcharts.mapChart('container', {
 function editarDados() {
   var x = document.getElementById("editardados");
   if (x.style.display === "none") {
-      x.style.display = "block";
+    x.style.display = "block";
   } else {
-      x.style.display = "none";
+    x.style.display = "none";
   }
 }
 
 function editarTempMax() {
   var x = document.getElementById("editarTempMax");
   if (x.style.display === "none") {
-      x.style.display = "block";
+    x.style.display = "block";
   } else {
-      x.style.display = "none";
+    x.style.display = "none";
   }
 }
 
 function editarTempMin() {
   var x = document.getElementById("editarTempMin");
   if (x.style.display === "none") {
-      x.style.display = "block";
+    x.style.display = "block";
   } else {
-      x.style.display = "none";
+    x.style.display = "none";
   }
 }

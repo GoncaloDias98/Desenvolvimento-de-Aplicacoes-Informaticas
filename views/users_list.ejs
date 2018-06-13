@@ -20,17 +20,31 @@
           </tr>
         </thead>
         <tbody>
-        <% for (var u of users) { %>
-          <tr>
-            <td><%= u.Nome %></td>
-            <td><%= u.Email %></td>
-            <td><%= u.NIF %></td>
-            <td><%= u.Contacto %></td>
-            <td><%= u.Morada %></td>
-            <td><%= u.Empresa %></td>
-            <td><%= u.UI %></td>
-          </tr>
-          <% } %>
+          <% for (var u of users) { %>
+            <tr>
+              <td>
+                <%= u.Nome %>
+              </td>
+              <td>
+                <%= u.Email %>
+              </td>
+              <td>
+                <%= u.NIF %>
+              </td>
+              <td>
+                <%= u.Contacto %>
+              </td>
+              <td>
+                <%= u.Morada %>
+              </td>
+              <td>
+                <%= u.Empresa %>
+              </td>
+              <td>
+                <%= u.UI %>
+              </td>
+            </tr>
+            <% } %>
         </tbody>
       </table>
 

@@ -1,5 +1,3 @@
-
-
 module.exports = {
 
 	usernameExists(username, callback) {
@@ -14,7 +12,7 @@ module.exports = {
 			}
 		});
 	},
-	
+
 	emailExists(email, callback) {
 
 		var sql = "SELECT * FROM user WHERE email=?";
@@ -27,7 +25,7 @@ module.exports = {
 			}
 		});
 	},
-	
+
 	create(hash, data, callback) {
 		var sql = "INSERT INTO User(Username, Nome, Contacto, Morada, NIF, Email, Password) VALUES (?,?,?,?,?,?,?)";
 		global.connection.query(
@@ -37,10 +35,10 @@ module.exports = {
 				callback(rows[0]);
 			});
 	},
-	
-	
-	
-//------------------------------------------------EMPRESA--------------------------------------------------	
+
+
+
+	//------------------------------------------------EMPRESA--------------------------------------------------	
 
 	createEmpresa(data, callback) {
 		var sql = "INSERT INTO user_empresa(Username_Empresa, Nome, Contacto, Morada, NIF, Email, Password) VALUES (?,?,?,?,?,?,?)";
@@ -51,7 +49,7 @@ module.exports = {
 				callback(rows[0]);
 			});
 	},
-	
+
 	emailExistsEmpresa(email, callback) {
 
 		var sql = "SELECT * FROM user_empresa WHERE email=?";
@@ -64,7 +62,7 @@ module.exports = {
 			}
 		});
 	},
-	
+
 	usernameExistsEmpresa(username, callback) {
 
 		var sql = "SELECT * FROM user_empresa WHERE username=?";
