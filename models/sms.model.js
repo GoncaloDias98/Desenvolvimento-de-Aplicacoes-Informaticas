@@ -28,7 +28,7 @@ module.exports = {
 	},
 
 	listSubsMax(callback){
-		var sql = 'select i1.* from Historico as i1 left join Historico as i2 ON ( i1.localidade = i2.localidade and i1.dataDados < i2.dataDados) where i2.dataDados is NULL; select idLocalidade,localidade, localidade_user,  temperatura, temperaturaMax_user, UserID, UserID_Regras from Historico, User, Regras_User where localidade = localidade_user and UserId = UserID_Regras and temperatura > temperaturaMax_user order by idLocalidade DESC';
+		var sql = 'SELECT Email, UserID, UserID_Regras, Contacto, temperaturaMax_user, localidade, localidade_user from User, Regras_User, Historico where UserID = UserID_Regras and localidade = localidade_user';
 		global.connection.query(sql, function(error, rows){
 			if (error) throw error;
 			callback(rows);
