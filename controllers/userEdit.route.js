@@ -23,7 +23,7 @@ router.post('/:Email', function (request, response) {
 		min: 5,
 		max: 10
 	});
-	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({
+	request.checkBody('Password', 'Password should have between 8 and 15 chars').isLength({
 		min: 8,
 		max: 15
 	});
