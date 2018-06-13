@@ -969,9 +969,9 @@ width: 100%!important;
 
 #container {
   height: 500px; 
-  min-width: 310px; 
+  min-width: 350px; 
   max-width: 400px; 
-  margin: -150px auto 10px; 
+  margin: 0 auto 10px; 
 }
 .loading {
   margin-top: 10em;

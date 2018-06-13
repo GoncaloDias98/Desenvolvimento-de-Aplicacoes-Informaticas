@@ -158,7 +158,7 @@ function envioNotificacaoTemperaturaMinima(){
 })
 }
 
-setInterval(notificarTemperaturaMaxima, 10000);
+//setInterval(notificarTemperaturaMaxima, 10000);
 
 
 module.exports = router;
