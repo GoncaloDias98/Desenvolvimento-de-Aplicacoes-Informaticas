@@ -108,7 +108,7 @@ router.post('/empresareg', function (request, response) {
 				'Contacto': request.body.Contacto,
 				'Morada': request.body.Morada,
 				'tipo': "subscritor individual",
-				'password': request.body.password,
+				'Password': request.body.Password,
 				'empresa': user.Empresa,
 				'UI': request.body.UI,
 			};
@@ -132,10 +132,6 @@ router.get('/registar', function (request, response) {
 router.post('/registar', function (request, response) {
 	request.checkBody('Nome', 'O Nome deve ter entre 3 e 20 caracteres').isLength({
 		min: 3,
-		max: 20
-	});
-	request.checkBody('password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
-		min: 8,
 		max: 20
 	});
 	request.checkBody('Email', 'Email inválido').isLength({
@@ -202,6 +198,7 @@ router.get('/registarfree', function (request, response) {
 		errors: []
 	});
 });
+
 router.post('/registarfree', function (request, response) {
 
 	request.checkBody('Nome', 'O Nome deve ter entre 3 e 20 caracteres').isLength({
