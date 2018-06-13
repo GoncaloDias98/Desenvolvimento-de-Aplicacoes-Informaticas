@@ -36,10 +36,8 @@ module.exports = {
 
 	create(data, callback) {
 		var sql = "INSERT INTO User (Nome, Password, Email, NIF, Contacto, Morada, TipoUser, Empresa, UI, Pagamento) VALUES (?,?,?,?,?,?,?,?,?,?)";
-		var salt = bcrypt.genSaltSync(10);
-		var hash = bcrypt.hashSync(data.password, salt);
 		global.connection.query(
-			sql, [data.Nome, hash, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.UI, data.Pagamento],
+			sql, [data.Nome, data.Password, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.UI, data.Pagamento],
 			function (error, rows, fields) {
 				if (error) throw error;
 				callback(rows[0]);
@@ -49,10 +47,8 @@ module.exports = {
 	
 	createfree(data, callback) {
 		var sql = "INSERT INTO User (Nome, Password, Email, NIF, Contacto, Morada, TipoUser, Empresa, UI) VALUES (?,?,?,?,?,?,?,?,?)";
-		var salt = bcrypt.genSaltSync(10);
-		var hash = bcrypt.hashSync(data.password, salt);
 		global.connection.query(
-			sql, [data.Nome, hash, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.ui],
+			sql, [data.Nome, data.Password, data.Email, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.ui],
 			function (error, rows, fields) {
 				if (error) throw error;
 				callback(rows[0]);
@@ -64,10 +60,8 @@ module.exports = {
 
 	update(email, data, callback) {
 		var sql = "UPDATE `mydb`.`User` SET `Nome`=?, `Password`=?, `NIF`=?, `Contacto`=?, `Morada`=?, `TipoUser`=?, `Empresa`=?,`UI`=?  WHERE `Email`=?";
-		var salt = bcrypt.genSaltSync(10);
-		var hash = bcrypt.hashSync(data.password, salt);
 		global.connection.query(
-			sql, [data.Nome, hash, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.UI, email],
+			sql, [data.Nome, data.Password, data.NIF, data.Contacto, data.Morada, data.tipo, data.empresa, data.UI, email],
 			function (error, rows, fields) {
 				if (error) throw error;
 				callback(rows[0]);
@@ -102,7 +96,6 @@ module.exports = {
 
 	createpreferencias(email, data, callback) {
 		var sql = "INSERT INTO Associacao (Localidade, Email_User, tipoAssociacao) VALUES (?,?,?)";
-
 		global.connection.query(
 			sql, [data.Localidade, email, data.tipoAssociacao],
 			function (error, rows, fields) {
