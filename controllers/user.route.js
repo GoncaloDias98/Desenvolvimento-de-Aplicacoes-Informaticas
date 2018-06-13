@@ -73,7 +73,7 @@ router.post('/empresareg', function (request, response) {
 			min: 3,
 			max: 20
 		});
-		request.checkBody('password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
+		request.checkBody('Password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
 			min: 8,
 			max: 20
 		});
@@ -205,7 +205,7 @@ router.post('/registarfree', function (request, response) {
 		min: 3,
 		max: 20
 	});
-	request.checkBody('password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
+	request.checkBody('Password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
 		min: 8,
 		max: 20
 	});
@@ -240,7 +240,7 @@ router.post('/registarfree', function (request, response) {
 			'Contacto': request.body.Contacto,
 			'Morada': request.body.Morada,
 			'tipo': "free",
-			'password': request.body.password,
+			'Password': request.body.Password,
 			'UI': request.body.UI,
 		};
 		model.createfree(data, function () {

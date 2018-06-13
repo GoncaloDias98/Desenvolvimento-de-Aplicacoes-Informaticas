@@ -18,7 +18,7 @@ router.post('/', function (request, response) {
 		min: 3,
 		max: 20
 	});
-	request.checkBody('password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
+	request.checkBody('Password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
 		min: 8,
 		max: 20
 	});
@@ -57,7 +57,7 @@ router.post('/', function (request, response) {
 			'Contacto': request.body.Contacto,
 			'Morada': request.body.Morada,
 			'tipo': 'empresa',
-			'password': request.body.password,
+			'Password': request.body.Password,
 			'empresa': request.body.empresa,
 		};
 
