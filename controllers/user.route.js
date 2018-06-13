@@ -10,8 +10,6 @@ const nexmo = new Nexmo({
 });
 
 
-
-
 router.get('/', function (request, response) {
 	var user = request.user;
 	if (request.isAuthenticated()) {
@@ -320,6 +318,7 @@ router.post('/update_user', function (request, response) {
 		min: 0,
 		max: 20
 	});
+	request.checkBody('UI', 'User Interface should be Preto or Original').isIn[Preto,Original];
 	var errors = request.validationErrors();
 	if (errors) {
 		response.render('user_index', {
