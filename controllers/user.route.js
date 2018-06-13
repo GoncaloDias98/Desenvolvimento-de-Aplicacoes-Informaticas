@@ -80,13 +80,13 @@ router.post('/empresareg', function (request, response) {
 			min: 9,
 			max: 9
 		});
-		request.checkBody('Contacto', 'Contacto should have between 0 and 150 chars').isLength({
-			min: 0,
-			max: 150
+		request.checkBody('Contacto', 'O Contacto deve ter apenas 9 numeros').isLength({
+			min: 9,
+			max: 9
 		});
-		request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({
-			min: 0,
-			max: 20
+		request.checkBody('Morada', 'A Morada deve ter entre 3 e 100 caracteres').isLength({
+			min: 3,
+			max: 100
 		});
 		var errors = request.validationErrors();
 		if (errors) {
@@ -125,25 +125,29 @@ router.get('/registar', function (request, response) {
 });
 
 router.post('/registar', function (request, response) {
-	request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({
-		min: 5,
-		max: 10
+	request.checkBody('Nome', 'O Nome deve ter entre 3 e 20 caracteres').isLength({
+		min: 3,
+		max: 20
 	});
-	request.checkBody('Email', 'Email should have between 6 and 150 chars').isLength({
-		min: 6,
+	request.checkBody('password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
+		min: 8,
+		max: 20
+	});
+	request.checkBody('Email', 'Email inválido').isLength({
+		min: 5,
 		max: 150
 	});
-	request.checkBody('NIF', 'NIF should have 9 chars').isLength({
+	request.checkBody('NIF', 'O NIF pode apenas ter 9 caracteres').isLength({
 		min: 9,
 		max: 9
 	});
-	request.checkBody('Contacto', 'Contacto should have between 0 and 150 chars').isLength({
-		min: 0,
-		max: 150
+	request.checkBody('Contacto', 'O Contacto deve ter apenas 9 numeros').isLength({
+		min: 9,
+		max: 9
 	});
-	request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({
-		min: 0,
-		max: 20
+	request.checkBody('Morada', 'A Morada deve ter entre 3 e 100 caracteres').isLength({
+		min: 3,
+		max: 100
 	});
 	var errors = request.validationErrors();
 	if (errors) {
@@ -195,29 +199,29 @@ router.get('/registarfree', function (request, response) {
 });
 router.post('/registarfree', function (request, response) {
 
-	request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({
-		min: 5,
-		max: 10
+	request.checkBody('Nome', 'O Nome deve ter entre 3 e 20 caracteres').isLength({
+		min: 3,
+		max: 20
 	});
-	request.checkBody('password', 'Password should have between 8 and 15 chars').isLength({
+	request.checkBody('password', 'A Password deve ter entre 8 e 20 caracteres').isLength({
 		min: 8,
-		max: 15
+		max: 20
 	});
-	request.checkBody('Email', 'Email should have between 6 and 150 chars').isLength({
-		min: 6,
+	request.checkBody('Email', 'Email inválido').isLength({
+		min: 5,
 		max: 150
 	});
-	request.checkBody('NIF', 'NIF should have 9 chars').isLength({
+	request.checkBody('NIF', 'O NIF pode apenas ter 9 caracteres').isLength({
 		min: 9,
 		max: 9
 	});
-	request.checkBody('Contacto', 'Contacto should have between 0 and 150 chars').isLength({
-		min: 0,
-		max: 150
+	request.checkBody('Contacto', 'O Contacto deve ter apenas 9 numeros').isLength({
+		min: 9,
+		max: 9
 	});
-	request.checkBody('Morada', 'Morada should have between 0 and 20 chars').isLength({
-		min: 0,
-		max: 20
+	request.checkBody('Morada', 'A Morada deve ter entre 3 e 100 caracteres').isLength({
+		min: 3,
+		max: 100
 	});
 	var errors = request.validationErrors();
 	if (errors) {
