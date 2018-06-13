@@ -21,8 +21,8 @@ router.get('/', function (request, response) {
 				response.render('user_index', {
 					users: users
 				})
-			} else {
-				response.render('sub_index', {
+			}else{
+				response.render('free_index', {
 					users: users
 				})
 			}

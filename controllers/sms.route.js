@@ -83,12 +83,34 @@ router.post('/subscreverTempMax', function(request, response){
   });
 
   function notificarTempMax(){
-    var user = request.user;
     model.listSubsMax(function (users){
       model.listTempCidades(function (dados){
-        model.readUsers(user.email, function(dadosUser){
-        })
-        for (var u = 0; u < dados.length; u++){
+      for (var u = 0; u < dados.length; u++){
+      const local = dados[u].temperatura;
+      for (var i = 0; i < users.length; i++) {
+      const to = '351' + users[i].Contacto;
+      const from = 'WFDAI';
+      const text = 'Teste 1' + dados[u].temperaturaMax_user + ' ' + dados[i].localidade_user;
+        nexmo.message.sendSms(from, to, text, (error, response) =>{
+          if(error){
+            throw(error);
+          }else if (response.messages[0].status != '0'){
+            console.error(response);
+            throw 'Nexmo returned back a non-zero status';
+          } else{
+            console.log(response);
+          }
+        }); 
+    }
+  }
+})
+    })
+  }
+
+ /* function notificarTempMax(){
+    model.listSubsMax(function (users){
+      model.listTempCidades(function (dados){
+      for (var u = 0; u < dados.length; u++){
       const local = dados[u].temperatura;
       for (var i = 0; i < users.length; i++) {
       const to = '351' + users[i].Contacto;
@@ -122,12 +144,9 @@ router.post('/subscreverTempMax', function(request, response){
 }
     })
   })
-}
+}*/
 
-
-
-
-// setInterval(notificarTempMax, 10000);
+setInterval(notificarTempMax, 10000);
 
 
 module.exports = router;
