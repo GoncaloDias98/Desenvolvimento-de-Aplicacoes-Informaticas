@@ -81,99 +81,116 @@
   </header>
 
   <section class="bg-light">
-    <h1>Dados Pessoais</h1>
-    <p></p>
+    <div>
+     
+      <div style="float: left; width: 46%;overflow: hidden;">
+          <center> <h2>Subscrições Ativas</h2></center>
+        <div id="colabListView" class="row">
+          <div class="col-md-12">
+            <table class="table" id='Table'style="margin-left:50px">
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Temperatura Maxima</th>
+                  <th>Localidade</th>
+                  <th>Temperatura Minima</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for (var u of usersRegras) { %>
+                  <tr>
+                    <td>
+                      <%= u.UserID %>
+                    </td>
+                    <td>
+                      <%= u.temperaturaMax_user %>
+                    </td>
+                    <td>
+                      <%= u.localidade_user %>
+                    </td>
+                    <td>
+                      <%= u.temperaturaMin_user %>
+                    </td>
+                    <!--<td><a href='/users/<%= u.UserID %>'><i class="fas fa-cogs"></i></a></td> -->
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-    <center>
-      <button style="width: 10%" id="editarbtn" type="button" onclick="editarDados()">Editar</button>
-    </center>
-    <div class="container">
-
-
-      <div class="panel-body" id="editardados" style="display:none">
-
-            <form align="center" style="width: 50%; margin: 0 auto;" method="post">
-              <div class="form-group">
-                <label for="Nome">Nome:</label>
-                <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
-              </div>
-              <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="pwd" class="form-control" id="Password" placeholder="Enter password" name="Password" value="<%= user.Password %>">
-              </div>
-              <div class="form-group">
-                <label for="Email">Email:</label>
-                <input type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>" disabled>
-              </div>
-              <div class="form-group">
-                <label for="NIF">NIF:</label>
-                <input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
-              </div>
-              <div class="form-group">
-                <label for="Contacto">Contacto:</label>
-                <input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
-              </div>
-              <div class="form-group">
-                <label for="Morada">Morada:</label>
-                <input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
-              </div>
-              <div class="form-group">
-                <label for="UI">User Interface Color:</label>
-                <input type="text" placeholder="UI" class="form-control" id="UI" name="UI" value="<%= user.UI %>">
-              </div>
-
-
-
-              <button type="submit" class="btn btn-success">Atualizar</button>
-
-            </form>
 
       </div>
+
+      <div style="overflow: hidden;">
+      <h1>Dados Pessoais</h1>
+      <p></p>
+
+      <center>
+        <button style="width: 10%" id="editarbtn" type="button" onclick="editarDados()">Editar</button>
+      </center>
+      <div class="container">
+
+
+        <div class="panel-body" id="editardados" style="display:none">
+
+          <form align="center" style="width: 50%; margin: 0 auto;" method="post">
+            <div class="form-group">
+              <label for="Nome">Nome:</label>
+              <input type="text" class="form-control" id="Nome" placeholder="Insira o seu Nome" name="Nome" value="<%= user.Nome %>">
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="pwd" class="form-control" id="Password" placeholder="Enter password" name="Password" value="<%= user.Password %>">
+            </div>
+            <div class="form-group">
+              <label for="Email">Email:</label>
+              <input type="email" class="form-control" id="type" placeholder="Email" name="Email" value="<%= user.Email %>" disabled>
+            </div>
+            <div class="form-group">
+              <label for="NIF">NIF:</label>
+              <input type="text" placeholder="NIF" class="form-control" id="NIF" name="NIF" value="<%= user.NIF %>">
+            </div>
+            <div class="form-group">
+              <label for="Contacto">Contacto:</label>
+              <input type="tel" placeholder="Número de telemóvel" class="form-control" id="Contacto" name="Contacto" value="<%= user.Contacto %>">
+            </div>
+            <div class="form-group">
+              <label for="Morada">Morada:</label>
+              <input type="text" placeholder="Morada" class="form-control" id="Morada" name="Morada" value="<%= user.Morada %>">
+            </div>
+            <div class="form-group">
+              <label for="UI">User Interface Color:</label>
+              <input type="text" placeholder="UI" class="form-control" id="UI" name="UI" value="<%= user.UI %>">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-success">Atualizar</button>
+
+          </form>
+
+        </div>
+      </div>
     </div>
+    </div>
+  </section>
+
+
+  <section style="display:none">
+
+    <form action='/subscreverTempMax' method='post'>
+
+      <select id="combobox" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
+        type="text" form="form">
+
+    </form>
+
+
+
+
 
 
   </section>
-  
-  <div id="colabListView" class="row">
-    <div class="col-md-12">
-      <table class="table" id='Table'>
-        <thead>
-          <tr>
-              <th>User ID</th>
-            <th>Temperatura Maxima</th>
-            <th>Localidade</th>
-            <th>Temperatura Minima</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% for (var u of usersRegras) { %>
-          <tr>
-              <td><%= u.UserID %></td>
-            <td><%= u.temperaturaMax_user %></td>
-            <td><%= u.localidade_user %></td>
-            <td><%= u.temperaturaMin_user %></td>
-            <!--<td><a href='/users/<%= u.UserID %>'><i class="fas fa-cogs"></i></a></td> -->
-          </tr>
-          <% } %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-	
-  <section style="display:none">
-      
-      <form action='/subscreverTempMax' method='post'>
-       
-          <select id="combobox" name='localidade' class="selectpicker form-control mr-sm-2 justify-content-cer selectpicker" data-live-search="true"
-            type="text" form="form">
-
-      </form>
-
-
-
-
-
-
-  </section>  
 
   <% include partials/footer %>
