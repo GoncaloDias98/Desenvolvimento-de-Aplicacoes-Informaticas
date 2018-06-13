@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/:UserID', function (request, response) {
+router.get('/:Email', function (request, response) {
 	model.read(request.params.Email, function (user) {
 		if (user != undefined) {
 			response.set("Content-Type", "text/html");
@@ -18,7 +18,7 @@ router.get('/:UserID', function (request, response) {
 	})
 });
 
-router.post('/:UserID', function (request, response) {
+router.post('/:Email', function (request, response) {
 	request.checkBody('Nome', 'Nome should have between 5 and 10 chars').isLength({
 		min: 5,
 		max: 10
@@ -39,7 +39,6 @@ router.post('/:UserID', function (request, response) {
 		min: 0,
 		max: 20
 	});
-	request.checkBody('UI', 'User Interface should be Preto or Original').exists(UserI);
 	var errors = request.validationErrors();
 	if (errors) {
 		response.render('user_index', {
@@ -50,7 +49,7 @@ router.post('/:UserID', function (request, response) {
 	} else {
 		var data = {
 			'Nome': request.body.Nome,
-			'password': request.body.password,
+			'Password': request.body.Password,
 			'NIF': request.body.NIF,
 			'Contacto': request.body.Contacto,
 			'Morada': request.body.Morada,
