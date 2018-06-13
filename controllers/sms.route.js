@@ -146,7 +146,7 @@ router.post('/subscreverTempMax', function(request, response){
   })
 }*/
 
-setInterval(notificarTempMax, 10000);
+//setInterval(notificarTempMax, 10000);
 
 
 module.exports = router;
