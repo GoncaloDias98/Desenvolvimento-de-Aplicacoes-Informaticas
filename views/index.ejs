@@ -33,7 +33,7 @@
               </select>
           </form>
           <br>
-      
+
 
           </div>
 
@@ -44,7 +44,8 @@
             <br>
             <br>
             <!--<div class="sun"></div> -->
-            <span class="temp" id="Temperatura"> &#176; </span>
+            <span class="temp">
+              <a id="Temperatura"></a> ºC</span>
 
             <div class="forecast clear">
               <div class="day tue">
@@ -54,7 +55,9 @@
                 <br>
               </div>
               <div class="day wed">
-                <i class="far fa-compass" id="DirecaoVento"></i>
+                <i class="fas fa-angle-double-right" id="VelocidadeVento"> </i>
+                <br>
+                <i class="far fa-compass" id="DirecaoVento"></i> Kmh
                 <br>
                 <i class="fas fa-eye" id="Visibilidade"></i> Km
                 <br>
@@ -97,52 +100,58 @@
   </header>
   <!-- Services -->
 
-  <section  id="services">
+  <section id="services">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading text-uppercase">Tipos de acessos</h2>
           <h3 class="section-subheading text-muted"></h3>
           <div class="row text-center">
-              <div class="col-md-3">
-                <span class="fa-stack fa-4x">
-                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                  <i  class="fa fa-user-secret fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="service-heading">Sem Registo</h4>
-                <p class="text-muted">Visualiza a informação através da escolha da cidade que pretende consultar</p>
-              </div>
-              <div class="col-md-3">
-                <span class="fa-stack fa-4x">
-                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                  <i class="fa fa-user-times fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="service-heading">Registados Free</h4>
-                <p class="text-muted">Visualiza a informação através da escolha da cidade que pretende consultar. <br> Pode alterar o tema da página.</p>
-              </div>
-              <div class="col-md-3">
-                <span class="fa-stack fa-4x">
-                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                  <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="service-heading">Subscritores</h4>
-                <p class="text-muted">Visualiza a informação através da escolha da cidade que pretende consultar. <br> Pode alterar o tema da página.<br> Acesso a notificações por SMS</p>
-              </div>
-              <div class="col-md-3">
-                <span class="fa-stack fa-4x">
-                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                  <i class="fa fa-suitcase fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="service-heading">Empresas</h4>
-                <p class="text-muted">Visualiza a informação através da escolha da cidade que pretende consultar. <br> Pode alterar o tema da página.<br> Acesso a notificações por SMS<br> Gestão de Funcionários</p>
-              </div>
+            <div class="col-md-3">
+              <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-user-secret fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="service-heading">Sem Registo</h4>
+              <p class="text-muted">Visualiza a informação através da escolha da cidade que pretende consultar</p>
+            </div>
+            <div class="col-md-3">
+              <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-user-times fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="service-heading">Registados Free</h4>
+              <p class="text-muted">Visualiza a informação através da escolha da cidade que pretende consultar.
+                <br> Pode alterar o tema da página.</p>
+            </div>
+            <div class="col-md-3">
+              <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="service-heading">Subscritores</h4>
+              <p class="text-muted">Visualiza a informação através da escolha da cidade que pretende consultar.
+                <br> Pode alterar o tema da página.
+                <br> Acesso a notificações por SMS</p>
+            </div>
+            <div class="col-md-3">
+              <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-suitcase fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="service-heading">Empresas</h4>
+              <p class="text-muted">Visualiza a informação através da escolha da cidade que pretende consultar.
+                <br> Pode alterar o tema da página.
+                <br> Acesso a notificações por SMS
+                <br> Gestão de Funcionários</p>
             </div>
           </div>
         </div>
       </div>
-      </div>
+    </div>
+    </div>
   </section>
-  
+
 
 
   <!-- About -->
@@ -169,8 +178,8 @@
                 </div>
                 <div class="timeline-body">
                   <p class="text-muted">Esta fase e a fase de análise, onde o objetivo principal e perceber os requisitos que terão de responder
-                    as expetativas do cliente. E um conjunto das descrições, bem definidas, que serão entregues à equipa de
-                    desenvolvimento do software (equipa de programação).</p>
+                    as expetativas do cliente. E um conjunto das descrições, bem definidas, que serão entregues à equipa
+                    de desenvolvimento do software (equipa de programação).</p>
                 </div>
               </div>
             </li>
@@ -233,7 +242,7 @@
     </div>
   </section>
 
-  
+
   <!-- Team -->
   <section id="team">
     <div class="container">
@@ -252,7 +261,7 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/ManuelopCunha">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
             </ul>
@@ -266,10 +275,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/tomas.lima.56?ref=br_rs">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -281,10 +290,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/joaomfg">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -296,10 +305,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/profile.php?id=100004119514441">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-             
+
             </ul>
           </div>
         </div>
@@ -311,10 +320,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/jose.carvalho.16100">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-            
+
             </ul>
           </div>
         </div>
@@ -326,10 +335,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/josediogo.vieira">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -341,15 +350,15 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/GoncaloDias.GD">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                  <a href="https://www.linkedin.com/in/goncalodias98/">
-                    <i class="fab fa-linkedin-in"></i>
-                  </a>
-                </li>
-              
+                <a href="https://www.linkedin.com/in/goncalodias98/">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+
             </ul>
           </div>
         </div>
@@ -361,10 +370,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/mario.ribeiro97">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -376,10 +385,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/profile.php?id=100001097348540">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-           
+
             </ul>
           </div>
         </div>
@@ -391,10 +400,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/miguel.vaz.1042">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -406,10 +415,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/joao.barbosa.39904">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-            
+
             </ul>
           </div>
         </div>
@@ -421,10 +430,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/nuno.fernandes.986227">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-            
+
             </ul>
           </div>
         </div>
@@ -436,10 +445,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/rmcmarques86">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-             
+
             </ul>
           </div>
         </div>
@@ -451,10 +460,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/profile.php?id=100013528904850">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -466,10 +475,10 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.facebook.com/paulommandrade">
-                    <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
-              
+
             </ul>
           </div>
         </div>
