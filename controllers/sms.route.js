@@ -3,8 +3,8 @@ const model = require('../models/sms.model');
 const router = express.Router();
 const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
-  apiKey: '44111540',
-  apiSecret: '56IQVRa3Vr4g5I3E'
+  apiKey: 'ebc77cd4',
+  apiSecret: '6yV5SGAgW2i6uGkm'
 }, {
   debug: true
 });
@@ -157,7 +157,7 @@ function envioNotificacaoTemperaturaMinima() {
   })
 }
 
-//setInterval(notificarTemperaturaMaxima, 10000);
+setInterval(notificarTemperaturaMaxima, 300000);
 
 
 module.exports = router;
